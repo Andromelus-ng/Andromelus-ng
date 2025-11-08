@@ -1,12 +1,116 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <!-- Make sure you put this AFTER Leaflet's CSS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <title>Amatens - Historique combats</title>
+
+    <style>
+        #map {
+            height: 100vh;
+        }
+    </style>
+
 </head>
+
 <body>
-    
+
+    <div id="map"></div>
+
+
+    <script>
+        var bounds = [[0, 0], [1000, 1083]];
+
+        var map = L.map('map', {
+            crs: L.CRS.Simple
+        });
+
+        var image = L.imageOverlay('img/amatens.jpg', bounds).addTo(map);
+        map.fitBounds(bounds);
+
+
+        // Gestion des RC
+
+        var reports = [
+            {
+                "onlineLink": "https://horizon.celestus.fr/CelestusV2/RC/Uni2/1762435703qjoylmpgxz73245wns10ebdhcrvta69fu8ik.htm",
+                "localLink": "1762435703qjoylmpgxz73245wns10ebdhcrvta69fu8ik",
+                "coordinates": "12:183:1:0",
+                "attackers": ["Fanatiques Shankari"],
+                "defenders": ["Shas'ar'Tol"],
+                "position": L.latLng([553.6875, 586.6875]),
+                "dateTSU": "25 Dolahn(6) de l'an 20,398 TSU",
+                "dateIRL": "06/11/25 14:28:23",
+                get facAttackers() {
+                    return "reports/" + this.localLink + "_files" + "/icoF6.png"
+                },
+                get facDefenders() {
+                    return "reports/" + this.localLink + "_files" + "/icoF4.png"
+                },
+                "win": true
+            }
+        ]
+
+        reports.forEach(report => {
+            var m = L.marker(report.position,
+                { title: "Bataille de " + report.coordinates + " - "+ report.attackers + " contre "+ report.defenders })
+            m.bindPopup(`<h1>Combat sur ${report.coordinates}</h1>
+            <table>
+
+            <tr>
+            <th>Date TSU</th><td>${report.dateTSU}</td>
+            </tr>
+
+            <tr>
+            <th>Date IRL</th><td>${report.dateIRL}</td>
+            </tr>
+
+            <tr>
+            <th>Lien du rapport</th><td><a href="${report.onlineLink}"> Click me</a></td>
+            </tr>
+
+            <tr>
+            <th>Attaquants</th><td>${report.attackers}</td>
+            </tr>
+
+            <tr>
+            <th>Défenseurs</th><td>${report.defenders}</td>
+            </tr>
+
+            <tr>
+            <th>Faction de l'attaquant principal</th><td><img src="${report.facAttackers}" style="background-color:black"></td>
+            </tr>
+
+            <tr>
+            <th>Faction du défenseur principal</th><td><img src="${report.facDefenders}" style="background-color:black"></td>
+            </tr>
+
+            <tr>
+            <th>Victoire de l'attaquant</th><td>${report.win}</td>
+            </tr>
+
+            </table>
+            `)
+            m.addTo(map)
+
+        });
+
+        // map.on('click', function (e) {
+        //     console.log(e.latlng.lat, e.latlng.lng);
+        // })
+
+
+    </script>
 </body>
+
+
+
+
 </html>
