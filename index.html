@@ -10,104 +10,172 @@
     <!-- Make sure you put this AFTER Leaflet's CSS -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
         integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script src="reports.js"></script>
+
     <title>Amatens - Historique combats</title>
 
     <style>
         #map {
-            height: 100vh;
+            height: 80vh;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid black;
         }
     </style>
 
 </head>
 
 <body>
+    <label for="start">Date début</label>
 
-    <div id="map"></div>
+    <input type="date" id="start" name="trip-start" />
 
+    <label for="start">Date fin</label>
 
-    <script>
-        var bounds = [[0, 0], [1000, 1083]];
+    <input type="date" id="end" name="trip-start" />
 
-        var map = L.map('map', {
-            crs: L.CRS.Simple
-        });
+    <button id="date-select-ok">OK</button>
+    <span><-- Sélectionnez un interval de date</span>
+            <div id="map"></div>
 
-        var image = L.imageOverlay('img/amatens.jpg', bounds).addTo(map);
-        map.fitBounds(bounds);
-
-
-        // Gestion des RC
-
-        var reports = [
-            {
-                "onlineLink": "https://horizon.celestus.fr/CelestusV2/RC/Uni2/1762435703qjoylmpgxz73245wns10ebdhcrvta69fu8ik.htm",
-                "localLink": "1762435703qjoylmpgxz73245wns10ebdhcrvta69fu8ik",
-                "coordinates": "12:183:1:0",
-                "attackers": ["Fanatiques Shankari"],
-                "defenders": ["Shas'ar'Tol"],
-                "position": L.latLng([553.6875, 586.6875]),
-                "dateTSU": "25 Dolahn(6) de l'an 20,398 TSU",
-                "dateIRL": "06/11/25 14:28:23",
-                get facAttackers() {
-                    return "reports/" + this.localLink + "_files" + "/icoF6.png"
-                },
-                get facDefenders() {
-                    return "reports/" + this.localLink + "_files" + "/icoF4.png"
-                },
-                "win": true
-            }
-        ]
-
-        reports.forEach(report => {
-            var m = L.marker(report.position,
-                { title: "Bataille de " + report.coordinates + " - "+ report.attackers + " contre "+ report.defenders })
-            m.bindPopup(`<h1>Combat sur ${report.coordinates}</h1>
-            <table>
-
-            <tr>
-            <th>Date TSU</th><td>${report.dateTSU}</td>
-            </tr>
-
-            <tr>
-            <th>Date IRL</th><td>${report.dateIRL}</td>
-            </tr>
-
-            <tr>
-            <th>Lien du rapport</th><td><a href="${report.onlineLink}"> Click me</a></td>
-            </tr>
-
-            <tr>
-            <th>Attaquants</th><td>${report.attackers}</td>
-            </tr>
-
-            <tr>
-            <th>Défenseurs</th><td>${report.defenders}</td>
-            </tr>
-
-            <tr>
-            <th>Faction de l'attaquant principal</th><td><img src="${report.facAttackers}" style="background-color:black"></td>
-            </tr>
-
-            <tr>
-            <th>Faction du défenseur principal</th><td><img src="${report.facDefenders}" style="background-color:black"></td>
-            </tr>
-
-            <tr>
-            <th>Victoire de l'attaquant</th><td>${report.win}</td>
-            </tr>
-
-            </table>
-            `)
-            m.addTo(map)
-
-        });
-
-        // map.on('click', function (e) {
-        //     console.log(e.latlng.lat, e.latlng.lng);
-        // })
+            <div>
+                <table id="report-list-table">
+                    <tr>
+                        <th>Date TSU</th>
+                        <th>Date IRL</th>
+                        <th>Faction attaquant</th>
+                        <th>Faction défenseur</th>
+                        <th>Empires attaquants</th>
+                        <th>Empires défenseurs</th>
+                        <th>Lieu du combat</th>
+                        <th>Lien du rapport</th>
+                    </tr>
+                </table>
+            </div>
 
 
-    </script>
+
+            <script>
+                var bounds = [[0, 0], [1000, 1083]];
+
+                var map = L.map('map', {
+                    crs: L.CRS.Simple
+                });
+
+                var image = L.imageOverlay('img/amatens.jpg', bounds).addTo(map);
+                map.fitBounds(bounds);
+
+                var table = document.getElementById("report-list-table")
+
+                document.getElementById("date-select-ok").onclick = function () {
+                    table.getElementsByTagName("tbody")[0].innerHTML = table.rows[0].innerHTML;
+
+                    reports.forEach(report => {
+                        console.log(report)
+                        if (report.marker != undefined) {
+                            map.removeLayer(report.marker)
+                        }
+                        var report_date = report.dateIRL.split(" ")[0]
+                        var report_year = report_date.split("/")[2]
+                        var report_month = report_date.split("/")[1]
+                        var report_day = report_date.split("/")[0]
+
+                        var report_date = new Date(report_month + "/" + report_day + "/" + report_year)
+                        let lowerDate = new Date(document.getElementById("start").value)
+                        let upperDate = new Date(document.getElementById("end").value)
+                        if (report_date >= lowerDate && report_date <= upperDate) {
+                            if (report.coordinates != "") {
+                                var m = L.marker(report.position,
+                                    { title: report.title })
+                                m.bindPopup(`<h1>${report.title}</h1>
+                            <table>
+
+                            <tr>
+                            <th>Date TSU</th><td>${report.dateTSU}</td>
+                            </tr>
+
+                            <tr>
+                            <th>Date IRL</th><td>${report.dateIRL}</td>
+                            </tr>
+
+                            <tr>
+                            <th>Lien du rapport</th><td><a href="${report.onlineLink}"> Click me</a></td>
+                            </tr>
+
+                            <tr>
+                            <th>Attaquants</th><td>${report.attackers}</td>
+                            </tr>
+
+                            <tr>
+                            <th>Défenseurs</th><td>${report.defenders}</td>
+                            </tr>
+
+                            <tr>
+                            <th>Faction de l'attaquant principal</th><td><img src="${report.facAttackersImg}" style="background-color:black"> ${report.facAttackers}</td>
+                            </tr>
+
+                            <tr>
+                            <th>Faction du défenseur principal</th><td><img src="${report.facDefendersImg}" style="background-color:black"> ${report.facDefenders}</td>
+                            </tr>
+
+                            <tr>
+                            <th>Victoire de l'attaquant</th><td>${report.win}</td>
+                            </tr>
+
+                            <tr>
+                            <th>Détails supplémentaires</th><td>${report.details}</td>
+                            </tr>
+
+                            <tr>
+                            <th>Lieu du combat</th><td>${report.coordinates}</td>
+                            </tr>
+
+                            </table>
+                            `)
+                                report.marker = m
+                                console.log(report.position)
+                                m.addTo(map)
+                            }
+                            var row = table.insertRow(-1)
+                            cell = row.insertCell(-1)
+                            cell.innerHTML = report.dateTSU
+
+                            cell = row.insertCell(-1)
+                            cell.innerHTML = report.dateIRL
+
+                            cell = row.insertCell(-1)
+                            cell.innerHTML = `<img src="${report.facAttackersImg}" style="background-color:black"> ${report.facAttackers}</img>`
+
+                            cell = row.insertCell(-1)
+                            cell.innerHTML = `<img src="${report.facDefendersImg}" style="background-color:black"> ${report.facDefenders}</img>`
+
+                            cell = row.insertCell(-1)
+                            cell.innerHTML = `${report.attackers}`
+
+                            cell = row.insertCell(-1)
+                            cell.innerHTML = `${report.defenders}`
+
+                            cell = row.insertCell(-1)
+                            cell.innerHTML = `${report.coordinates}`
+
+                            cell = row.insertCell(-1)
+                            cell.innerHTML = `${report.onlineLink}`
+                        }
+
+                    });
+                }
+
+                map.on('click', function (e) {
+                    console.log(e.latlng.lat, e.latlng.lng);
+                })
+
+
+            </script>
+
+
 </body>
 
 
