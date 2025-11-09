@@ -1,0 +1,1760 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"/><link rel="stylesheet" media="screen" type="text/css" title="Celestus V2.0" href="../SkinRC/DesignV3.css?V=83655229"/><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><script type="text/javascript" src="../SkinRC/RCplayer.js?R=3428466"></script><script type="text/javascript" src="../../Interface/Pixi/bin/pixi.js"></script><script type="text/javascript" src="../SkinRC/Polyg.js?R=9949094"></script></head><body><script type="text/javascript">
+	var Version=3;
+	var Rounds=new Array();
+	
+	var Chasse=new Array();
+	
+	Rounds[0]=new Array();
+	Rounds[0]["A"]=new Array();
+	Rounds[0]["D"]=new Array();
+	
+Rounds[0]["A"][1]=new Array();
+Rounds[0]["A"][1]["Pseudo"]="FearNyx";
+Rounds[0]["A"][1]["Eff"]="1";
+Rounds[0]["A"][1]["OfficierNiv"]="0";
+Rounds[0]["A"][1]["OfficierNivMax"]="0";
+Rounds[0]["A"][1]["OfficierNom"]="0";
+Rounds[0]["A"][1]["OfficierImg"]="0";
+Rounds[0]["A"][1]["OfficierType"]="0";
+Rounds[0]["A"][1]["PCom"]="0";
+Rounds[0]["A"][1]["PComMax"]="0";
+NomOP="";
+Rounds[0]["D"][1]=new Array();
+Rounds[0]["D"][1]["Pseudo"]="Neros";
+Rounds[0]["D"][1]["Eff"]="1";
+Rounds[0]["D"][1]["OfficierNiv"]="0";
+Rounds[0]["D"][1]["OfficierNivMax"]="0";
+Rounds[0]["D"][1]["OfficierNom"]="0";
+Rounds[0]["D"][1]["OfficierImg"]="0";
+Rounds[0]["D"][1]["OfficierType"]="0";
+Rounds[0]["D"][1]["PCom"]="0";
+Rounds[0]["D"][1]["PComMax"]="0";
+
+	var VaisseauxRP=new Array();
+	VaisseauxRP["VD22-5905610i85"]="";
+		VaisseauxRP["M1T"]="L\'extracteur tellurique fut un tel succès que la Guilde des Explorateurs chercha à réitérer l\'exploit en se penchant, cette fois, sur les géantes gazeuses – dite \"Joviennes\". Un problème quelque peu évident se posa tout de suite : comment construire une base lorsque la planète ciblée n\'a pas de surface accessible ?<br/>Mettant à profit leurs siècles d\'études sur les atmosphères planétaires, les explorateurs conçurent en réponse une vaste station destinée à se mouvoir sur une orbite suffisamment basse pour pénétrer les premières couches gazeuses. Cette structure arachnéenne écope des millions de mètres cubes de gaz à chaque seconde, séparant le précieux tritium des isotopes standards de l\'hydrogène. Mais là où les basiques modules miniers rejettent ces excédents, cet Extracteur Jovien utilise l\'hydrogène Un et le deutérium récoltés dans une réaction de fusion à plusieurs étages ayant comme finalité la production d\'encore plus de tritium. Tout comme son cousin tellurique, ce bâtiment est une véritable ville spatiale où se regroupent nombre d\'ouvriers et contremaîtres dans des conditions proches de la vie coloniale.<br/><br/><br/><br/>Plus efficace et moins onéreux à l\'entretien que le module minier de base, l\'Extracteur Jovien exigera cependant un investissement initial plus important à son propriétaire du fait de son haut degré de perfectionnement, en contrepartie de rendements en tritium supérieurs.";
+		
+	Rounds[1]=new Array();
+	Rounds[1]["Events"]=new Array();
+	var event=0;
+	
+	Rounds[0]["Debut"]="<br/><br/>Combat dans un secteur interstellaire<br/><br/>Stratégie de l\'attaque : <span class=\"info1\"><span class=\"StyleOrange\"></span><span class=\"InfoBulle\"></span></span><br/>Stratégie de la défense : <span class=\"info1\"><span class=\"StyleOrange\">Nuage de chasseurs V</span><span class=\"InfoBulle\">Nuage de chasseurs V, <br/><br/>Les chasseurs se mettent en formation pour encaisser le maximum de dégât en laissant le passage libre pour les croiseurs.<br/><br/><table class=\"TabStrategie\"><tr><td><table><tr><td>&nbsp</td></tr><tr><td>Chasseurs<br/>&nbsp</td></tr><tr><td>Bombardiers<br/>&nbsp</td></tr><tr><td>Croiseurs<br/>&nbsp</td></tr><tr><td>Porte-Nefs<br/>&nbsp</td></tr><tr><td>Autres<br/>&nbsp</td></tr></table></td><td><table><tr><td> Round 1 </td></tr><tr><td>Att : <span class=StyleGreen>160%</span> <br>Str : <span class=StyleGreen>160%</span> </td></tr><tr><td>Att : 100% <br>Str : 100% </td></tr><tr><td>Att : 100% <br>Str : 100% </td></tr><tr><td>Att : 100% <br>Str : 100% </td></tr><tr><td>Att : 100% <br>Str : 100% </td></tr></table></td><td><table><tr><td> Round 2 </td></tr><tr><td>Att : <span class=StyleRed>50%</span> <br>Str : <span class=StyleRed>50%</span> </td></tr><tr><td>Att : 100% <br>Str : 100% </td></tr><tr><td>Att : 100% <br>Str : 100% </td></tr><tr><td>Att : 100% <br>Str : 100% </td></tr><tr><td>Att : 100% <br>Str : 100% </td></tr></table></td><td><table><tr><td> Round 3 </td></tr><tr><td>Att : <span class=StyleRed>50%</span> <br>Str : <span class=StyleRed>50%</span> </td></tr><tr><td>Att : 100% <br>Str : 100% </td></tr><tr><td>Att : 100% <br>Str : 100% </td></tr><tr><td>Att : 100% <br>Str : 100% </td></tr><tr><td>Att : 100% <br>Str : 100% </td></tr></table></td><td><table><tr><td> Round 4 </td></tr><tr><td>Att : <span class=StyleRed>50%</span> <br>Str : <span class=StyleRed>50%</span> </td></tr><tr><td>Att : 100% <br>Str : 100% </td></tr><tr><td>Att : 100% <br>Str : 100% </td></tr><tr><td>Att : 100% <br>Str : 100% </td></tr><tr><td>Att : 100% <br>Str : 100% </td></tr></table></td><td><table><tr><td> Round 5 </td></tr><tr><td>Att : <span class=StyleRed>50%</span> <br>Str : <span class=StyleRed>50%</span> </td></tr><tr><td>Att : 100% <br>Str : 100% </td></tr><tr><td>Att : 100% <br>Str : 100% </td></tr><tr><td>Att : 100% <br>Str : 100% </td></tr><tr><td>Att : 100% <br>Str : 100% </td></tr></table></td></tr></table></span></span>";
+	
+Rounds[1]["A"]=new Array();
+
+	Rounds[1]["A"][1]=new Array();
+	
+				Rounds[1]["A"][1]["VD22-5905610i85"]=new Array();
+				Rounds[1]["A"][1]["VD22-5905610i85"]["IMG"]="VD22";
+				Rounds[1]["A"][1]["VD22-5905610i85"]["Type"]="D";
+				Rounds[1]["A"][1]["VD22-5905610i85"]["Chassis"]="D2";
+				Rounds[1]["A"][1]["VD22-5905610i85"]["NbI"]="1";
+				Rounds[1]["A"][1]["VD22-5905610i85"]["Nb"]="1";
+				Rounds[1]["A"][1]["VD22-5905610i85"]["NbL"]="";
+				Rounds[1]["A"][1]["VD22-5905610i85"]["Deg"]="0";
+				Rounds[1]["A"][1]["VD22-5905610i85"]["Caracs"]="";
+				
+				Rounds[1]["A"][1]["VD22-5905610i85"]["Caracs"]="La Fromagere<br/><br/>Etat : 100%<br/>Structure : 6,018,328 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Blindage AC : 0<br/>Blindage La : 0<br/>Blindage Pl : 0<br/>Blindage EM : 0<br/>Dégâts AC : 582,924 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts La : 750,973 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts Pl : 136,804 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts EM : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/><br/>Type : Croiseur (exposition 100%)<br/>Chassis : Intercepteur (exposition 100%)<br/>Dégâts d\'exposition : +400%<br/>Cible : Polyvalent";
+				
+if(!Chasse[1]){
+	Chasse[1]=new Array();
+}
+Chasse[1]["A"]=new Array();
+Chasse[1]["A"]["RCh1"]=0;
+Chasse[1]["A"]["RCh2"]=0;
+Chasse[1]["A"]["RCh3"]=0;
+Chasse[1]["A"]["OCh1"]=39.99;
+Chasse[1]["A"]["OCh2"]=35;
+Chasse[1]["A"]["OCh3"]=25;
+Chasse[1]["A"]["CoefChStr"]=100;
+Chasse[1]["A"]["CoefChCib"]=100;
+Chasse[1]["A"]["CoefChAtt"]=100;
+Chasse[1]["A"]["RCh"]=0;
+Chasse[1]["A"]["CoefCh"]=0;
+
+Rounds[1]["D"]=new Array();
+
+	Rounds[1]["D"][1]=new Array();
+	
+				Rounds[1]["D"][1]["M1T"]=new Array();
+				Rounds[1]["D"][1]["M1T"]["IMG"]="M1T";
+				Rounds[1]["D"][1]["M1T"]["Type"]="M";
+				Rounds[1]["D"][1]["M1T"]["Chassis"]="M";
+				Rounds[1]["D"][1]["M1T"]["NbI"]="100";
+				Rounds[1]["D"][1]["M1T"]["Nb"]="100";
+				Rounds[1]["D"][1]["M1T"]["NbL"]="";
+				Rounds[1]["D"][1]["M1T"]["Deg"]="0";
+				Rounds[1]["D"][1]["M1T"]["Caracs"]="";
+				
+				Rounds[1]["D"][1]["M1T"]["Caracs"]="Extracteur jovien<br/><br/>Etat : 100%<br/>Structure : 277,885 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Blindage AC : 0<br/>Blindage La : 0<br/>Blindage Pl : 0<br/>Blindage EM : 0<br/>Dégâts AC : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts La : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts Pl : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts EM : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/><br/>Type : Module (exposition 0%)<br/>Chassis : Module Utilitaire (exposition 0%)<br/>Dégâts d\'exposition : +0%<br/>Cible : Polyvalent";
+				
+if(!Chasse[1]){
+	Chasse[1]=new Array();
+}
+Chasse[1]["D"]=new Array();
+Chasse[1]["D"]["RCh1"]=0;
+Chasse[1]["D"]["RCh2"]=0;
+Chasse[1]["D"]["RCh3"]=0;
+Chasse[1]["D"]["OCh1"]=0;
+Chasse[1]["D"]["OCh2"]=0;
+Chasse[1]["D"]["OCh3"]=0;
+Chasse[1]["D"]["CoefChStr"]=100;
+Chasse[1]["D"]["CoefChCib"]=100;
+Chasse[1]["D"]["CoefChAtt"]=100;
+Chasse[1]["D"]["RCh"]=0;
+Chasse[1]["D"]["CoefCh"]=100;
+
+	Rounds[1]["Events"][event]="<img src=\"../SkinRC/Events/Ballist.png\" class=\"IcoEv\"/> A cette distance, les tirs non ciblés ont un impact de 10% pour l\'attaque et 10% pour la défense<br/>";
+	event++;
+	
+Rounds[1]["Degats"]="<div class=\"Degats\"><b>La Flotte Attaquante tir avec une puissance de feu de <span class=\"StyleDegats\">1,470,701</span></b><div><i>(Tirs <span class=\"StyleCible\">polyvalents</span> avec une puissance de <span class=\"StyleDegats\">AC 582,924, La 750,973, Pl 136,804, EM 0</span>)<br/><br/></i></div><b>La Defense tir avec une puissance de feu de <span class=\"StyleDegats\">0</span></b><div><i></i></div></div>";
+
+Rounds[1]["ZRC_A"]="1";
+Rounds[1]["ZRC_D"]="0";
+
+Rounds[1]["Str_A"]="0.17802093334566";
+Rounds[1]["Str_D"]="0.82197906665434";
+
+Rounds[1]["Att_A"]="1";
+Rounds[1]["Att_D"]="0";
+
+		Rounds[2]=new Array();
+		Rounds[2]["Events"]=new Array();
+		event=0;
+		
+Rounds[2]["A"]=new Array();
+
+	Rounds[2]["A"][1]=new Array();
+	
+				Rounds[2]["A"][1]["VD22-5905610i85"]=new Array();
+				Rounds[2]["A"][1]["VD22-5905610i85"]["IMG"]="VD22";
+				Rounds[2]["A"][1]["VD22-5905610i85"]["Type"]="D";
+				Rounds[2]["A"][1]["VD22-5905610i85"]["Chassis"]="D2";
+				Rounds[2]["A"][1]["VD22-5905610i85"]["NbI"]="1";
+				Rounds[2]["A"][1]["VD22-5905610i85"]["Nb"]="1";
+				Rounds[2]["A"][1]["VD22-5905610i85"]["NbL"]="1";
+				Rounds[2]["A"][1]["VD22-5905610i85"]["Deg"]="0";
+				Rounds[2]["A"][1]["VD22-5905610i85"]["Caracs"]="";
+				
+				Rounds[2]["A"][1]["VD22-5905610i85"]["Caracs"]="La Fromagere<br/><br/>Etat : 100%<br/>Structure : 6,018,328 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Blindage AC : 0<br/>Blindage La : 0<br/>Blindage Pl : 0<br/>Blindage EM : 0<br/>Dégâts AC : 582,924 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts La : 750,973 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts Pl : 136,804 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts EM : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/><br/>Type : Croiseur (exposition 100%)<br/>Chassis : Intercepteur (exposition 100%)<br/>Dégâts d\'exposition : +400%<br/>Cible : Polyvalent";
+				
+if(!Chasse[2]){
+	Chasse[2]=new Array();
+}
+Chasse[2]["A"]=new Array();
+Chasse[2]["A"]["RCh1"]=0;
+Chasse[2]["A"]["RCh2"]=0;
+Chasse[2]["A"]["RCh3"]=0;
+Chasse[2]["A"]["OCh1"]=39.99;
+Chasse[2]["A"]["OCh2"]=35;
+Chasse[2]["A"]["OCh3"]=25;
+Chasse[2]["A"]["CoefChStr"]=100;
+Chasse[2]["A"]["CoefChCib"]=100;
+Chasse[2]["A"]["CoefChAtt"]=100;
+Chasse[2]["A"]["RCh"]=0;
+Chasse[2]["A"]["CoefCh"]=0;
+
+Rounds[2]["D"]=new Array();
+
+	Rounds[2]["D"][1]=new Array();
+	
+				Rounds[2]["D"][1]["M1T"]=new Array();
+				Rounds[2]["D"][1]["M1T"]["IMG"]="M1T";
+				Rounds[2]["D"][1]["M1T"]["Type"]="M";
+				Rounds[2]["D"][1]["M1T"]["Chassis"]="M";
+				Rounds[2]["D"][1]["M1T"]["NbI"]="100";
+				Rounds[2]["D"][1]["M1T"]["Nb"]="98";
+				Rounds[2]["D"][1]["M1T"]["NbL"]="100";
+				Rounds[2]["D"][1]["M1T"]["Deg"]="0.72079374660994";
+				Rounds[2]["D"][1]["M1T"]["Caracs"]="";
+				
+				Rounds[2]["D"][1]["M1T"]["Caracs"]="Extracteur jovien<br/><br/>Etat : 99%<br/>Structure : 277,885 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Blindage AC : 0<br/>Blindage La : 0<br/>Blindage Pl : 0<br/>Blindage EM : 0<br/>Dégâts AC : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts La : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts Pl : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts EM : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/><br/>Type : Module (exposition 0%)<br/>Chassis : Module Utilitaire (exposition 0%)<br/>Dégâts d\'exposition : +0%<br/>Cible : Polyvalent";
+				
+if(!Chasse[2]){
+	Chasse[2]=new Array();
+}
+Chasse[2]["D"]=new Array();
+Chasse[2]["D"]["RCh1"]=0;
+Chasse[2]["D"]["RCh2"]=0;
+Chasse[2]["D"]["RCh3"]=0;
+Chasse[2]["D"]["OCh1"]=0;
+Chasse[2]["D"]["OCh2"]=0;
+Chasse[2]["D"]["OCh3"]=0;
+Chasse[2]["D"]["CoefChStr"]=100;
+Chasse[2]["D"]["CoefChCib"]=100;
+Chasse[2]["D"]["CoefChAtt"]=100;
+Chasse[2]["D"]["RCh"]=0;
+Chasse[2]["D"]["CoefCh"]=100;
+
+	Rounds[2]["Events"][event]="<img src=\"../SkinRC/Events/Ballist.png\" class=\"IcoEv\"/> A cette distance, les tirs non ciblés ont un impact de 20% pour l\'attaque et 20% pour la défense<br/>";
+	event++;
+	
+Rounds[2]["Degats"]="<div class=\"Degats\"><b>La Flotte Attaquante tir avec une puissance de feu de <span class=\"StyleDegats\">1,470,701</span></b><div><i>(Tirs <span class=\"StyleCible\">polyvalents</span> avec une puissance de <span class=\"StyleDegats\">AC 582,924, La 750,973, Pl 136,804, EM 0</span>)<br/><br/></i></div><b>La Defense tir avec une puissance de feu de <span class=\"StyleDegats\">0</span></b><div><i></i></div></div>";
+
+Rounds[2]["ZRC_A"]="1";
+Rounds[2]["ZRC_D"]="0";
+
+Rounds[2]["Str_A"]="0.18099643902603";
+Rounds[2]["Str_D"]="0.81900356097397";
+
+Rounds[2]["Att_A"]="1";
+Rounds[2]["Att_D"]="0";
+
+		Rounds[3]=new Array();
+		Rounds[3]["Events"]=new Array();
+		event=0;
+		
+Rounds[3]["A"]=new Array();
+
+	Rounds[3]["A"][1]=new Array();
+	
+				Rounds[3]["A"][1]["VD22-5905610i85"]=new Array();
+				Rounds[3]["A"][1]["VD22-5905610i85"]["IMG"]="VD22";
+				Rounds[3]["A"][1]["VD22-5905610i85"]["Type"]="D";
+				Rounds[3]["A"][1]["VD22-5905610i85"]["Chassis"]="D2";
+				Rounds[3]["A"][1]["VD22-5905610i85"]["NbI"]="1";
+				Rounds[3]["A"][1]["VD22-5905610i85"]["Nb"]="1";
+				Rounds[3]["A"][1]["VD22-5905610i85"]["NbL"]="1";
+				Rounds[3]["A"][1]["VD22-5905610i85"]["Deg"]="0";
+				Rounds[3]["A"][1]["VD22-5905610i85"]["Caracs"]="";
+				
+				Rounds[3]["A"][1]["VD22-5905610i85"]["Caracs"]="La Fromagere<br/><br/>Etat : 100%<br/>Structure : 6,018,328 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Blindage AC : 0<br/>Blindage La : 0<br/>Blindage Pl : 0<br/>Blindage EM : 0<br/>Dégâts AC : 582,924 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts La : 750,973 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts Pl : 136,804 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts EM : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/><br/>Type : Croiseur (exposition 100%)<br/>Chassis : Intercepteur (exposition 100%)<br/>Dégâts d\'exposition : +400%<br/>Cible : Polyvalent";
+				
+if(!Chasse[3]){
+	Chasse[3]=new Array();
+}
+Chasse[3]["A"]=new Array();
+Chasse[3]["A"]["RCh1"]=0;
+Chasse[3]["A"]["RCh2"]=0;
+Chasse[3]["A"]["RCh3"]=0;
+Chasse[3]["A"]["OCh1"]=39.99;
+Chasse[3]["A"]["OCh2"]=35;
+Chasse[3]["A"]["OCh3"]=25;
+Chasse[3]["A"]["CoefChStr"]=100;
+Chasse[3]["A"]["CoefChCib"]=100;
+Chasse[3]["A"]["CoefChAtt"]=100;
+Chasse[3]["A"]["RCh"]=0;
+Chasse[3]["A"]["CoefCh"]=0;
+
+Rounds[3]["D"]=new Array();
+
+	Rounds[3]["D"][1]=new Array();
+	
+				Rounds[3]["D"][1]["M1T"]=new Array();
+				Rounds[3]["D"][1]["M1T"]["IMG"]="M1T";
+				Rounds[3]["D"][1]["M1T"]["Type"]="M";
+				Rounds[3]["D"][1]["M1T"]["Chassis"]="M";
+				Rounds[3]["D"][1]["M1T"]["NbI"]="100";
+				Rounds[3]["D"][1]["M1T"]["Nb"]="95";
+				Rounds[3]["D"][1]["M1T"]["NbL"]="98";
+				Rounds[3]["D"][1]["M1T"]["Deg"]="0.40006286290015";
+				Rounds[3]["D"][1]["M1T"]["Caracs"]="";
+				
+				Rounds[3]["D"][1]["M1T"]["Caracs"]="Extracteur jovien<br/><br/>Etat : 99%<br/>Structure : 277,885 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Blindage AC : 0<br/>Blindage La : 0<br/>Blindage Pl : 0<br/>Blindage EM : 0<br/>Dégâts AC : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts La : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts Pl : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts EM : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/><br/>Type : Module (exposition 0%)<br/>Chassis : Module Utilitaire (exposition 0%)<br/>Dégâts d\'exposition : +0%<br/>Cible : Polyvalent";
+				
+if(!Chasse[3]){
+	Chasse[3]=new Array();
+}
+Chasse[3]["D"]=new Array();
+Chasse[3]["D"]["RCh1"]=0;
+Chasse[3]["D"]["RCh2"]=0;
+Chasse[3]["D"]["RCh3"]=0;
+Chasse[3]["D"]["OCh1"]=0;
+Chasse[3]["D"]["OCh2"]=0;
+Chasse[3]["D"]["OCh3"]=0;
+Chasse[3]["D"]["CoefChStr"]=100;
+Chasse[3]["D"]["CoefChCib"]=100;
+Chasse[3]["D"]["CoefChAtt"]=100;
+Chasse[3]["D"]["RCh"]=0;
+Chasse[3]["D"]["CoefCh"]=100;
+
+	Rounds[3]["Events"][event]="<img src=\"../SkinRC/Events/Ballist.png\" class=\"IcoEv\"/> A cette distance, les tirs non ciblés ont un impact de 30% pour l\'attaque et 30% pour la défense<br/>";
+	event++;
+	
+Rounds[3]["Degats"]="<div class=\"Degats\"><b>La Flotte Attaquante tir avec une puissance de feu de <span class=\"StyleDegats\">1,470,701</span></b><div><i>(Tirs <span class=\"StyleCible\">polyvalents</span> avec une puissance de <span class=\"StyleDegats\">AC 582,924, La 750,973, Pl 136,804, EM 0</span>)<br/><br/></i></div><b>La Defense tir avec une puissance de feu de <span class=\"StyleDegats\">0</span></b><div><i></i></div></div>";
+
+Rounds[3]["ZRC_A"]="1";
+Rounds[3]["ZRC_D"]="0";
+
+Rounds[3]["Str_A"]="0.18565099492214";
+Rounds[3]["Str_D"]="0.81434900507786";
+
+Rounds[3]["Att_A"]="1";
+Rounds[3]["Att_D"]="0";
+
+		Rounds[4]=new Array();
+		Rounds[4]["Events"]=new Array();
+		event=0;
+		
+Rounds[4]["A"]=new Array();
+
+	Rounds[4]["A"][1]=new Array();
+	
+				Rounds[4]["A"][1]["VD22-5905610i85"]=new Array();
+				Rounds[4]["A"][1]["VD22-5905610i85"]["IMG"]="VD22";
+				Rounds[4]["A"][1]["VD22-5905610i85"]["Type"]="D";
+				Rounds[4]["A"][1]["VD22-5905610i85"]["Chassis"]="D2";
+				Rounds[4]["A"][1]["VD22-5905610i85"]["NbI"]="1";
+				Rounds[4]["A"][1]["VD22-5905610i85"]["Nb"]="1";
+				Rounds[4]["A"][1]["VD22-5905610i85"]["NbL"]="1";
+				Rounds[4]["A"][1]["VD22-5905610i85"]["Deg"]="0";
+				Rounds[4]["A"][1]["VD22-5905610i85"]["Caracs"]="";
+				
+				Rounds[4]["A"][1]["VD22-5905610i85"]["Caracs"]="La Fromagere<br/><br/>Etat : 100%<br/>Structure : 6,018,328 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Blindage AC : 0<br/>Blindage La : 0<br/>Blindage Pl : 0<br/>Blindage EM : 0<br/>Dégâts AC : 582,924 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts La : 750,973 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts Pl : 136,804 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts EM : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/><br/>Type : Croiseur (exposition 100%)<br/>Chassis : Intercepteur (exposition 100%)<br/>Dégâts d\'exposition : +400%<br/>Cible : Polyvalent";
+				
+if(!Chasse[4]){
+	Chasse[4]=new Array();
+}
+Chasse[4]["A"]=new Array();
+Chasse[4]["A"]["RCh1"]=0;
+Chasse[4]["A"]["RCh2"]=0;
+Chasse[4]["A"]["RCh3"]=0;
+Chasse[4]["A"]["OCh1"]=39.99;
+Chasse[4]["A"]["OCh2"]=35;
+Chasse[4]["A"]["OCh3"]=25;
+Chasse[4]["A"]["CoefChStr"]=100;
+Chasse[4]["A"]["CoefChCib"]=100;
+Chasse[4]["A"]["CoefChAtt"]=100;
+Chasse[4]["A"]["RCh"]=0;
+Chasse[4]["A"]["CoefCh"]=0;
+
+Rounds[4]["D"]=new Array();
+
+	Rounds[4]["D"][1]=new Array();
+	
+				Rounds[4]["D"][1]["M1T"]=new Array();
+				Rounds[4]["D"][1]["M1T"]["IMG"]="M1T";
+				Rounds[4]["D"][1]["M1T"]["Type"]="M";
+				Rounds[4]["D"][1]["M1T"]["Chassis"]="M";
+				Rounds[4]["D"][1]["M1T"]["NbI"]="100";
+				Rounds[4]["D"][1]["M1T"]["Nb"]="92";
+				Rounds[4]["D"][1]["M1T"]["NbL"]="95";
+				Rounds[4]["D"][1]["M1T"]["Deg"]="0.12770611545998";
+				Rounds[4]["D"][1]["M1T"]["Caracs"]="";
+				
+				Rounds[4]["D"][1]["M1T"]["Caracs"]="Extracteur jovien<br/><br/>Etat : 99%<br/>Structure : 277,885 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Blindage AC : 0<br/>Blindage La : 0<br/>Blindage Pl : 0<br/>Blindage EM : 0<br/>Dégâts AC : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts La : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts Pl : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts EM : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/><br/>Type : Module (exposition 0%)<br/>Chassis : Module Utilitaire (exposition 0%)<br/>Dégâts d\'exposition : +0%<br/>Cible : Polyvalent";
+				
+if(!Chasse[4]){
+	Chasse[4]=new Array();
+}
+Chasse[4]["D"]=new Array();
+Chasse[4]["D"]["RCh1"]=0;
+Chasse[4]["D"]["RCh2"]=0;
+Chasse[4]["D"]["RCh3"]=0;
+Chasse[4]["D"]["OCh1"]=0;
+Chasse[4]["D"]["OCh2"]=0;
+Chasse[4]["D"]["OCh3"]=0;
+Chasse[4]["D"]["CoefChStr"]=100;
+Chasse[4]["D"]["CoefChCib"]=100;
+Chasse[4]["D"]["CoefChAtt"]=100;
+Chasse[4]["D"]["RCh"]=0;
+Chasse[4]["D"]["CoefCh"]=100;
+
+	Rounds[4]["Events"][event]="<img src=\"../SkinRC/Events/Ballist.png\" class=\"IcoEv\"/> A cette distance, les tirs non ciblés ont un impact de 40% pour l\'attaque et 40% pour la défense<br/>";
+	event++;
+	
+Rounds[4]["Degats"]="<div class=\"Degats\"><b>La Flotte Attaquante tir avec une puissance de feu de <span class=\"StyleDegats\">1,470,701</span></b><div><i>(Tirs <span class=\"StyleCible\">polyvalents</span> avec une puissance de <span class=\"StyleDegats\">AC 582,924, La 750,973, Pl 136,804, EM 0</span>)<br/><br/></i></div><b>La Defense tir avec une puissance de feu de <span class=\"StyleDegats\">0</span></b><div><i></i></div></div>";
+
+Rounds[4]["ZRC_A"]="1";
+Rounds[4]["ZRC_D"]="0";
+
+Rounds[4]["Str_A"]="0.19055126545172";
+Rounds[4]["Str_D"]="0.80944873454828";
+
+Rounds[4]["Att_A"]="1";
+Rounds[4]["Att_D"]="0";
+
+		Rounds[5]=new Array();
+		Rounds[5]["Events"]=new Array();
+		event=0;
+		
+Rounds[5]["A"]=new Array();
+
+	Rounds[5]["A"][1]=new Array();
+	
+				Rounds[5]["A"][1]["VD22-5905610i85"]=new Array();
+				Rounds[5]["A"][1]["VD22-5905610i85"]["IMG"]="VD22";
+				Rounds[5]["A"][1]["VD22-5905610i85"]["Type"]="D";
+				Rounds[5]["A"][1]["VD22-5905610i85"]["Chassis"]="D2";
+				Rounds[5]["A"][1]["VD22-5905610i85"]["NbI"]="1";
+				Rounds[5]["A"][1]["VD22-5905610i85"]["Nb"]="1";
+				Rounds[5]["A"][1]["VD22-5905610i85"]["NbL"]="1";
+				Rounds[5]["A"][1]["VD22-5905610i85"]["Deg"]="0";
+				Rounds[5]["A"][1]["VD22-5905610i85"]["Caracs"]="";
+				
+				Rounds[5]["A"][1]["VD22-5905610i85"]["Caracs"]="La Fromagere<br/><br/>Etat : 100%<br/>Structure : 6,018,328 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Blindage AC : 0<br/>Blindage La : 0<br/>Blindage Pl : 0<br/>Blindage EM : 0<br/>Dégâts AC : 582,924 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts La : 750,973 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts Pl : 136,804 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts EM : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/><br/>Type : Croiseur (exposition 100%)<br/>Chassis : Intercepteur (exposition 100%)<br/>Dégâts d\'exposition : +400%<br/>Cible : Polyvalent";
+				
+if(!Chasse[5]){
+	Chasse[5]=new Array();
+}
+Chasse[5]["A"]=new Array();
+Chasse[5]["A"]["RCh1"]=0;
+Chasse[5]["A"]["RCh2"]=0;
+Chasse[5]["A"]["RCh3"]=0;
+Chasse[5]["A"]["OCh1"]=39.99;
+Chasse[5]["A"]["OCh2"]=35;
+Chasse[5]["A"]["OCh3"]=25;
+Chasse[5]["A"]["CoefChStr"]=100;
+Chasse[5]["A"]["CoefChCib"]=100;
+Chasse[5]["A"]["CoefChAtt"]=100;
+Chasse[5]["A"]["RCh"]=0;
+Chasse[5]["A"]["CoefCh"]=0;
+
+Rounds[5]["D"]=new Array();
+
+	Rounds[5]["D"][1]=new Array();
+	
+				Rounds[5]["D"][1]["M1T"]=new Array();
+				Rounds[5]["D"][1]["M1T"]["IMG"]="M1T";
+				Rounds[5]["D"][1]["M1T"]["Type"]="M";
+				Rounds[5]["D"][1]["M1T"]["Chassis"]="M";
+				Rounds[5]["D"][1]["M1T"]["NbI"]="100";
+				Rounds[5]["D"][1]["M1T"]["Nb"]="89";
+				Rounds[5]["D"][1]["M1T"]["NbL"]="92";
+				Rounds[5]["D"][1]["M1T"]["Deg"]="0";
+				Rounds[5]["D"][1]["M1T"]["Caracs"]="";
+				
+				Rounds[5]["D"][1]["M1T"]["Caracs"]="Extracteur jovien<br/><br/>Etat : 100%<br/>Structure : 277,885 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Blindage AC : 0<br/>Blindage La : 0<br/>Blindage Pl : 0<br/>Blindage EM : 0<br/>Dégâts AC : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts La : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts Pl : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts EM : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/><br/>Type : Module (exposition 0%)<br/>Chassis : Module Utilitaire (exposition 0%)<br/>Dégâts d\'exposition : +0%<br/>Cible : Polyvalent";
+				
+if(!Chasse[5]){
+	Chasse[5]=new Array();
+}
+Chasse[5]["D"]=new Array();
+Chasse[5]["D"]["RCh1"]=0;
+Chasse[5]["D"]["RCh2"]=0;
+Chasse[5]["D"]["RCh3"]=0;
+Chasse[5]["D"]["OCh1"]=0;
+Chasse[5]["D"]["OCh2"]=0;
+Chasse[5]["D"]["OCh3"]=0;
+Chasse[5]["D"]["CoefChStr"]=100;
+Chasse[5]["D"]["CoefChCib"]=100;
+Chasse[5]["D"]["CoefChAtt"]=100;
+Chasse[5]["D"]["RCh"]=0;
+Chasse[5]["D"]["CoefCh"]=100;
+
+	Rounds[5]["Events"][event]="<img src=\"../SkinRC/Events/Ballist.png\" class=\"IcoEv\"/> A cette distance, les tirs non ciblés ont un impact de 50% pour l\'attaque et 50% pour la défense<br/>";
+	event++;
+	
+Rounds[5]["Degats"]="<div class=\"Degats\"><b>La Flotte Attaquante tir avec une puissance de feu de <span class=\"StyleDegats\">1,470,701</span></b><div><i>(Tirs <span class=\"StyleCible\">polyvalents</span> avec une puissance de <span class=\"StyleDegats\">AC 582,924, La 750,973, Pl 136,804, EM 0</span>)<br/><br/></i></div><b>La Defense tir avec une puissance de feu de <span class=\"StyleDegats\">0</span></b><div><i></i></div></div>";
+
+Rounds[5]["ZRC_A"]="1";
+Rounds[5]["ZRC_D"]="0";
+
+Rounds[5]["Str_A"]="0.19571723506876";
+Rounds[5]["Str_D"]="0.80428276493124";
+
+Rounds[5]["Att_A"]="1";
+Rounds[5]["Att_D"]="0";
+
+		Rounds[6]=new Array();
+		Rounds[6]["Events"]=new Array();
+		event=0;
+		
+Rounds[6]["A"]=new Array();
+
+	Rounds[6]["A"][1]=new Array();
+	
+				Rounds[6]["A"][1]["VD22-5905610i85"]=new Array();
+				Rounds[6]["A"][1]["VD22-5905610i85"]["IMG"]="VD22";
+				Rounds[6]["A"][1]["VD22-5905610i85"]["Type"]="D";
+				Rounds[6]["A"][1]["VD22-5905610i85"]["Chassis"]="D2";
+				Rounds[6]["A"][1]["VD22-5905610i85"]["NbI"]="1";
+				Rounds[6]["A"][1]["VD22-5905610i85"]["Nb"]="1";
+				Rounds[6]["A"][1]["VD22-5905610i85"]["NbL"]="1";
+				Rounds[6]["A"][1]["VD22-5905610i85"]["Deg"]="0";
+				Rounds[6]["A"][1]["VD22-5905610i85"]["Caracs"]="";
+				
+				Rounds[6]["A"][1]["VD22-5905610i85"]["Caracs"]="La Fromagere<br/><br/>Etat : 100%<br/>Structure : 6,018,328 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Blindage AC : 0<br/>Blindage La : 0<br/>Blindage Pl : 0<br/>Blindage EM : 0<br/>Dégâts AC : 582,924 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts La : 750,973 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts Pl : 136,804 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts EM : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/><br/>Type : Croiseur (exposition 100%)<br/>Chassis : Intercepteur (exposition 100%)<br/>Dégâts d\'exposition : +400%<br/>Cible : Polyvalent";
+				
+if(!Chasse[6]){
+	Chasse[6]=new Array();
+}
+Chasse[6]["A"]=new Array();
+Chasse[6]["A"]["RCh1"]=0;
+Chasse[6]["A"]["RCh2"]=0;
+Chasse[6]["A"]["RCh3"]=0;
+Chasse[6]["A"]["OCh1"]=39.99;
+Chasse[6]["A"]["OCh2"]=35;
+Chasse[6]["A"]["OCh3"]=25;
+Chasse[6]["A"]["CoefChStr"]=100;
+Chasse[6]["A"]["CoefChCib"]=100;
+Chasse[6]["A"]["CoefChAtt"]=100;
+Chasse[6]["A"]["RCh"]=0;
+Chasse[6]["A"]["CoefCh"]=0;
+
+Rounds[6]["D"]=new Array();
+
+	Rounds[6]["D"][1]=new Array();
+	
+				Rounds[6]["D"][1]["M1T"]=new Array();
+				Rounds[6]["D"][1]["M1T"]["IMG"]="M1T";
+				Rounds[6]["D"][1]["M1T"]["Type"]="M";
+				Rounds[6]["D"][1]["M1T"]["Chassis"]="M";
+				Rounds[6]["D"][1]["M1T"]["NbI"]="100";
+				Rounds[6]["D"][1]["M1T"]["Nb"]="87";
+				Rounds[6]["D"][1]["M1T"]["NbL"]="89";
+				Rounds[6]["D"][1]["M1T"]["Deg"]="0.7331152427003";
+				Rounds[6]["D"][1]["M1T"]["Caracs"]="";
+				
+				Rounds[6]["D"][1]["M1T"]["Caracs"]="Extracteur jovien<br/><br/>Etat : 99%<br/>Structure : 277,885 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Blindage AC : 0<br/>Blindage La : 0<br/>Blindage Pl : 0<br/>Blindage EM : 0<br/>Dégâts AC : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts La : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts Pl : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts EM : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/><br/>Type : Module (exposition 0%)<br/>Chassis : Module Utilitaire (exposition 0%)<br/>Dégâts d\'exposition : +0%<br/>Cible : Polyvalent";
+				
+if(!Chasse[6]){
+	Chasse[6]=new Array();
+}
+Chasse[6]["D"]=new Array();
+Chasse[6]["D"]["RCh1"]=0;
+Chasse[6]["D"]["RCh2"]=0;
+Chasse[6]["D"]["RCh3"]=0;
+Chasse[6]["D"]["OCh1"]=0;
+Chasse[6]["D"]["OCh2"]=0;
+Chasse[6]["D"]["OCh3"]=0;
+Chasse[6]["D"]["CoefChStr"]=100;
+Chasse[6]["D"]["CoefChCib"]=100;
+Chasse[6]["D"]["CoefChAtt"]=100;
+Chasse[6]["D"]["RCh"]=0;
+Chasse[6]["D"]["CoefCh"]=100;
+
+	Rounds[6]["Events"][event]="<img src=\"../SkinRC/Events/Ballist.png\" class=\"IcoEv\"/> A cette distance, les tirs non ciblés ont un impact de 60% pour l\'attaque et 60% pour la défense<br/>";
+	event++;
+	
+Rounds[6]["Degats"]="<div class=\"Degats\"><b>La Flotte Attaquante tir avec une puissance de feu de <span class=\"StyleDegats\">1,470,701</span></b><div><i>(Tirs <span class=\"StyleCible\">polyvalents</span> avec une puissance de <span class=\"StyleDegats\">AC 582,924, La 750,973, Pl 136,804, EM 0</span>)<br/><br/></i></div><b>La Defense tir avec une puissance de feu de <span class=\"StyleDegats\">0</span></b><div><i></i></div></div>";
+
+Rounds[6]["ZRC_A"]="1";
+Rounds[6]["ZRC_D"]="0";
+
+Rounds[6]["Str_A"]="0.19931969336276";
+Rounds[6]["Str_D"]="0.80068030663724";
+
+Rounds[6]["Att_A"]="1";
+Rounds[6]["Att_D"]="0";
+
+		Rounds[7]=new Array();
+		Rounds[7]["Events"]=new Array();
+		event=0;
+		
+Rounds[7]["A"]=new Array();
+
+	Rounds[7]["A"][1]=new Array();
+	
+				Rounds[7]["A"][1]["VD22-5905610i85"]=new Array();
+				Rounds[7]["A"][1]["VD22-5905610i85"]["IMG"]="VD22";
+				Rounds[7]["A"][1]["VD22-5905610i85"]["Type"]="D";
+				Rounds[7]["A"][1]["VD22-5905610i85"]["Chassis"]="D2";
+				Rounds[7]["A"][1]["VD22-5905610i85"]["NbI"]="1";
+				Rounds[7]["A"][1]["VD22-5905610i85"]["Nb"]="1";
+				Rounds[7]["A"][1]["VD22-5905610i85"]["NbL"]="1";
+				Rounds[7]["A"][1]["VD22-5905610i85"]["Deg"]="0";
+				Rounds[7]["A"][1]["VD22-5905610i85"]["Caracs"]="";
+				
+				Rounds[7]["A"][1]["VD22-5905610i85"]["Caracs"]="La Fromagere<br/><br/>Etat : 100%<br/>Structure : 6,018,328 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Blindage AC : 0<br/>Blindage La : 0<br/>Blindage Pl : 0<br/>Blindage EM : 0<br/>Dégâts AC : 582,924 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts La : 750,973 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts Pl : 136,804 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts EM : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/><br/>Type : Croiseur (exposition 100%)<br/>Chassis : Intercepteur (exposition 100%)<br/>Dégâts d\'exposition : +400%<br/>Cible : Polyvalent";
+				
+if(!Chasse[7]){
+	Chasse[7]=new Array();
+}
+Chasse[7]["A"]=new Array();
+Chasse[7]["A"]["RCh1"]=0;
+Chasse[7]["A"]["RCh2"]=0;
+Chasse[7]["A"]["RCh3"]=0;
+Chasse[7]["A"]["OCh1"]=39.99;
+Chasse[7]["A"]["OCh2"]=35;
+Chasse[7]["A"]["OCh3"]=25;
+Chasse[7]["A"]["CoefChStr"]=100;
+Chasse[7]["A"]["CoefChCib"]=100;
+Chasse[7]["A"]["CoefChAtt"]=100;
+Chasse[7]["A"]["RCh"]=0;
+Chasse[7]["A"]["CoefCh"]=0;
+
+Rounds[7]["D"]=new Array();
+
+	Rounds[7]["D"][1]=new Array();
+	
+				Rounds[7]["D"][1]["M1T"]=new Array();
+				Rounds[7]["D"][1]["M1T"]["IMG"]="M1T";
+				Rounds[7]["D"][1]["M1T"]["Type"]="M";
+				Rounds[7]["D"][1]["M1T"]["Chassis"]="M";
+				Rounds[7]["D"][1]["M1T"]["NbI"]="100";
+				Rounds[7]["D"][1]["M1T"]["Nb"]="84";
+				Rounds[7]["D"][1]["M1T"]["NbL"]="87";
+				Rounds[7]["D"][1]["M1T"]["Deg"]="0.40714514272742";
+				Rounds[7]["D"][1]["M1T"]["Caracs"]="";
+				
+				Rounds[7]["D"][1]["M1T"]["Caracs"]="Extracteur jovien<br/><br/>Etat : 99%<br/>Structure : 277,885 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Blindage AC : 0<br/>Blindage La : 0<br/>Blindage Pl : 0<br/>Blindage EM : 0<br/>Dégâts AC : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts La : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts Pl : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts EM : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/><br/>Type : Module (exposition 0%)<br/>Chassis : Module Utilitaire (exposition 0%)<br/>Dégâts d\'exposition : +0%<br/>Cible : Polyvalent";
+				
+if(!Chasse[7]){
+	Chasse[7]=new Array();
+}
+Chasse[7]["D"]=new Array();
+Chasse[7]["D"]["RCh1"]=0;
+Chasse[7]["D"]["RCh2"]=0;
+Chasse[7]["D"]["RCh3"]=0;
+Chasse[7]["D"]["OCh1"]=0;
+Chasse[7]["D"]["OCh2"]=0;
+Chasse[7]["D"]["OCh3"]=0;
+Chasse[7]["D"]["CoefChStr"]=100;
+Chasse[7]["D"]["CoefChCib"]=100;
+Chasse[7]["D"]["CoefChAtt"]=100;
+Chasse[7]["D"]["RCh"]=0;
+Chasse[7]["D"]["CoefCh"]=100;
+
+	Rounds[7]["Events"][event]="<img src=\"../SkinRC/Events/Ballist.png\" class=\"IcoEv\"/> A cette distance, les tirs non ciblés ont un impact de 70% pour l\'attaque et 70% pour la défense<br/>";
+	event++;
+	
+Rounds[7]["Degats"]="<div class=\"Degats\"><b>La Flotte Attaquante tir avec une puissance de feu de <span class=\"StyleDegats\">1,470,701</span></b><div><i>(Tirs <span class=\"StyleCible\">polyvalents</span> avec une puissance de <span class=\"StyleDegats\">AC 582,924, La 750,973, Pl 136,804, EM 0</span>)<br/><br/></i></div><b>La Defense tir avec une puissance de feu de <span class=\"StyleDegats\">0</span></b><div><i></i></div></div>";
+
+Rounds[7]["ZRC_A"]="1";
+Rounds[7]["ZRC_D"]="0";
+
+Rounds[7]["Str_A"]="0.20497909773619";
+Rounds[7]["Str_D"]="0.79502090226381";
+
+Rounds[7]["Att_A"]="1";
+Rounds[7]["Att_D"]="0";
+
+		Rounds[8]=new Array();
+		Rounds[8]["Events"]=new Array();
+		event=0;
+		
+Rounds[8]["A"]=new Array();
+
+	Rounds[8]["A"][1]=new Array();
+	
+				Rounds[8]["A"][1]["VD22-5905610i85"]=new Array();
+				Rounds[8]["A"][1]["VD22-5905610i85"]["IMG"]="VD22";
+				Rounds[8]["A"][1]["VD22-5905610i85"]["Type"]="D";
+				Rounds[8]["A"][1]["VD22-5905610i85"]["Chassis"]="D2";
+				Rounds[8]["A"][1]["VD22-5905610i85"]["NbI"]="1";
+				Rounds[8]["A"][1]["VD22-5905610i85"]["Nb"]="1";
+				Rounds[8]["A"][1]["VD22-5905610i85"]["NbL"]="1";
+				Rounds[8]["A"][1]["VD22-5905610i85"]["Deg"]="0";
+				Rounds[8]["A"][1]["VD22-5905610i85"]["Caracs"]="";
+				
+				Rounds[8]["A"][1]["VD22-5905610i85"]["Caracs"]="La Fromagere<br/><br/>Etat : 100%<br/>Structure : 6,018,328 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Blindage AC : 0<br/>Blindage La : 0<br/>Blindage Pl : 0<br/>Blindage EM : 0<br/>Dégâts AC : 582,924 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts La : 750,973 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts Pl : 136,804 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts EM : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/><br/>Type : Croiseur (exposition 100%)<br/>Chassis : Intercepteur (exposition 100%)<br/>Dégâts d\'exposition : +400%<br/>Cible : Polyvalent";
+				
+if(!Chasse[8]){
+	Chasse[8]=new Array();
+}
+Chasse[8]["A"]=new Array();
+Chasse[8]["A"]["RCh1"]=0;
+Chasse[8]["A"]["RCh2"]=0;
+Chasse[8]["A"]["RCh3"]=0;
+Chasse[8]["A"]["OCh1"]=39.99;
+Chasse[8]["A"]["OCh2"]=35;
+Chasse[8]["A"]["OCh3"]=25;
+Chasse[8]["A"]["CoefChStr"]=100;
+Chasse[8]["A"]["CoefChCib"]=100;
+Chasse[8]["A"]["CoefChAtt"]=100;
+Chasse[8]["A"]["RCh"]=0;
+Chasse[8]["A"]["CoefCh"]=0;
+
+Rounds[8]["D"]=new Array();
+
+	Rounds[8]["D"][1]=new Array();
+	
+				Rounds[8]["D"][1]["M1T"]=new Array();
+				Rounds[8]["D"][1]["M1T"]["IMG"]="M1T";
+				Rounds[8]["D"][1]["M1T"]["Type"]="M";
+				Rounds[8]["D"][1]["M1T"]["Chassis"]="M";
+				Rounds[8]["D"][1]["M1T"]["NbI"]="100";
+				Rounds[8]["D"][1]["M1T"]["Nb"]="81";
+				Rounds[8]["D"][1]["M1T"]["NbL"]="84";
+				Rounds[8]["D"][1]["M1T"]["Deg"]="0.13601645608449";
+				Rounds[8]["D"][1]["M1T"]["Caracs"]="";
+				
+				Rounds[8]["D"][1]["M1T"]["Caracs"]="Extracteur jovien<br/><br/>Etat : 99%<br/>Structure : 277,885 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Blindage AC : 0<br/>Blindage La : 0<br/>Blindage Pl : 0<br/>Blindage EM : 0<br/>Dégâts AC : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts La : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts Pl : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts EM : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/><br/>Type : Module (exposition 0%)<br/>Chassis : Module Utilitaire (exposition 0%)<br/>Dégâts d\'exposition : +0%<br/>Cible : Polyvalent";
+				
+if(!Chasse[8]){
+	Chasse[8]=new Array();
+}
+Chasse[8]["D"]=new Array();
+Chasse[8]["D"]["RCh1"]=0;
+Chasse[8]["D"]["RCh2"]=0;
+Chasse[8]["D"]["RCh3"]=0;
+Chasse[8]["D"]["OCh1"]=0;
+Chasse[8]["D"]["OCh2"]=0;
+Chasse[8]["D"]["OCh3"]=0;
+Chasse[8]["D"]["CoefChStr"]=100;
+Chasse[8]["D"]["CoefChCib"]=100;
+Chasse[8]["D"]["CoefChAtt"]=100;
+Chasse[8]["D"]["RCh"]=0;
+Chasse[8]["D"]["CoefCh"]=100;
+
+	Rounds[8]["Events"][event]="<img src=\"../SkinRC/Events/Ballist.png\" class=\"IcoEv\"/> A cette distance, les tirs non ciblés ont un impact de 80% pour l\'attaque et 80% pour la défense<br/>";
+	event++;
+	
+Rounds[8]["Degats"]="<div class=\"Degats\"><b>La Flotte Attaquante tir avec une puissance de feu de <span class=\"StyleDegats\">1,470,701</span></b><div><i>(Tirs <span class=\"StyleCible\">polyvalents</span> avec une puissance de <span class=\"StyleDegats\">AC 582,924, La 750,973, Pl 136,804, EM 0</span>)<br/><br/></i></div><b>La Defense tir avec une puissance de feu de <span class=\"StyleDegats\">0</span></b><div><i></i></div></div>";
+
+Rounds[8]["ZRC_A"]="1";
+Rounds[8]["ZRC_D"]="0";
+
+Rounds[8]["Str_A"]="0.2109692757342";
+Rounds[8]["Str_D"]="0.7890307242658";
+
+Rounds[8]["Att_A"]="1";
+Rounds[8]["Att_D"]="0";
+
+		Rounds[9]=new Array();
+		Rounds[9]["Events"]=new Array();
+		event=0;
+		
+Rounds[9]["A"]=new Array();
+
+	Rounds[9]["A"][1]=new Array();
+	
+				Rounds[9]["A"][1]["VD22-5905610i85"]=new Array();
+				Rounds[9]["A"][1]["VD22-5905610i85"]["IMG"]="VD22";
+				Rounds[9]["A"][1]["VD22-5905610i85"]["Type"]="D";
+				Rounds[9]["A"][1]["VD22-5905610i85"]["Chassis"]="D2";
+				Rounds[9]["A"][1]["VD22-5905610i85"]["NbI"]="1";
+				Rounds[9]["A"][1]["VD22-5905610i85"]["Nb"]="1";
+				Rounds[9]["A"][1]["VD22-5905610i85"]["NbL"]="1";
+				Rounds[9]["A"][1]["VD22-5905610i85"]["Deg"]="0";
+				Rounds[9]["A"][1]["VD22-5905610i85"]["Caracs"]="";
+				
+				Rounds[9]["A"][1]["VD22-5905610i85"]["Caracs"]="La Fromagere<br/><br/>Etat : 100%<br/>Structure : 6,018,328 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Blindage AC : 0<br/>Blindage La : 0<br/>Blindage Pl : 0<br/>Blindage EM : 0<br/>Dégâts AC : 582,924 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts La : 750,973 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts Pl : 136,804 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts EM : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/><br/>Type : Croiseur (exposition 100%)<br/>Chassis : Intercepteur (exposition 100%)<br/>Dégâts d\'exposition : +400%<br/>Cible : Polyvalent";
+				
+if(!Chasse[9]){
+	Chasse[9]=new Array();
+}
+Chasse[9]["A"]=new Array();
+Chasse[9]["A"]["RCh1"]=0;
+Chasse[9]["A"]["RCh2"]=0;
+Chasse[9]["A"]["RCh3"]=0;
+Chasse[9]["A"]["OCh1"]=39.99;
+Chasse[9]["A"]["OCh2"]=35;
+Chasse[9]["A"]["OCh3"]=25;
+Chasse[9]["A"]["CoefChStr"]=100;
+Chasse[9]["A"]["CoefChCib"]=100;
+Chasse[9]["A"]["CoefChAtt"]=100;
+Chasse[9]["A"]["RCh"]=0;
+Chasse[9]["A"]["CoefCh"]=0;
+
+Rounds[9]["D"]=new Array();
+
+	Rounds[9]["D"][1]=new Array();
+	
+				Rounds[9]["D"][1]["M1T"]=new Array();
+				Rounds[9]["D"][1]["M1T"]["IMG"]="M1T";
+				Rounds[9]["D"][1]["M1T"]["Type"]="M";
+				Rounds[9]["D"][1]["M1T"]["Chassis"]="M";
+				Rounds[9]["D"][1]["M1T"]["NbI"]="100";
+				Rounds[9]["D"][1]["M1T"]["Nb"]="79";
+				Rounds[9]["D"][1]["M1T"]["NbL"]="81";
+				Rounds[9]["D"][1]["M1T"]["Deg"]="0.82765899746363";
+				Rounds[9]["D"][1]["M1T"]["Caracs"]="";
+				
+				Rounds[9]["D"][1]["M1T"]["Caracs"]="Extracteur jovien<br/><br/>Etat : 98%<br/>Structure : 277,885 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Blindage AC : 0<br/>Blindage La : 0<br/>Blindage Pl : 0<br/>Blindage EM : 0<br/>Dégâts AC : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts La : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts Pl : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts EM : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/><br/>Type : Module (exposition 0%)<br/>Chassis : Module Utilitaire (exposition 0%)<br/>Dégâts d\'exposition : +0%<br/>Cible : Polyvalent";
+				
+if(!Chasse[9]){
+	Chasse[9]=new Array();
+}
+Chasse[9]["D"]=new Array();
+Chasse[9]["D"]["RCh1"]=0;
+Chasse[9]["D"]["RCh2"]=0;
+Chasse[9]["D"]["RCh3"]=0;
+Chasse[9]["D"]["OCh1"]=0;
+Chasse[9]["D"]["OCh2"]=0;
+Chasse[9]["D"]["OCh3"]=0;
+Chasse[9]["D"]["CoefChStr"]=100;
+Chasse[9]["D"]["CoefChCib"]=100;
+Chasse[9]["D"]["CoefChAtt"]=100;
+Chasse[9]["D"]["RCh"]=0;
+Chasse[9]["D"]["CoefCh"]=100;
+
+	Rounds[9]["Events"][event]="<img src=\"../SkinRC/Events/Ballist.png\" class=\"IcoEv\"/> A cette distance, les tirs non ciblés ont un impact de 90% pour l\'attaque et 90% pour la défense<br/>";
+	event++;
+	
+Rounds[9]["Degats"]="<div class=\"Degats\"><b>La Flotte Attaquante tir avec une puissance de feu de <span class=\"StyleDegats\">1,470,701</span></b><div><i>(Tirs <span class=\"StyleCible\">polyvalents</span> avec une puissance de <span class=\"StyleDegats\">AC 582,924, La 750,973, Pl 136,804, EM 0</span>)<br/><br/></i></div><b>La Defense tir avec une puissance de feu de <span class=\"StyleDegats\">0</span></b><div><i></i></div></div>";
+
+Rounds[9]["ZRC_A"]="1";
+Rounds[9]["ZRC_D"]="0";
+
+Rounds[9]["Str_A"]="0.21516109586517";
+Rounds[9]["Str_D"]="0.78483890413483";
+
+Rounds[9]["Att_A"]="1";
+Rounds[9]["Att_D"]="0";
+
+		Rounds[10]=new Array();
+		Rounds[10]["Events"]=new Array();
+		event=0;
+		
+Rounds[10]["A"]=new Array();
+
+	Rounds[10]["A"][1]=new Array();
+	
+				Rounds[10]["A"][1]["VD22-5905610i85"]=new Array();
+				Rounds[10]["A"][1]["VD22-5905610i85"]["IMG"]="VD22";
+				Rounds[10]["A"][1]["VD22-5905610i85"]["Type"]="D";
+				Rounds[10]["A"][1]["VD22-5905610i85"]["Chassis"]="D2";
+				Rounds[10]["A"][1]["VD22-5905610i85"]["NbI"]="1";
+				Rounds[10]["A"][1]["VD22-5905610i85"]["Nb"]="1";
+				Rounds[10]["A"][1]["VD22-5905610i85"]["NbL"]="1";
+				Rounds[10]["A"][1]["VD22-5905610i85"]["Deg"]="0";
+				Rounds[10]["A"][1]["VD22-5905610i85"]["Caracs"]="";
+				
+				Rounds[10]["A"][1]["VD22-5905610i85"]["Caracs"]="La Fromagere<br/><br/>Etat : 100%<br/>Structure : 6,018,328 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Blindage AC : 0<br/>Blindage La : 0<br/>Blindage Pl : 0<br/>Blindage EM : 0<br/>Dégâts AC : 582,924 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts La : 750,973 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts Pl : 136,804 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts EM : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/><br/>Type : Croiseur (exposition 100%)<br/>Chassis : Intercepteur (exposition 100%)<br/>Dégâts d\'exposition : +400%<br/>Cible : Polyvalent";
+				
+if(!Chasse[10]){
+	Chasse[10]=new Array();
+}
+Chasse[10]["A"]=new Array();
+Chasse[10]["A"]["RCh1"]=0;
+Chasse[10]["A"]["RCh2"]=0;
+Chasse[10]["A"]["RCh3"]=0;
+Chasse[10]["A"]["OCh1"]=39.99;
+Chasse[10]["A"]["OCh2"]=35;
+Chasse[10]["A"]["OCh3"]=25;
+Chasse[10]["A"]["CoefChStr"]=100;
+Chasse[10]["A"]["CoefChCib"]=100;
+Chasse[10]["A"]["CoefChAtt"]=100;
+Chasse[10]["A"]["RCh"]=0;
+Chasse[10]["A"]["CoefCh"]=0;
+
+Rounds[10]["D"]=new Array();
+
+	Rounds[10]["D"][1]=new Array();
+	
+				Rounds[10]["D"][1]["M1T"]=new Array();
+				Rounds[10]["D"][1]["M1T"]["IMG"]="M1T";
+				Rounds[10]["D"][1]["M1T"]["Type"]="M";
+				Rounds[10]["D"][1]["M1T"]["Chassis"]="M";
+				Rounds[10]["D"][1]["M1T"]["NbI"]="100";
+				Rounds[10]["D"][1]["M1T"]["Nb"]="76";
+				Rounds[10]["D"][1]["M1T"]["NbL"]="79";
+				Rounds[10]["D"][1]["M1T"]["Deg"]="0.52381044987755";
+				Rounds[10]["D"][1]["M1T"]["Caracs"]="";
+				
+				Rounds[10]["D"][1]["M1T"]["Caracs"]="Extracteur jovien<br/><br/>Etat : 99%<br/>Structure : 277,885 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Blindage AC : 0<br/>Blindage La : 0<br/>Blindage Pl : 0<br/>Blindage EM : 0<br/>Dégâts AC : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts La : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts Pl : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts EM : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/><br/>Type : Module (exposition 0%)<br/>Chassis : Module Utilitaire (exposition 0%)<br/>Dégâts d\'exposition : +0%<br/>Cible : Polyvalent";
+				
+if(!Chasse[10]){
+	Chasse[10]=new Array();
+}
+Chasse[10]["D"]=new Array();
+Chasse[10]["D"]["RCh1"]=0;
+Chasse[10]["D"]["RCh2"]=0;
+Chasse[10]["D"]["RCh3"]=0;
+Chasse[10]["D"]["OCh1"]=0;
+Chasse[10]["D"]["OCh2"]=0;
+Chasse[10]["D"]["OCh3"]=0;
+Chasse[10]["D"]["CoefChStr"]=100;
+Chasse[10]["D"]["CoefChCib"]=100;
+Chasse[10]["D"]["CoefChAtt"]=100;
+Chasse[10]["D"]["RCh"]=0;
+Chasse[10]["D"]["CoefCh"]=100;
+
+	Rounds[10]["Events"][event]="<img src=\"../SkinRC/Events/Ballist.png\" class=\"IcoEv\"/> A cette distance, les tirs non ciblés ont un impact de 100% pour l\'attaque et 100% pour la défense<br/>";
+	event++;
+	
+Rounds[10]["Degats"]="<div class=\"Degats\"><b>La Flotte Attaquante tir avec une puissance de feu de <span class=\"StyleDegats\">1,470,701</span></b><div><i>(Tirs <span class=\"StyleCible\">polyvalents</span> avec une puissance de <span class=\"StyleDegats\">AC 582,924, La 750,973, Pl 136,804, EM 0</span>)<br/><br/></i></div><b>La Defense tir avec une puissance de feu de <span class=\"StyleDegats\">0</span></b><div><i></i></div></div>";
+
+Rounds[10]["ZRC_A"]="1";
+Rounds[10]["ZRC_D"]="0";
+
+Rounds[10]["Str_A"]="0.22177075339936";
+Rounds[10]["Str_D"]="0.77822924660064";
+
+Rounds[10]["Att_A"]="1";
+Rounds[10]["Att_D"]="0";
+
+		Rounds[11]=new Array();
+		Rounds[11]["Events"]=new Array();
+		event=0;
+		
+Rounds[11]["A"]=new Array();
+
+	Rounds[11]["A"][1]=new Array();
+	
+				Rounds[11]["A"][1]["VD22-5905610i85"]=new Array();
+				Rounds[11]["A"][1]["VD22-5905610i85"]["IMG"]="VD22";
+				Rounds[11]["A"][1]["VD22-5905610i85"]["Type"]="D";
+				Rounds[11]["A"][1]["VD22-5905610i85"]["Chassis"]="D2";
+				Rounds[11]["A"][1]["VD22-5905610i85"]["NbI"]="1";
+				Rounds[11]["A"][1]["VD22-5905610i85"]["Nb"]="1";
+				Rounds[11]["A"][1]["VD22-5905610i85"]["NbL"]="1";
+				Rounds[11]["A"][1]["VD22-5905610i85"]["Deg"]="0";
+				Rounds[11]["A"][1]["VD22-5905610i85"]["Caracs"]="";
+				
+				Rounds[11]["A"][1]["VD22-5905610i85"]["Caracs"]="La Fromagere<br/><br/>Etat : 100%<br/>Structure : 6,018,328 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Blindage AC : 0<br/>Blindage La : 0<br/>Blindage Pl : 0<br/>Blindage EM : 0<br/>Dégâts AC : 582,924 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts La : 750,973 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts Pl : 136,804 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts EM : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/><br/>Type : Croiseur (exposition 100%)<br/>Chassis : Intercepteur (exposition 100%)<br/>Dégâts d\'exposition : +400%<br/>Cible : Polyvalent";
+				
+if(!Chasse[11]){
+	Chasse[11]=new Array();
+}
+Chasse[11]["A"]=new Array();
+Chasse[11]["A"]["RCh1"]=0;
+Chasse[11]["A"]["RCh2"]=0;
+Chasse[11]["A"]["RCh3"]=0;
+Chasse[11]["A"]["OCh1"]=39.99;
+Chasse[11]["A"]["OCh2"]=35;
+Chasse[11]["A"]["OCh3"]=25;
+Chasse[11]["A"]["CoefChStr"]=100;
+Chasse[11]["A"]["CoefChCib"]=100;
+Chasse[11]["A"]["CoefChAtt"]=100;
+Chasse[11]["A"]["RCh"]=0;
+Chasse[11]["A"]["CoefCh"]=0;
+
+Rounds[11]["D"]=new Array();
+
+	Rounds[11]["D"][1]=new Array();
+	
+				Rounds[11]["D"][1]["M1T"]=new Array();
+				Rounds[11]["D"][1]["M1T"]["IMG"]="M1T";
+				Rounds[11]["D"][1]["M1T"]["Type"]="M";
+				Rounds[11]["D"][1]["M1T"]["Chassis"]="M";
+				Rounds[11]["D"][1]["M1T"]["NbI"]="100";
+				Rounds[11]["D"][1]["M1T"]["Nb"]="73";
+				Rounds[11]["D"][1]["M1T"]["NbL"]="76";
+				Rounds[11]["D"][1]["M1T"]["Deg"]="0.25533373530517";
+				Rounds[11]["D"][1]["M1T"]["Caracs"]="";
+				
+				Rounds[11]["D"][1]["M1T"]["Caracs"]="Extracteur jovien<br/><br/>Etat : 99%<br/>Structure : 277,885 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Blindage AC : 0<br/>Blindage La : 0<br/>Blindage Pl : 0<br/>Blindage EM : 0<br/>Dégâts AC : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts La : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts Pl : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts EM : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/><br/>Type : Module (exposition 0%)<br/>Chassis : Module Utilitaire (exposition 0%)<br/>Dégâts d\'exposition : +0%<br/>Cible : Polyvalent";
+				
+if(!Chasse[11]){
+	Chasse[11]=new Array();
+}
+Chasse[11]["D"]=new Array();
+Chasse[11]["D"]["RCh1"]=0;
+Chasse[11]["D"]["RCh2"]=0;
+Chasse[11]["D"]["RCh3"]=0;
+Chasse[11]["D"]["OCh1"]=0;
+Chasse[11]["D"]["OCh2"]=0;
+Chasse[11]["D"]["OCh3"]=0;
+Chasse[11]["D"]["CoefChStr"]=100;
+Chasse[11]["D"]["CoefChCib"]=100;
+Chasse[11]["D"]["CoefChAtt"]=100;
+Chasse[11]["D"]["RCh"]=0;
+Chasse[11]["D"]["CoefCh"]=100;
+
+	Rounds[11]["Events"][event]="<img src=\"../SkinRC/Events/Ballist.png\" class=\"IcoEv\"/> A cette distance, les tirs non ciblés ont un impact de 100% pour l\'attaque et 100% pour la défense<br/>";
+	event++;
+	
+Rounds[11]["Degats"]="<div class=\"Degats\"><b>La Flotte Attaquante tir avec une puissance de feu de <span class=\"StyleDegats\">1,470,701</span></b><div><i>(Tirs <span class=\"StyleCible\">polyvalents</span> avec une puissance de <span class=\"StyleDegats\">AC 582,924, La 750,973, Pl 136,804, EM 0</span>)<br/><br/></i></div><b>La Defense tir avec une puissance de feu de <span class=\"StyleDegats\">0</span></b><div><i></i></div></div>";
+
+Rounds[11]["ZRC_A"]="1";
+Rounds[11]["ZRC_D"]="0";
+
+Rounds[11]["Str_A"]="0.22879937301859";
+Rounds[11]["Str_D"]="0.77120062698141";
+
+Rounds[11]["Att_A"]="1";
+Rounds[11]["Att_D"]="0";
+
+		Rounds[12]=new Array();
+		Rounds[12]["Events"]=new Array();
+		event=0;
+		
+Rounds[12]["A"]=new Array();
+
+	Rounds[12]["A"][1]=new Array();
+	
+				Rounds[12]["A"][1]["VD22-5905610i85"]=new Array();
+				Rounds[12]["A"][1]["VD22-5905610i85"]["IMG"]="VD22";
+				Rounds[12]["A"][1]["VD22-5905610i85"]["Type"]="D";
+				Rounds[12]["A"][1]["VD22-5905610i85"]["Chassis"]="D2";
+				Rounds[12]["A"][1]["VD22-5905610i85"]["NbI"]="1";
+				Rounds[12]["A"][1]["VD22-5905610i85"]["Nb"]="1";
+				Rounds[12]["A"][1]["VD22-5905610i85"]["NbL"]="1";
+				Rounds[12]["A"][1]["VD22-5905610i85"]["Deg"]="0";
+				Rounds[12]["A"][1]["VD22-5905610i85"]["Caracs"]="";
+				
+				Rounds[12]["A"][1]["VD22-5905610i85"]["Caracs"]="La Fromagere<br/><br/>Etat : 100%<br/>Structure : 6,018,328 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Blindage AC : 0<br/>Blindage La : 0<br/>Blindage Pl : 0<br/>Blindage EM : 0<br/>Dégâts AC : 582,924 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts La : 750,973 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts Pl : 136,804 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts EM : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/><br/>Type : Croiseur (exposition 100%)<br/>Chassis : Intercepteur (exposition 100%)<br/>Dégâts d\'exposition : +400%<br/>Cible : Polyvalent";
+				
+if(!Chasse[12]){
+	Chasse[12]=new Array();
+}
+Chasse[12]["A"]=new Array();
+Chasse[12]["A"]["RCh1"]=0;
+Chasse[12]["A"]["RCh2"]=0;
+Chasse[12]["A"]["RCh3"]=0;
+Chasse[12]["A"]["OCh1"]=39.99;
+Chasse[12]["A"]["OCh2"]=35;
+Chasse[12]["A"]["OCh3"]=25;
+Chasse[12]["A"]["CoefChStr"]=100;
+Chasse[12]["A"]["CoefChCib"]=100;
+Chasse[12]["A"]["CoefChAtt"]=100;
+Chasse[12]["A"]["RCh"]=0;
+Chasse[12]["A"]["CoefCh"]=0;
+
+Rounds[12]["D"]=new Array();
+
+	Rounds[12]["D"][1]=new Array();
+	
+				Rounds[12]["D"][1]["M1T"]=new Array();
+				Rounds[12]["D"][1]["M1T"]["IMG"]="M1T";
+				Rounds[12]["D"][1]["M1T"]["Type"]="M";
+				Rounds[12]["D"][1]["M1T"]["Chassis"]="M";
+				Rounds[12]["D"][1]["M1T"]["NbI"]="100";
+				Rounds[12]["D"][1]["M1T"]["Nb"]="70";
+				Rounds[12]["D"][1]["M1T"]["NbL"]="73";
+				Rounds[12]["D"][1]["M1T"]["Deg"]="0";
+				Rounds[12]["D"][1]["M1T"]["Caracs"]="";
+				
+				Rounds[12]["D"][1]["M1T"]["Caracs"]="Extracteur jovien<br/><br/>Etat : 100%<br/>Structure : 277,885 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Blindage AC : 0<br/>Blindage La : 0<br/>Blindage Pl : 0<br/>Blindage EM : 0<br/>Dégâts AC : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts La : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts Pl : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts EM : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/><br/>Type : Module (exposition 0%)<br/>Chassis : Module Utilitaire (exposition 0%)<br/>Dégâts d\'exposition : +0%<br/>Cible : Polyvalent";
+				
+if(!Chasse[12]){
+	Chasse[12]=new Array();
+}
+Chasse[12]["D"]=new Array();
+Chasse[12]["D"]["RCh1"]=0;
+Chasse[12]["D"]["RCh2"]=0;
+Chasse[12]["D"]["RCh3"]=0;
+Chasse[12]["D"]["OCh1"]=0;
+Chasse[12]["D"]["OCh2"]=0;
+Chasse[12]["D"]["OCh3"]=0;
+Chasse[12]["D"]["CoefChStr"]=100;
+Chasse[12]["D"]["CoefChCib"]=100;
+Chasse[12]["D"]["CoefChAtt"]=100;
+Chasse[12]["D"]["RCh"]=0;
+Chasse[12]["D"]["CoefCh"]=100;
+
+	Rounds[12]["Events"][event]="<img src=\"../SkinRC/Events/Ballist.png\" class=\"IcoEv\"/> A cette distance, les tirs non ciblés ont un impact de 100% pour l\'attaque et 100% pour la défense<br/>";
+	event++;
+	
+Rounds[12]["Degats"]="<div class=\"Degats\"><b>La Flotte Attaquante tir avec une puissance de feu de <span class=\"StyleDegats\">1,470,701</span></b><div><i>(Tirs <span class=\"StyleCible\">polyvalents</span> avec une puissance de <span class=\"StyleDegats\">AC 582,924, La 750,973, Pl 136,804, EM 0</span>)<br/><br/></i></div><b>La Defense tir avec une puissance de feu de <span class=\"StyleDegats\">0</span></b><div><i></i></div></div>";
+
+Rounds[12]["ZRC_A"]="1";
+Rounds[12]["ZRC_D"]="0";
+
+Rounds[12]["Str_A"]="0.23628809325134";
+Rounds[12]["Str_D"]="0.76371190674866";
+
+Rounds[12]["Att_A"]="1";
+Rounds[12]["Att_D"]="0";
+
+		Rounds[13]=new Array();
+		Rounds[13]["Events"]=new Array();
+		event=0;
+		
+Rounds[13]["A"]=new Array();
+
+	Rounds[13]["A"][1]=new Array();
+	
+				Rounds[13]["A"][1]["VD22-5905610i85"]=new Array();
+				Rounds[13]["A"][1]["VD22-5905610i85"]["IMG"]="VD22";
+				Rounds[13]["A"][1]["VD22-5905610i85"]["Type"]="D";
+				Rounds[13]["A"][1]["VD22-5905610i85"]["Chassis"]="D2";
+				Rounds[13]["A"][1]["VD22-5905610i85"]["NbI"]="1";
+				Rounds[13]["A"][1]["VD22-5905610i85"]["Nb"]="1";
+				Rounds[13]["A"][1]["VD22-5905610i85"]["NbL"]="1";
+				Rounds[13]["A"][1]["VD22-5905610i85"]["Deg"]="0";
+				Rounds[13]["A"][1]["VD22-5905610i85"]["Caracs"]="";
+				
+				Rounds[13]["A"][1]["VD22-5905610i85"]["Caracs"]="La Fromagere<br/><br/>Etat : 100%<br/>Structure : 6,018,328 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Blindage AC : 0<br/>Blindage La : 0<br/>Blindage Pl : 0<br/>Blindage EM : 0<br/>Dégâts AC : 582,924 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts La : 750,973 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts Pl : 136,804 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts EM : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/><br/>Type : Croiseur (exposition 100%)<br/>Chassis : Intercepteur (exposition 100%)<br/>Dégâts d\'exposition : +400%<br/>Cible : Polyvalent";
+				
+if(!Chasse[13]){
+	Chasse[13]=new Array();
+}
+Chasse[13]["A"]=new Array();
+Chasse[13]["A"]["RCh1"]=0;
+Chasse[13]["A"]["RCh2"]=0;
+Chasse[13]["A"]["RCh3"]=0;
+Chasse[13]["A"]["OCh1"]=39.99;
+Chasse[13]["A"]["OCh2"]=35;
+Chasse[13]["A"]["OCh3"]=25;
+Chasse[13]["A"]["CoefChStr"]=100;
+Chasse[13]["A"]["CoefChCib"]=100;
+Chasse[13]["A"]["CoefChAtt"]=100;
+Chasse[13]["A"]["RCh"]=0;
+Chasse[13]["A"]["CoefCh"]=0;
+
+Rounds[13]["D"]=new Array();
+
+	Rounds[13]["D"][1]=new Array();
+	
+				Rounds[13]["D"][1]["M1T"]=new Array();
+				Rounds[13]["D"][1]["M1T"]["IMG"]="M1T";
+				Rounds[13]["D"][1]["M1T"]["Type"]="M";
+				Rounds[13]["D"][1]["M1T"]["Chassis"]="M";
+				Rounds[13]["D"][1]["M1T"]["NbI"]="100";
+				Rounds[13]["D"][1]["M1T"]["Nb"]="68";
+				Rounds[13]["D"][1]["M1T"]["NbL"]="70";
+				Rounds[13]["D"][1]["M1T"]["Deg"]="0.68590510754067";
+				Rounds[13]["D"][1]["M1T"]["Caracs"]="";
+				
+				Rounds[13]["D"][1]["M1T"]["Caracs"]="Extracteur jovien<br/><br/>Etat : 98%<br/>Structure : 277,885 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Blindage AC : 0<br/>Blindage La : 0<br/>Blindage Pl : 0<br/>Blindage EM : 0<br/>Dégâts AC : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts La : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts Pl : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts EM : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/><br/>Type : Module (exposition 0%)<br/>Chassis : Module Utilitaire (exposition 0%)<br/>Dégâts d\'exposition : +0%<br/>Cible : Polyvalent";
+				
+if(!Chasse[13]){
+	Chasse[13]=new Array();
+}
+Chasse[13]["D"]=new Array();
+Chasse[13]["D"]["RCh1"]=0;
+Chasse[13]["D"]["RCh2"]=0;
+Chasse[13]["D"]["RCh3"]=0;
+Chasse[13]["D"]["OCh1"]=0;
+Chasse[13]["D"]["OCh2"]=0;
+Chasse[13]["D"]["OCh3"]=0;
+Chasse[13]["D"]["CoefChStr"]=100;
+Chasse[13]["D"]["CoefChCib"]=100;
+Chasse[13]["D"]["CoefChAtt"]=100;
+Chasse[13]["D"]["RCh"]=0;
+Chasse[13]["D"]["CoefCh"]=100;
+
+	Rounds[13]["Events"][event]="<img src=\"../SkinRC/Events/Ballist.png\" class=\"IcoEv\"/> A cette distance, les tirs non ciblés ont un impact de 100% pour l\'attaque et 100% pour la défense<br/>";
+	event++;
+	
+Rounds[13]["Degats"]="<div class=\"Degats\"><b>La Flotte Attaquante tir avec une puissance de feu de <span class=\"StyleDegats\">1,470,701</span></b><div><i>(Tirs <span class=\"StyleCible\">polyvalents</span> avec une puissance de <span class=\"StyleDegats\">AC 582,924, La 750,973, Pl 136,804, EM 0</span>)<br/><br/></i></div><b>La Defense tir avec une puissance de feu de <span class=\"StyleDegats\">0</span></b><div><i></i></div></div>";
+
+Rounds[13]["ZRC_A"]="1";
+Rounds[13]["ZRC_D"]="0";
+
+Rounds[13]["Str_A"]="0.24155899264754";
+Rounds[13]["Str_D"]="0.75844100735246";
+
+Rounds[13]["Att_A"]="1";
+Rounds[13]["Att_D"]="0";
+
+		Rounds[14]=new Array();
+		Rounds[14]["Events"]=new Array();
+		event=0;
+		
+Rounds[14]["A"]=new Array();
+
+	Rounds[14]["A"][1]=new Array();
+	
+				Rounds[14]["A"][1]["VD22-5905610i85"]=new Array();
+				Rounds[14]["A"][1]["VD22-5905610i85"]["IMG"]="VD22";
+				Rounds[14]["A"][1]["VD22-5905610i85"]["Type"]="D";
+				Rounds[14]["A"][1]["VD22-5905610i85"]["Chassis"]="D2";
+				Rounds[14]["A"][1]["VD22-5905610i85"]["NbI"]="1";
+				Rounds[14]["A"][1]["VD22-5905610i85"]["Nb"]="1";
+				Rounds[14]["A"][1]["VD22-5905610i85"]["NbL"]="1";
+				Rounds[14]["A"][1]["VD22-5905610i85"]["Deg"]="0";
+				Rounds[14]["A"][1]["VD22-5905610i85"]["Caracs"]="";
+				
+				Rounds[14]["A"][1]["VD22-5905610i85"]["Caracs"]="La Fromagere<br/><br/>Etat : 100%<br/>Structure : 6,018,328 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Blindage AC : 0<br/>Blindage La : 0<br/>Blindage Pl : 0<br/>Blindage EM : 0<br/>Dégâts AC : 582,924 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts La : 750,973 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts Pl : 136,804 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts EM : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/><br/>Type : Croiseur (exposition 100%)<br/>Chassis : Intercepteur (exposition 100%)<br/>Dégâts d\'exposition : +400%<br/>Cible : Polyvalent";
+				
+if(!Chasse[14]){
+	Chasse[14]=new Array();
+}
+Chasse[14]["A"]=new Array();
+Chasse[14]["A"]["RCh1"]=0;
+Chasse[14]["A"]["RCh2"]=0;
+Chasse[14]["A"]["RCh3"]=0;
+Chasse[14]["A"]["OCh1"]=39.99;
+Chasse[14]["A"]["OCh2"]=35;
+Chasse[14]["A"]["OCh3"]=25;
+Chasse[14]["A"]["CoefChStr"]=100;
+Chasse[14]["A"]["CoefChCib"]=100;
+Chasse[14]["A"]["CoefChAtt"]=100;
+Chasse[14]["A"]["RCh"]=0;
+Chasse[14]["A"]["CoefCh"]=0;
+
+Rounds[14]["D"]=new Array();
+
+	Rounds[14]["D"][1]=new Array();
+	
+				Rounds[14]["D"][1]["M1T"]=new Array();
+				Rounds[14]["D"][1]["M1T"]["IMG"]="M1T";
+				Rounds[14]["D"][1]["M1T"]["Type"]="M";
+				Rounds[14]["D"][1]["M1T"]["Chassis"]="M";
+				Rounds[14]["D"][1]["M1T"]["NbI"]="100";
+				Rounds[14]["D"][1]["M1T"]["Nb"]="65";
+				Rounds[14]["D"][1]["M1T"]["NbL"]="68";
+				Rounds[14]["D"][1]["M1T"]["Deg"]="0.41048223161322";
+				Rounds[14]["D"][1]["M1T"]["Caracs"]="";
+				
+				Rounds[14]["D"][1]["M1T"]["Caracs"]="Extracteur jovien<br/><br/>Etat : 99%<br/>Structure : 277,885 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Blindage AC : 0<br/>Blindage La : 0<br/>Blindage Pl : 0<br/>Blindage EM : 0<br/>Dégâts AC : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts La : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts Pl : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts EM : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/><br/>Type : Module (exposition 0%)<br/>Chassis : Module Utilitaire (exposition 0%)<br/>Dégâts d\'exposition : +0%<br/>Cible : Polyvalent";
+				
+if(!Chasse[14]){
+	Chasse[14]=new Array();
+}
+Chasse[14]["D"]=new Array();
+Chasse[14]["D"]["RCh1"]=0;
+Chasse[14]["D"]["RCh2"]=0;
+Chasse[14]["D"]["RCh3"]=0;
+Chasse[14]["D"]["OCh1"]=0;
+Chasse[14]["D"]["OCh2"]=0;
+Chasse[14]["D"]["OCh3"]=0;
+Chasse[14]["D"]["CoefChStr"]=100;
+Chasse[14]["D"]["CoefChCib"]=100;
+Chasse[14]["D"]["CoefChAtt"]=100;
+Chasse[14]["D"]["RCh"]=0;
+Chasse[14]["D"]["CoefCh"]=100;
+
+	Rounds[14]["Events"][event]="<img src=\"../SkinRC/Events/Ballist.png\" class=\"IcoEv\"/> A cette distance, les tirs non ciblés ont un impact de 100% pour l\'attaque et 100% pour la défense<br/>";
+	event++;
+	
+Rounds[14]["Degats"]="<div class=\"Degats\"><b>La Flotte Attaquante tir avec une puissance de feu de <span class=\"StyleDegats\">1,470,701</span></b><div><i>(Tirs <span class=\"StyleCible\">polyvalents</span> avec une puissance de <span class=\"StyleDegats\">AC 582,924, La 750,973, Pl 136,804, EM 0</span>)<br/><br/></i></div><b>La Defense tir avec une puissance de feu de <span class=\"StyleDegats\">0</span></b><div><i></i></div></div>";
+
+Rounds[14]["ZRC_A"]="1";
+Rounds[14]["ZRC_D"]="0";
+
+Rounds[14]["Str_A"]="0.2499215249935";
+Rounds[14]["Str_D"]="0.75007847500649";
+
+Rounds[14]["Att_A"]="1";
+Rounds[14]["Att_D"]="0";
+
+		Rounds[15]=new Array();
+		Rounds[15]["Events"]=new Array();
+		event=0;
+		
+Rounds[15]["A"]=new Array();
+
+	Rounds[15]["A"][1]=new Array();
+	
+				Rounds[15]["A"][1]["VD22-5905610i85"]=new Array();
+				Rounds[15]["A"][1]["VD22-5905610i85"]["IMG"]="VD22";
+				Rounds[15]["A"][1]["VD22-5905610i85"]["Type"]="D";
+				Rounds[15]["A"][1]["VD22-5905610i85"]["Chassis"]="D2";
+				Rounds[15]["A"][1]["VD22-5905610i85"]["NbI"]="1";
+				Rounds[15]["A"][1]["VD22-5905610i85"]["Nb"]="1";
+				Rounds[15]["A"][1]["VD22-5905610i85"]["NbL"]="1";
+				Rounds[15]["A"][1]["VD22-5905610i85"]["Deg"]="0";
+				Rounds[15]["A"][1]["VD22-5905610i85"]["Caracs"]="";
+				
+				Rounds[15]["A"][1]["VD22-5905610i85"]["Caracs"]="La Fromagere<br/><br/>Etat : 100%<br/>Structure : 6,018,328 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Blindage AC : 0<br/>Blindage La : 0<br/>Blindage Pl : 0<br/>Blindage EM : 0<br/>Dégâts AC : 582,924 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts La : 750,973 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts Pl : 136,804 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts EM : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/><br/>Type : Croiseur (exposition 100%)<br/>Chassis : Intercepteur (exposition 100%)<br/>Dégâts d\'exposition : +400%<br/>Cible : Polyvalent";
+				
+if(!Chasse[15]){
+	Chasse[15]=new Array();
+}
+Chasse[15]["A"]=new Array();
+Chasse[15]["A"]["RCh1"]=0;
+Chasse[15]["A"]["RCh2"]=0;
+Chasse[15]["A"]["RCh3"]=0;
+Chasse[15]["A"]["OCh1"]=39.99;
+Chasse[15]["A"]["OCh2"]=35;
+Chasse[15]["A"]["OCh3"]=25;
+Chasse[15]["A"]["CoefChStr"]=100;
+Chasse[15]["A"]["CoefChCib"]=100;
+Chasse[15]["A"]["CoefChAtt"]=100;
+Chasse[15]["A"]["RCh"]=0;
+Chasse[15]["A"]["CoefCh"]=0;
+
+Rounds[15]["D"]=new Array();
+
+	Rounds[15]["D"][1]=new Array();
+	
+				Rounds[15]["D"][1]["M1T"]=new Array();
+				Rounds[15]["D"][1]["M1T"]["IMG"]="M1T";
+				Rounds[15]["D"][1]["M1T"]["Type"]="M";
+				Rounds[15]["D"][1]["M1T"]["Chassis"]="M";
+				Rounds[15]["D"][1]["M1T"]["NbI"]="100";
+				Rounds[15]["D"][1]["M1T"]["Nb"]="62";
+				Rounds[15]["D"][1]["M1T"]["NbL"]="65";
+				Rounds[15]["D"][1]["M1T"]["Deg"]="0.12634764395192";
+				Rounds[15]["D"][1]["M1T"]["Caracs"]="";
+				
+				Rounds[15]["D"][1]["M1T"]["Caracs"]="Extracteur jovien<br/><br/>Etat : 99%<br/>Structure : 277,885 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Blindage AC : 0<br/>Blindage La : 0<br/>Blindage Pl : 0<br/>Blindage EM : 0<br/>Dégâts AC : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts La : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts Pl : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts EM : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/><br/>Type : Module (exposition 0%)<br/>Chassis : Module Utilitaire (exposition 0%)<br/>Dégâts d\'exposition : +0%<br/>Cible : Polyvalent";
+				
+if(!Chasse[15]){
+	Chasse[15]=new Array();
+}
+Chasse[15]["D"]=new Array();
+Chasse[15]["D"]["RCh1"]=0;
+Chasse[15]["D"]["RCh2"]=0;
+Chasse[15]["D"]["RCh3"]=0;
+Chasse[15]["D"]["OCh1"]=0;
+Chasse[15]["D"]["OCh2"]=0;
+Chasse[15]["D"]["OCh3"]=0;
+Chasse[15]["D"]["CoefChStr"]=100;
+Chasse[15]["D"]["CoefChCib"]=100;
+Chasse[15]["D"]["CoefChAtt"]=100;
+Chasse[15]["D"]["RCh"]=0;
+Chasse[15]["D"]["CoefCh"]=100;
+
+	Rounds[15]["Events"][event]="<img src=\"../SkinRC/Events/Ballist.png\" class=\"IcoEv\"/> A cette distance, les tirs non ciblés ont un impact de 100% pour l\'attaque et 100% pour la défense<br/>";
+	event++;
+	
+Rounds[15]["Degats"]="<div class=\"Degats\"><b>La Flotte Attaquante tir avec une puissance de feu de <span class=\"StyleDegats\">1,470,701</span></b><div><i>(Tirs <span class=\"StyleCible\">polyvalents</span> avec une puissance de <span class=\"StyleDegats\">AC 582,924, La 750,973, Pl 136,804, EM 0</span>)<br/><br/></i></div><b>La Defense tir avec une puissance de feu de <span class=\"StyleDegats\">0</span></b><div><i></i></div></div>";
+
+Rounds[15]["ZRC_A"]="1";
+Rounds[15]["ZRC_D"]="0";
+
+Rounds[15]["Str_A"]="0.25888382585351";
+Rounds[15]["Str_D"]="0.74111617414649";
+
+Rounds[15]["Att_A"]="1";
+Rounds[15]["Att_D"]="0";
+
+		Rounds[16]=new Array();
+		Rounds[16]["Events"]=new Array();
+		event=0;
+		
+Rounds[16]["A"]=new Array();
+
+	Rounds[16]["A"][1]=new Array();
+	
+				Rounds[16]["A"][1]["VD22-5905610i85"]=new Array();
+				Rounds[16]["A"][1]["VD22-5905610i85"]["IMG"]="VD22";
+				Rounds[16]["A"][1]["VD22-5905610i85"]["Type"]="D";
+				Rounds[16]["A"][1]["VD22-5905610i85"]["Chassis"]="D2";
+				Rounds[16]["A"][1]["VD22-5905610i85"]["NbI"]="1";
+				Rounds[16]["A"][1]["VD22-5905610i85"]["Nb"]="1";
+				Rounds[16]["A"][1]["VD22-5905610i85"]["NbL"]="1";
+				Rounds[16]["A"][1]["VD22-5905610i85"]["Deg"]="0";
+				Rounds[16]["A"][1]["VD22-5905610i85"]["Caracs"]="";
+				
+				Rounds[16]["A"][1]["VD22-5905610i85"]["Caracs"]="La Fromagere<br/><br/>Etat : 100%<br/>Structure : 6,018,328 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Blindage AC : 0<br/>Blindage La : 0<br/>Blindage Pl : 0<br/>Blindage EM : 0<br/>Dégâts AC : 582,924 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts La : 750,973 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts Pl : 136,804 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts EM : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/><br/>Type : Croiseur (exposition 100%)<br/>Chassis : Intercepteur (exposition 100%)<br/>Dégâts d\'exposition : +400%<br/>Cible : Polyvalent";
+				
+if(!Chasse[16]){
+	Chasse[16]=new Array();
+}
+Chasse[16]["A"]=new Array();
+Chasse[16]["A"]["RCh1"]=0;
+Chasse[16]["A"]["RCh2"]=0;
+Chasse[16]["A"]["RCh3"]=0;
+Chasse[16]["A"]["OCh1"]=39.99;
+Chasse[16]["A"]["OCh2"]=35;
+Chasse[16]["A"]["OCh3"]=25;
+Chasse[16]["A"]["CoefChStr"]=100;
+Chasse[16]["A"]["CoefChCib"]=100;
+Chasse[16]["A"]["CoefChAtt"]=100;
+Chasse[16]["A"]["RCh"]=0;
+Chasse[16]["A"]["CoefCh"]=0;
+
+Rounds[16]["D"]=new Array();
+
+	Rounds[16]["D"][1]=new Array();
+	
+				Rounds[16]["D"][1]["M1T"]=new Array();
+				Rounds[16]["D"][1]["M1T"]["IMG"]="M1T";
+				Rounds[16]["D"][1]["M1T"]["Type"]="M";
+				Rounds[16]["D"][1]["M1T"]["Chassis"]="M";
+				Rounds[16]["D"][1]["M1T"]["NbI"]="100";
+				Rounds[16]["D"][1]["M1T"]["Nb"]="59";
+				Rounds[16]["D"][1]["M1T"]["NbL"]="62";
+				Rounds[16]["D"][1]["M1T"]["Deg"]="0";
+				Rounds[16]["D"][1]["M1T"]["Caracs"]="";
+				
+				Rounds[16]["D"][1]["M1T"]["Caracs"]="Extracteur jovien<br/><br/>Etat : 100%<br/>Structure : 277,885 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Blindage AC : 0<br/>Blindage La : 0<br/>Blindage Pl : 0<br/>Blindage EM : 0<br/>Dégâts AC : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts La : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts Pl : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts EM : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/><br/>Type : Module (exposition 0%)<br/>Chassis : Module Utilitaire (exposition 0%)<br/>Dégâts d\'exposition : +0%<br/>Cible : Polyvalent";
+				
+if(!Chasse[16]){
+	Chasse[16]=new Array();
+}
+Chasse[16]["D"]=new Array();
+Chasse[16]["D"]["RCh1"]=0;
+Chasse[16]["D"]["RCh2"]=0;
+Chasse[16]["D"]["RCh3"]=0;
+Chasse[16]["D"]["OCh1"]=0;
+Chasse[16]["D"]["OCh2"]=0;
+Chasse[16]["D"]["OCh3"]=0;
+Chasse[16]["D"]["CoefChStr"]=100;
+Chasse[16]["D"]["CoefChCib"]=100;
+Chasse[16]["D"]["CoefChAtt"]=100;
+Chasse[16]["D"]["RCh"]=0;
+Chasse[16]["D"]["CoefCh"]=100;
+
+	Rounds[16]["Events"][event]="<img src=\"../SkinRC/Events/Ballist.png\" class=\"IcoEv\"/> A cette distance, les tirs non ciblés ont un impact de 100% pour l\'attaque et 100% pour la défense<br/>";
+	event++;
+	
+Rounds[16]["Degats"]="<div class=\"Degats\"><b>La Flotte Attaquante tir avec une puissance de feu de <span class=\"StyleDegats\">1,470,701</span></b><div><i>(Tirs <span class=\"StyleCible\">polyvalents</span> avec une puissance de <span class=\"StyleDegats\">AC 582,924, La 750,973, Pl 136,804, EM 0</span>)<br/><br/></i></div><b>La Defense tir avec une puissance de feu de <span class=\"StyleDegats\">0</span></b><div><i></i></div></div>";
+
+Rounds[16]["ZRC_A"]="1";
+Rounds[16]["ZRC_D"]="0";
+
+Rounds[16]["Str_A"]="0.26851281907189";
+Rounds[16]["Str_D"]="0.73148718092811";
+
+Rounds[16]["Att_A"]="1";
+Rounds[16]["Att_D"]="0";
+
+		Rounds[17]=new Array();
+		Rounds[17]["Events"]=new Array();
+		event=0;
+		
+Rounds[17]["A"]=new Array();
+
+	Rounds[17]["A"][1]=new Array();
+	
+				Rounds[17]["A"][1]["VD22-5905610i85"]=new Array();
+				Rounds[17]["A"][1]["VD22-5905610i85"]["IMG"]="VD22";
+				Rounds[17]["A"][1]["VD22-5905610i85"]["Type"]="D";
+				Rounds[17]["A"][1]["VD22-5905610i85"]["Chassis"]="D2";
+				Rounds[17]["A"][1]["VD22-5905610i85"]["NbI"]="1";
+				Rounds[17]["A"][1]["VD22-5905610i85"]["Nb"]="1";
+				Rounds[17]["A"][1]["VD22-5905610i85"]["NbL"]="1";
+				Rounds[17]["A"][1]["VD22-5905610i85"]["Deg"]="0";
+				Rounds[17]["A"][1]["VD22-5905610i85"]["Caracs"]="";
+				
+				Rounds[17]["A"][1]["VD22-5905610i85"]["Caracs"]="La Fromagere<br/><br/>Etat : 100%<br/>Structure : 6,018,328 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Blindage AC : 0<br/>Blindage La : 0<br/>Blindage Pl : 0<br/>Blindage EM : 0<br/>Dégâts AC : 582,924 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts La : 750,973 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts Pl : 136,804 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts EM : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/><br/>Type : Croiseur (exposition 100%)<br/>Chassis : Intercepteur (exposition 100%)<br/>Dégâts d\'exposition : +400%<br/>Cible : Polyvalent";
+				
+if(!Chasse[17]){
+	Chasse[17]=new Array();
+}
+Chasse[17]["A"]=new Array();
+Chasse[17]["A"]["RCh1"]=0;
+Chasse[17]["A"]["RCh2"]=0;
+Chasse[17]["A"]["RCh3"]=0;
+Chasse[17]["A"]["OCh1"]=39.99;
+Chasse[17]["A"]["OCh2"]=35;
+Chasse[17]["A"]["OCh3"]=25;
+Chasse[17]["A"]["CoefChStr"]=100;
+Chasse[17]["A"]["CoefChCib"]=100;
+Chasse[17]["A"]["CoefChAtt"]=100;
+Chasse[17]["A"]["RCh"]=0;
+Chasse[17]["A"]["CoefCh"]=0;
+
+Rounds[17]["D"]=new Array();
+
+	Rounds[17]["D"][1]=new Array();
+	
+				Rounds[17]["D"][1]["M1T"]=new Array();
+				Rounds[17]["D"][1]["M1T"]["IMG"]="M1T";
+				Rounds[17]["D"][1]["M1T"]["Type"]="M";
+				Rounds[17]["D"][1]["M1T"]["Chassis"]="M";
+				Rounds[17]["D"][1]["M1T"]["NbI"]="100";
+				Rounds[17]["D"][1]["M1T"]["Nb"]="57";
+				Rounds[17]["D"][1]["M1T"]["NbL"]="59";
+				Rounds[17]["D"][1]["M1T"]["Deg"]="0.67254587634868";
+				Rounds[17]["D"][1]["M1T"]["Caracs"]="";
+				
+				Rounds[17]["D"][1]["M1T"]["Caracs"]="Extracteur jovien<br/><br/>Etat : 98%<br/>Structure : 277,885 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Blindage AC : 0<br/>Blindage La : 0<br/>Blindage Pl : 0<br/>Blindage EM : 0<br/>Dégâts AC : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts La : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts Pl : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts EM : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/><br/>Type : Module (exposition 0%)<br/>Chassis : Module Utilitaire (exposition 0%)<br/>Dégâts d\'exposition : +0%<br/>Cible : Polyvalent";
+				
+if(!Chasse[17]){
+	Chasse[17]=new Array();
+}
+Chasse[17]["D"]=new Array();
+Chasse[17]["D"]["RCh1"]=0;
+Chasse[17]["D"]["RCh2"]=0;
+Chasse[17]["D"]["RCh3"]=0;
+Chasse[17]["D"]["OCh1"]=0;
+Chasse[17]["D"]["OCh2"]=0;
+Chasse[17]["D"]["OCh3"]=0;
+Chasse[17]["D"]["CoefChStr"]=100;
+Chasse[17]["D"]["CoefChCib"]=100;
+Chasse[17]["D"]["CoefChAtt"]=100;
+Chasse[17]["D"]["RCh"]=0;
+Chasse[17]["D"]["CoefCh"]=100;
+
+	Rounds[17]["Events"][event]="<img src=\"../SkinRC/Events/Ballist.png\" class=\"IcoEv\"/> A cette distance, les tirs non ciblés ont un impact de 100% pour l\'attaque et 100% pour la défense<br/>";
+	event++;
+	
+Rounds[17]["Degats"]="<div class=\"Degats\"><b>La Flotte Attaquante tir avec une puissance de feu de <span class=\"StyleDegats\">1,470,701</span></b><div><i>(Tirs <span class=\"StyleCible\">polyvalents</span> avec une puissance de <span class=\"StyleDegats\">AC 582,924, La 750,973, Pl 136,804, EM 0</span>)<br/><br/></i></div><b>La Defense tir avec une puissance de feu de <span class=\"StyleDegats\">0</span></b><div><i></i></div></div>";
+
+Rounds[17]["ZRC_A"]="1";
+Rounds[17]["ZRC_D"]="0";
+
+Rounds[17]["Str_A"]="0.2753402031046";
+Rounds[17]["Str_D"]="0.7246597968954";
+
+Rounds[17]["Att_A"]="1";
+Rounds[17]["Att_D"]="0";
+
+		Rounds[18]=new Array();
+		Rounds[18]["Events"]=new Array();
+		event=0;
+		
+Rounds[18]["A"]=new Array();
+
+	Rounds[18]["A"][1]=new Array();
+	
+				Rounds[18]["A"][1]["VD22-5905610i85"]=new Array();
+				Rounds[18]["A"][1]["VD22-5905610i85"]["IMG"]="VD22";
+				Rounds[18]["A"][1]["VD22-5905610i85"]["Type"]="D";
+				Rounds[18]["A"][1]["VD22-5905610i85"]["Chassis"]="D2";
+				Rounds[18]["A"][1]["VD22-5905610i85"]["NbI"]="1";
+				Rounds[18]["A"][1]["VD22-5905610i85"]["Nb"]="1";
+				Rounds[18]["A"][1]["VD22-5905610i85"]["NbL"]="1";
+				Rounds[18]["A"][1]["VD22-5905610i85"]["Deg"]="0";
+				Rounds[18]["A"][1]["VD22-5905610i85"]["Caracs"]="";
+				
+				Rounds[18]["A"][1]["VD22-5905610i85"]["Caracs"]="La Fromagere<br/><br/>Etat : 100%<br/>Structure : 6,018,328 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Blindage AC : 0<br/>Blindage La : 0<br/>Blindage Pl : 0<br/>Blindage EM : 0<br/>Dégâts AC : 582,924 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts La : 750,973 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts Pl : 136,804 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts EM : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/><br/>Type : Croiseur (exposition 100%)<br/>Chassis : Intercepteur (exposition 100%)<br/>Dégâts d\'exposition : +400%<br/>Cible : Polyvalent";
+				
+if(!Chasse[18]){
+	Chasse[18]=new Array();
+}
+Chasse[18]["A"]=new Array();
+Chasse[18]["A"]["RCh1"]=0;
+Chasse[18]["A"]["RCh2"]=0;
+Chasse[18]["A"]["RCh3"]=0;
+Chasse[18]["A"]["OCh1"]=39.99;
+Chasse[18]["A"]["OCh2"]=35;
+Chasse[18]["A"]["OCh3"]=25;
+Chasse[18]["A"]["CoefChStr"]=100;
+Chasse[18]["A"]["CoefChCib"]=100;
+Chasse[18]["A"]["CoefChAtt"]=100;
+Chasse[18]["A"]["RCh"]=0;
+Chasse[18]["A"]["CoefCh"]=0;
+
+Rounds[18]["D"]=new Array();
+
+	Rounds[18]["D"][1]=new Array();
+	
+				Rounds[18]["D"][1]["M1T"]=new Array();
+				Rounds[18]["D"][1]["M1T"]["IMG"]="M1T";
+				Rounds[18]["D"][1]["M1T"]["Type"]="M";
+				Rounds[18]["D"][1]["M1T"]["Chassis"]="M";
+				Rounds[18]["D"][1]["M1T"]["NbI"]="100";
+				Rounds[18]["D"][1]["M1T"]["Nb"]="54";
+				Rounds[18]["D"][1]["M1T"]["NbL"]="57";
+				Rounds[18]["D"][1]["M1T"]["Deg"]="0.32870869153969";
+				Rounds[18]["D"][1]["M1T"]["Caracs"]="";
+				
+				Rounds[18]["D"][1]["M1T"]["Caracs"]="Extracteur jovien<br/><br/>Etat : 99%<br/>Structure : 277,885 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Blindage AC : 0<br/>Blindage La : 0<br/>Blindage Pl : 0<br/>Blindage EM : 0<br/>Dégâts AC : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts La : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts Pl : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts EM : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/><br/>Type : Module (exposition 0%)<br/>Chassis : Module Utilitaire (exposition 0%)<br/>Dégâts d\'exposition : +0%<br/>Cible : Polyvalent";
+				
+if(!Chasse[18]){
+	Chasse[18]=new Array();
+}
+Chasse[18]["D"]=new Array();
+Chasse[18]["D"]["RCh1"]=0;
+Chasse[18]["D"]["RCh2"]=0;
+Chasse[18]["D"]["RCh3"]=0;
+Chasse[18]["D"]["OCh1"]=0;
+Chasse[18]["D"]["OCh2"]=0;
+Chasse[18]["D"]["OCh3"]=0;
+Chasse[18]["D"]["CoefChStr"]=100;
+Chasse[18]["D"]["CoefChCib"]=100;
+Chasse[18]["D"]["CoefChAtt"]=100;
+Chasse[18]["D"]["RCh"]=0;
+Chasse[18]["D"]["CoefCh"]=100;
+
+	Rounds[18]["Events"][event]="<img src=\"../SkinRC/Events/Ballist.png\" class=\"IcoEv\"/> A cette distance, les tirs non ciblés ont un impact de 100% pour l\'attaque et 100% pour la défense<br/>";
+	event++;
+	
+Rounds[18]["Degats"]="<div class=\"Degats\"><b>La Flotte Attaquante tir avec une puissance de feu de <span class=\"StyleDegats\">1,470,701</span></b><div><i>(Tirs <span class=\"StyleCible\">polyvalents</span> avec une puissance de <span class=\"StyleDegats\">AC 582,924, La 750,973, Pl 136,804, EM 0</span>)<br/><br/></i></div><b>La Defense tir avec une puissance de feu de <span class=\"StyleDegats\">0</span></b><div><i></i></div></div>";
+
+Rounds[18]["ZRC_A"]="1";
+Rounds[18]["ZRC_D"]="0";
+
+Rounds[18]["Str_A"]="0.2862580833433";
+Rounds[18]["Str_D"]="0.7137419166567";
+
+Rounds[18]["Att_A"]="1";
+Rounds[18]["Att_D"]="0";
+
+		Rounds[19]=new Array();
+		Rounds[19]["Events"]=new Array();
+		event=0;
+		
+Rounds[19]["A"]=new Array();
+
+	Rounds[19]["A"][1]=new Array();
+	
+				Rounds[19]["A"][1]["VD22-5905610i85"]=new Array();
+				Rounds[19]["A"][1]["VD22-5905610i85"]["IMG"]="VD22";
+				Rounds[19]["A"][1]["VD22-5905610i85"]["Type"]="D";
+				Rounds[19]["A"][1]["VD22-5905610i85"]["Chassis"]="D2";
+				Rounds[19]["A"][1]["VD22-5905610i85"]["NbI"]="1";
+				Rounds[19]["A"][1]["VD22-5905610i85"]["Nb"]="1";
+				Rounds[19]["A"][1]["VD22-5905610i85"]["NbL"]="1";
+				Rounds[19]["A"][1]["VD22-5905610i85"]["Deg"]="0";
+				Rounds[19]["A"][1]["VD22-5905610i85"]["Caracs"]="";
+				
+				Rounds[19]["A"][1]["VD22-5905610i85"]["Caracs"]="La Fromagere<br/><br/>Etat : 100%<br/>Structure : 6,018,328 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Blindage AC : 0<br/>Blindage La : 0<br/>Blindage Pl : 0<br/>Blindage EM : 0<br/>Dégâts AC : 582,924 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts La : 750,973 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts Pl : 136,804 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts EM : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/><br/>Type : Croiseur (exposition 100%)<br/>Chassis : Intercepteur (exposition 100%)<br/>Dégâts d\'exposition : +400%<br/>Cible : Polyvalent";
+				
+if(!Chasse[19]){
+	Chasse[19]=new Array();
+}
+Chasse[19]["A"]=new Array();
+Chasse[19]["A"]["RCh1"]=0;
+Chasse[19]["A"]["RCh2"]=0;
+Chasse[19]["A"]["RCh3"]=0;
+Chasse[19]["A"]["OCh1"]=39.99;
+Chasse[19]["A"]["OCh2"]=35;
+Chasse[19]["A"]["OCh3"]=25;
+Chasse[19]["A"]["CoefChStr"]=100;
+Chasse[19]["A"]["CoefChCib"]=100;
+Chasse[19]["A"]["CoefChAtt"]=100;
+Chasse[19]["A"]["RCh"]=0;
+Chasse[19]["A"]["CoefCh"]=0;
+
+Rounds[19]["D"]=new Array();
+
+	Rounds[19]["D"][1]=new Array();
+	
+				Rounds[19]["D"][1]["M1T"]=new Array();
+				Rounds[19]["D"][1]["M1T"]["IMG"]="M1T";
+				Rounds[19]["D"][1]["M1T"]["Type"]="M";
+				Rounds[19]["D"][1]["M1T"]["Chassis"]="M";
+				Rounds[19]["D"][1]["M1T"]["NbI"]="100";
+				Rounds[19]["D"][1]["M1T"]["Nb"]="51";
+				Rounds[19]["D"][1]["M1T"]["NbL"]="54";
+				Rounds[19]["D"][1]["M1T"]["Deg"]="0.011989754074633";
+				Rounds[19]["D"][1]["M1T"]["Caracs"]="";
+				
+				Rounds[19]["D"][1]["M1T"]["Caracs"]="Extracteur jovien<br/><br/>Etat : 99%<br/>Structure : 277,885 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Blindage AC : 0<br/>Blindage La : 0<br/>Blindage Pl : 0<br/>Blindage EM : 0<br/>Dégâts AC : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts La : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts Pl : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts EM : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/><br/>Type : Module (exposition 0%)<br/>Chassis : Module Utilitaire (exposition 0%)<br/>Dégâts d\'exposition : +0%<br/>Cible : Polyvalent";
+				
+if(!Chasse[19]){
+	Chasse[19]=new Array();
+}
+Chasse[19]["D"]=new Array();
+Chasse[19]["D"]["RCh1"]=0;
+Chasse[19]["D"]["RCh2"]=0;
+Chasse[19]["D"]["RCh3"]=0;
+Chasse[19]["D"]["OCh1"]=0;
+Chasse[19]["D"]["OCh2"]=0;
+Chasse[19]["D"]["OCh3"]=0;
+Chasse[19]["D"]["CoefChStr"]=100;
+Chasse[19]["D"]["CoefChCib"]=100;
+Chasse[19]["D"]["CoefChAtt"]=100;
+Chasse[19]["D"]["RCh"]=0;
+Chasse[19]["D"]["CoefCh"]=100;
+
+	Rounds[19]["Events"][event]="<img src=\"../SkinRC/Events/Ballist.png\" class=\"IcoEv\"/> A cette distance, les tirs non ciblés ont un impact de 100% pour l\'attaque et 100% pour la défense<br/>";
+	event++;
+	
+Rounds[19]["Degats"]="<div class=\"Degats\"><b>La Flotte Attaquante tir avec une puissance de feu de <span class=\"StyleDegats\">1,470,701</span></b><div><i>(Tirs <span class=\"StyleCible\">polyvalents</span> avec une puissance de <span class=\"StyleDegats\">AC 582,924, La 750,973, Pl 136,804, EM 0</span>)<br/><br/></i></div><b>La Defense tir avec une puissance de feu de <span class=\"StyleDegats\">0</span></b><div><i></i></div></div>";
+
+Rounds[19]["ZRC_A"]="1";
+Rounds[19]["ZRC_D"]="0";
+
+Rounds[19]["Str_A"]="0.29807755243134";
+Rounds[19]["Str_D"]="0.70192244756866";
+
+Rounds[19]["Att_A"]="1";
+Rounds[19]["Att_D"]="0";
+
+		Rounds[20]=new Array();
+		Rounds[20]["Events"]=new Array();
+		event=0;
+		
+Rounds[20]["A"]=new Array();
+
+	Rounds[20]["A"][1]=new Array();
+	
+				Rounds[20]["A"][1]["VD22-5905610i85"]=new Array();
+				Rounds[20]["A"][1]["VD22-5905610i85"]["IMG"]="VD22";
+				Rounds[20]["A"][1]["VD22-5905610i85"]["Type"]="D";
+				Rounds[20]["A"][1]["VD22-5905610i85"]["Chassis"]="D2";
+				Rounds[20]["A"][1]["VD22-5905610i85"]["NbI"]="1";
+				Rounds[20]["A"][1]["VD22-5905610i85"]["Nb"]="1";
+				Rounds[20]["A"][1]["VD22-5905610i85"]["NbL"]="1";
+				Rounds[20]["A"][1]["VD22-5905610i85"]["Deg"]="0";
+				Rounds[20]["A"][1]["VD22-5905610i85"]["Caracs"]="";
+				
+				Rounds[20]["A"][1]["VD22-5905610i85"]["Caracs"]="La Fromagere<br/><br/>Etat : 100%<br/>Structure : 6,018,328 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Blindage AC : 0<br/>Blindage La : 0<br/>Blindage Pl : 0<br/>Blindage EM : 0<br/>Dégâts AC : 582,924 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts La : 750,973 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts Pl : 136,804 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts EM : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/><br/>Type : Croiseur (exposition 100%)<br/>Chassis : Intercepteur (exposition 100%)<br/>Dégâts d\'exposition : +400%<br/>Cible : Polyvalent";
+				
+if(!Chasse[20]){
+	Chasse[20]=new Array();
+}
+Chasse[20]["A"]=new Array();
+Chasse[20]["A"]["RCh1"]=0;
+Chasse[20]["A"]["RCh2"]=0;
+Chasse[20]["A"]["RCh3"]=0;
+Chasse[20]["A"]["OCh1"]=39.99;
+Chasse[20]["A"]["OCh2"]=35;
+Chasse[20]["A"]["OCh3"]=25;
+Chasse[20]["A"]["CoefChStr"]=100;
+Chasse[20]["A"]["CoefChCib"]=100;
+Chasse[20]["A"]["CoefChAtt"]=100;
+Chasse[20]["A"]["RCh"]=0;
+Chasse[20]["A"]["CoefCh"]=0;
+
+Rounds[20]["D"]=new Array();
+
+	Rounds[20]["D"][1]=new Array();
+	
+				Rounds[20]["D"][1]["M1T"]=new Array();
+				Rounds[20]["D"][1]["M1T"]["IMG"]="M1T";
+				Rounds[20]["D"][1]["M1T"]["Type"]="M";
+				Rounds[20]["D"][1]["M1T"]["Chassis"]="M";
+				Rounds[20]["D"][1]["M1T"]["NbI"]="100";
+				Rounds[20]["D"][1]["M1T"]["Nb"]="49";
+				Rounds[20]["D"][1]["M1T"]["NbL"]="51";
+				Rounds[20]["D"][1]["M1T"]["Deg"]="0.71502934405684";
+				Rounds[20]["D"][1]["M1T"]["Caracs"]="";
+				
+				Rounds[20]["D"][1]["M1T"]["Caracs"]="Extracteur jovien<br/><br/>Etat : 98%<br/>Structure : 277,885 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Blindage AC : 0<br/>Blindage La : 0<br/>Blindage Pl : 0<br/>Blindage EM : 0<br/>Dégâts AC : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts La : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts Pl : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts EM : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/><br/>Type : Module (exposition 0%)<br/>Chassis : Module Utilitaire (exposition 0%)<br/>Dégâts d\'exposition : +0%<br/>Cible : Polyvalent";
+				
+if(!Chasse[20]){
+	Chasse[20]=new Array();
+}
+Chasse[20]["D"]=new Array();
+Chasse[20]["D"]["RCh1"]=0;
+Chasse[20]["D"]["RCh2"]=0;
+Chasse[20]["D"]["RCh3"]=0;
+Chasse[20]["D"]["OCh1"]=0;
+Chasse[20]["D"]["OCh2"]=0;
+Chasse[20]["D"]["OCh3"]=0;
+Chasse[20]["D"]["CoefChStr"]=100;
+Chasse[20]["D"]["CoefChCib"]=100;
+Chasse[20]["D"]["CoefChAtt"]=100;
+Chasse[20]["D"]["RCh"]=0;
+Chasse[20]["D"]["CoefCh"]=100;
+
+	Rounds[20]["Events"][event]="<img src=\"../SkinRC/Events/Ballist.png\" class=\"IcoEv\"/> A cette distance, les tirs non ciblés ont un impact de 100% pour l\'attaque et 100% pour la défense<br/>";
+	event++;
+	
+Rounds[20]["Degats"]="<div class=\"Degats\"><b>La Flotte Attaquante tir avec une puissance de feu de <span class=\"StyleDegats\">1,470,701</span></b><div><i>(Tirs <span class=\"StyleCible\">polyvalents</span> avec une puissance de <span class=\"StyleDegats\">AC 582,924, La 750,973, Pl 136,804, EM 0</span>)<br/><br/></i></div><b>La Defense tir avec une puissance de feu de <span class=\"StyleDegats\">0</span></b><div><i></i></div></div>";
+
+Rounds[20]["ZRC_A"]="1";
+Rounds[20]["ZRC_D"]="0";
+
+Rounds[20]["Str_A"]="0.30651479216194";
+Rounds[20]["Str_D"]="0.69348520783806";
+
+Rounds[20]["Att_A"]="1";
+Rounds[20]["Att_D"]="0";
+
+		Rounds[21]=new Array();
+		Rounds[21]["Events"]=new Array();
+		event=0;
+		
+Rounds[21]["A"]=new Array();
+
+	Rounds[21]["A"][1]=new Array();
+	
+				Rounds[21]["A"][1]["VD22-5905610i85"]=new Array();
+				Rounds[21]["A"][1]["VD22-5905610i85"]["IMG"]="VD22";
+				Rounds[21]["A"][1]["VD22-5905610i85"]["Type"]="D";
+				Rounds[21]["A"][1]["VD22-5905610i85"]["Chassis"]="D2";
+				Rounds[21]["A"][1]["VD22-5905610i85"]["NbI"]="1";
+				Rounds[21]["A"][1]["VD22-5905610i85"]["Nb"]="1";
+				Rounds[21]["A"][1]["VD22-5905610i85"]["NbL"]="1";
+				Rounds[21]["A"][1]["VD22-5905610i85"]["Deg"]="0";
+				Rounds[21]["A"][1]["VD22-5905610i85"]["Caracs"]="";
+				
+				Rounds[21]["A"][1]["VD22-5905610i85"]["Caracs"]="La Fromagere<br/><br/>Etat : 100%<br/>Structure : 6,018,328 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Blindage AC : 0<br/>Blindage La : 0<br/>Blindage Pl : 0<br/>Blindage EM : 0<br/>Dégâts AC : 582,924 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts La : 750,973 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts Pl : 136,804 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts EM : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/><br/>Type : Croiseur (exposition 100%)<br/>Chassis : Intercepteur (exposition 100%)<br/>Dégâts d\'exposition : +400%<br/>Cible : Polyvalent";
+				
+if(!Chasse[21]){
+	Chasse[21]=new Array();
+}
+Chasse[21]["A"]=new Array();
+Chasse[21]["A"]["RCh1"]=0;
+Chasse[21]["A"]["RCh2"]=0;
+Chasse[21]["A"]["RCh3"]=0;
+Chasse[21]["A"]["OCh1"]=39.99;
+Chasse[21]["A"]["OCh2"]=35;
+Chasse[21]["A"]["OCh3"]=25;
+Chasse[21]["A"]["CoefChStr"]=100;
+Chasse[21]["A"]["CoefChCib"]=100;
+Chasse[21]["A"]["CoefChAtt"]=100;
+Chasse[21]["A"]["RCh"]=0;
+Chasse[21]["A"]["CoefCh"]=0;
+
+Rounds[21]["D"]=new Array();
+
+	Rounds[21]["D"][1]=new Array();
+	
+				Rounds[21]["D"][1]["M1T"]=new Array();
+				Rounds[21]["D"][1]["M1T"]["IMG"]="M1T";
+				Rounds[21]["D"][1]["M1T"]["Type"]="M";
+				Rounds[21]["D"][1]["M1T"]["Chassis"]="M";
+				Rounds[21]["D"][1]["M1T"]["NbI"]="100";
+				Rounds[21]["D"][1]["M1T"]["Nb"]="46";
+				Rounds[21]["D"][1]["M1T"]["NbL"]="49";
+				Rounds[21]["D"][1]["M1T"]["Deg"]="0.36982481632792";
+				Rounds[21]["D"][1]["M1T"]["Caracs"]="";
+				
+				Rounds[21]["D"][1]["M1T"]["Caracs"]="Extracteur jovien<br/><br/>Etat : 99%<br/>Structure : 277,885 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Blindage AC : 0<br/>Blindage La : 0<br/>Blindage Pl : 0<br/>Blindage EM : 0<br/>Dégâts AC : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts La : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts Pl : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts EM : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/><br/>Type : Module (exposition 0%)<br/>Chassis : Module Utilitaire (exposition 0%)<br/>Dégâts d\'exposition : +0%<br/>Cible : Polyvalent";
+				
+if(!Chasse[21]){
+	Chasse[21]=new Array();
+}
+Chasse[21]["D"]=new Array();
+Chasse[21]["D"]["RCh1"]=0;
+Chasse[21]["D"]["RCh2"]=0;
+Chasse[21]["D"]["RCh3"]=0;
+Chasse[21]["D"]["OCh1"]=0;
+Chasse[21]["D"]["OCh2"]=0;
+Chasse[21]["D"]["OCh3"]=0;
+Chasse[21]["D"]["CoefChStr"]=100;
+Chasse[21]["D"]["CoefChCib"]=100;
+Chasse[21]["D"]["CoefChAtt"]=100;
+Chasse[21]["D"]["RCh"]=0;
+Chasse[21]["D"]["CoefCh"]=100;
+
+	Rounds[21]["Events"][event]="<img src=\"../SkinRC/Events/MNul.png\" class=\"IcoEv\"/> Au cours de la bataille, aucune des deux flottes n\'a pu prendre l\'avantage sur l\'autre.<br/>L\'assaut prend alors fin sans désigner de vainqueur.";
+	event++;
+	
+	Rounds[21]["Events"][event]="<img src=\"../SkinRC/Events/Pertes.png\" class=\"IcoEv\"/> Détail des pertes <i><br/>Attaquants :<br/>----><span class=\"StyleGreen\">FearNyx</span>(100% <div class=\"IcoPrest\"></div>) a perdu : <br/> &nbsp &nbsp &nbsp &nbsp <span class=\"StyleOrange\">0</span> Vaisseaux<br/><br/>Defenseurs :<br/>----><span class=\"StyleGreen\">Neros</span>(100% <div class=\"IcoPrest\"></div>) a perdu : <br/> &nbsp &nbsp &nbsp &nbsp <span class=\"StyleOrange\">54</span> Vaisseaux<br/></i>";
+	event++;
+	
+	Rounds[21]["Events"][100]="<table><tr><td>0 <div class=\"IcoPrest\"><br/></div> dont bonus ND : 0%<br/> +prime 76,338,632<div class=\"IcoPrest\"></div></td><td><img src=\"../SkinRC/Factions/IcoF5.png\"/> <img src=\"../SkinRC/Factions/Diplo0.png\"/> <img src=\"../SkinRC/Factions/IcoF7.png\"/></td><td>0 <div class=\"IcoPrest\"></div><br/> dont bonus ND : 0% <br/></td></tr></table>";
+	
+Rounds[21]["Events"][event]="<img src=\"../SkinRC/Events/XP.png\" class=\"IcoEv\"/> XP Attaquant : <span class=\"StyleRed\">0</span><br/>XP Défenseur : <span class=\"StyleRed\">0</span><i><br/>Ampleur du combat : <span class=\"StyleOrange\">0</span><br/>Rentabilité Attaquant : <span class=\"StyleOrange\">5</span><br/>Rentabilité Défenseur : <span class=\"StyleOrange\">0</span></i>";
+event++;
+
+Rounds[21]["Events"][event]="<img src=\"../SkinRC/Events/CdR.png\" class=\"IcoEv\"/> La Bataille a généré un champ de ruine de <span class=\"StyleRes\">54,000,000,000</span> <div class=\"IcoResM\"></div> et <span class=\"StyleRes\">13,500,000,000</span> <div class=\"IcoResT\"></div><br/> ";
+event++;
+</script><table class="Page"><tr><td id="Page">Date : 30 Dolahn(6) de l'an 20,400 TSU (08/11/25 14:46:41)<br/></td></tr></table><script type="text/javascript">Rounds[0]["Date"]="Date : 30 Dolahn(6) de l'an 20,400 TSU (08/11/25 14:46:41)";RCplayer();</script></body></html>

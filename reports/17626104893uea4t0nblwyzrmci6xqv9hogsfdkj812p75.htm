@@ -1,0 +1,371 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"/><link rel="stylesheet" media="screen" type="text/css" title="Celestus V2.0" href="../SkinRC/DesignV3.css?V=74141678"/><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><script type="text/javascript" src="../SkinRC/RCplayer.js?R=2523324"></script><script type="text/javascript" src="../../Interface/Pixi/bin/pixi.js"></script><script type="text/javascript" src="../SkinRC/Polyg.js?R=2881034"></script></head><body><script type="text/javascript">
+	var Version=3;
+	var Rounds=new Array();
+	
+	var Chasse=new Array();
+	
+	Rounds[0]=new Array();
+	Rounds[0]["A"]=new Array();
+	Rounds[0]["D"]=new Array();
+	
+Rounds[0]["A"][1]=new Array();
+Rounds[0]["A"][1]["Pseudo"]="Sholpon-Ata";
+Rounds[0]["A"][1]["Eff"]="1";
+Rounds[0]["A"][1]["OfficierNiv"]="0";
+Rounds[0]["A"][1]["OfficierNivMax"]="0";
+Rounds[0]["A"][1]["OfficierNom"]="0";
+Rounds[0]["A"][1]["OfficierImg"]="0";
+Rounds[0]["A"][1]["OfficierType"]="0";
+Rounds[0]["A"][1]["PCom"]="39";
+Rounds[0]["A"][1]["PComMax"]="0";
+NomOP="328475369";
+Rounds[0]["D"][1]=new Array();
+Rounds[0]["D"][1]["Pseudo"]="FearNyx";
+Rounds[0]["D"][1]["Eff"]="1";
+Rounds[0]["D"][1]["OfficierNiv"]="0";
+Rounds[0]["D"][1]["OfficierNivMax"]="0";
+Rounds[0]["D"][1]["OfficierNom"]="0";
+Rounds[0]["D"][1]["OfficierImg"]="0";
+Rounds[0]["D"][1]["OfficierType"]="0";
+Rounds[0]["D"][1]["PCom"]="0";
+Rounds[0]["D"][1]["PComMax"]="0";
+
+	var VaisseauxRP=new Array();
+	VaisseauxRP["VD37-91794dfgk5"]="Le vaisseau Praexios emprunte son nom de l\'ingénieur thelios qui en l\'an 782 de l\'accélération finalisa les plans du prototype de croiseur de combat qui devait former les rangs de la flotte thelios.<br/><br/>Le Praexios est un croiseur, dont le rôle est de former le corps de toute flotte de guerre thelios. Long de 714 mètres, armé de douze lance missiles à cadence rapide, répartis sur les deux flancs, de douze batteries de torpilles à haute vitesse sur sa proue, et de plusieurs dizaines de canons laser et canons à plasma sur son corps, ce navire allie un design très facile à produire en série à un armement de dernière génération. Le Praexios a pour mission principale de cibler les croiseurs ennemis, afin de permettre aux bombardiers et chasseurs de contourner les tirs des puissantes batteries de ces vaisseaux.<br/><br/>Propulsé par des réacteurs disposés adéquatement le long de son fuselage, sa silhouette est calculée de façon à présenter le profil le plus réduit possible. Néanmoins, il est doté d\'un blindage résistant et transporte dans ses soutes ventrales jusqu\'à cinquante escadrons complets de chasseurs.<br/><br/>Comme la plupart des vaisseaux thelios, le Praexios est conçu pour correspondre le plus possible à l\'espace dans lequel il navigue, et par conséquent, sa coque est peinte d\'une couleur bleu nuit inaltérable, caractéristique.<br/><br/>Du fait de l\'absence d\'éléments de comparaison dans l\'accélération, l\'ingénieur Praexios ne put faire appel qu\'aux matériaux trouvés sur Thelios. Cependant, les vaisseaux Praexios de la génération actuelle ne présentent que très peu de nouveautés depuis la fin de l\'accélération: en effet, le Praexios présente un rapport efficacité/coût de production suffisamment élevé pour ne pas avoir nécessité un nombre très réduit d\'améliorations.";
+		VaisseauxRP["VD16-87820g2p59"]="Les ingénieurs de Tenebris, furent chargé de produire une version amélioré des précédentes corvettes militaires alors en usage : le Rorkh.<br/><br/>Les armes principales sont douze canons Gauss Narmak/Hugar-II anti-bombardier, il est doté aussi de lance-missiles Torus et de trente canons a photon pulsés adaptés au combat spatial. Ces corvettes de 311,75 mètres de long sont très économiques et simples de conceptions, le Rorkh est le croiseurs parfait pour les empires en voie de développement sans le pouvoir acquisitif des nations plus importantes.<br/><br/>Dans les armadas Melrehn, on dit que nul n\'est vraiment un officier avant d\'avoir été le capitaine d\'un Rorkh, car les conditions rustiques et la petite taille de la corvette endurcie les soldats d\'une manière qui ne peut être égalé que par un autre Rorkh.";
+		
+	Rounds[1]=new Array();
+	Rounds[1]["Events"]=new Array();
+	var event=0;
+	
+	Rounds[0]["Debut"]="<br/><br/>Combat dans un secteur interstellaire<br/><br/>Stratégie de l\'attaque : <span class=\"info1\"><span class=\"StyleOrange\">Coup de bélier V</span><span class=\"InfoBulle\">Coup de bélier V, <br/><br/>Les croiseurs en formation surchargent leurs armes pour une première salve destructrice. Les armes en surcharge seront alors moins efficaces pour les tirs suivants.<br/><br/><table class=\"TabStrategie\"><tr><td><table><tr><td>&nbsp</td></tr><tr><td>Chasseurs<br/>&nbsp</td></tr><tr><td>Bombardiers<br/>&nbsp</td></tr><tr><td>Croiseurs<br/>&nbsp</td></tr><tr><td>Porte-Nefs<br/>&nbsp</td></tr><tr><td>Autres<br/>&nbsp</td></tr></table></td><td><table><tr><td> Round 1 </td></tr><tr><td>Att : 100% <br>Str : 100% </td></tr><tr><td>Att : 100% <br>Str : 100% </td></tr><tr><td>Att : <span class=StyleGreen>150%</span> <br>Str : 100% </td></tr><tr><td>Att : 100% <br>Str : 100% </td></tr><tr><td>Att : 100% <br>Str : 100% </td></tr></table></td><td><table><tr><td> Round 2 </td></tr><tr><td>Att : 100% <br>Str : 100% </td></tr><tr><td>Att : 100% <br>Str : 100% </td></tr><tr><td>Att : <span class=StyleRed>50%</span> <br>Str : 100% </td></tr><tr><td>Att : 100% <br>Str : 100% </td></tr><tr><td>Att : 100% <br>Str : 100% </td></tr></table></td><td><table><tr><td> Round 3 </td></tr><tr><td>Att : 100% <br>Str : 100% </td></tr><tr><td>Att : 100% <br>Str : 100% </td></tr><tr><td>Att : 100% <br>Str : 100% </td></tr><tr><td>Att : 100% <br>Str : 100% </td></tr><tr><td>Att : 100% <br>Str : 100% </td></tr></table></td><td><table><tr><td> Round 4 </td></tr><tr><td>Att : 100% <br>Str : 100% </td></tr><tr><td>Att : 100% <br>Str : 100% </td></tr><tr><td>Att : 100% <br>Str : 100% </td></tr><tr><td>Att : 100% <br>Str : 100% </td></tr><tr><td>Att : 100% <br>Str : 100% </td></tr></table></td><td><table><tr><td> Round 5 </td></tr><tr><td>Att : 100% <br>Str : 100% </td></tr><tr><td>Att : 100% <br>Str : 100% </td></tr><tr><td>Att : 100% <br>Str : 100% </td></tr><tr><td>Att : 100% <br>Str : 100% </td></tr><tr><td>Att : 100% <br>Str : 100% </td></tr></table></td></tr></table></span></span><br/>Stratégie de la défense : <span class=\"info1\"><span class=\"StyleOrange\"></span><span class=\"InfoBulle\"></span></span>";
+	
+Rounds[1]["A"]=new Array();
+
+	Rounds[1]["A"][1]=new Array();
+	
+				Rounds[1]["A"][1]["VD37-91794dfgk5"]=new Array();
+				Rounds[1]["A"][1]["VD37-91794dfgk5"]["IMG"]="VD33_5";
+				Rounds[1]["A"][1]["VD37-91794dfgk5"]["Type"]="D";
+				Rounds[1]["A"][1]["VD37-91794dfgk5"]["Chassis"]="D3";
+				Rounds[1]["A"][1]["VD37-91794dfgk5"]["NbI"]="3";
+				Rounds[1]["A"][1]["VD37-91794dfgk5"]["Nb"]="3";
+				Rounds[1]["A"][1]["VD37-91794dfgk5"]["NbL"]="";
+				Rounds[1]["A"][1]["VD37-91794dfgk5"]["Deg"]="0";
+				Rounds[1]["A"][1]["VD37-91794dfgk5"]["Caracs"]="";
+				
+				Rounds[1]["A"][1]["VD37-91794dfgk5"]["Caracs"]="Croiseur Aconit<br/><br/>Etat : 100%<br/>Structure : 55,572,807 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Blindage AC : 0<br/>Blindage La : 0<br/>Blindage Pl : 0<br/>Blindage EM : 0<br/>Dégâts AC : 25,923,310 (<span style=\"color:white\">150%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts La : 0 (<span style=\"color:white\">150%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts Pl : 0 (<span style=\"color:white\">150%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts EM : 0 (<span style=\"color:white\">150%</span> <span class=\"StyleOrange\">100%</span>)<br/><br/>Type : Croiseur (exposition 100%)<br/>Chassis : Croiseur Escorteur (exposition 100%)<br/>Dégâts d\'exposition : +400%<br/>Cible : Croiseur";
+				
+if(!Chasse[1]){
+	Chasse[1]=new Array();
+}
+Chasse[1]["A"]=new Array();
+Chasse[1]["A"]["RCh1"]=0;
+Chasse[1]["A"]["RCh2"]=0;
+Chasse[1]["A"]["RCh3"]=0;
+Chasse[1]["A"]["OCh1"]=0;
+Chasse[1]["A"]["OCh2"]=70;
+Chasse[1]["A"]["OCh3"]=30;
+Chasse[1]["A"]["CoefChStr"]=100;
+Chasse[1]["A"]["CoefChCib"]=100;
+Chasse[1]["A"]["CoefChAtt"]=100;
+Chasse[1]["A"]["RCh"]=0;
+Chasse[1]["A"]["CoefCh"]=0;
+
+Rounds[1]["D"]=new Array();
+
+	Rounds[1]["D"][1]=new Array();
+	
+				Rounds[1]["D"][1]["VD16-87820g2p59"]=new Array();
+				Rounds[1]["D"][1]["VD16-87820g2p59"]["IMG"]="VD16";
+				Rounds[1]["D"][1]["VD16-87820g2p59"]["Type"]="D";
+				Rounds[1]["D"][1]["VD16-87820g2p59"]["Chassis"]="D1";
+				Rounds[1]["D"][1]["VD16-87820g2p59"]["NbI"]="1000";
+				Rounds[1]["D"][1]["VD16-87820g2p59"]["Nb"]="1000";
+				Rounds[1]["D"][1]["VD16-87820g2p59"]["NbL"]="";
+				Rounds[1]["D"][1]["VD16-87820g2p59"]["Deg"]="0";
+				Rounds[1]["D"][1]["VD16-87820g2p59"]["Caracs"]="";
+				
+				Rounds[1]["D"][1]["VD16-87820g2p59"]["Caracs"]="Rorkh**<br/><br/>Etat : 100%<br/>Structure : 415,565 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Blindage AC : 78,738<br/>Blindage La : 0<br/>Blindage Pl : 0<br/>Blindage EM : 0<br/>Dégâts AC : 87,122 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts La : 52,242 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts Pl : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts EM : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/><br/>Type : Croiseur (exposition 100%)<br/>Chassis : Corvette (exposition 100%)<br/>Dégâts d\'exposition : +400%<br/>Cible : Bombardier";
+				
+if(!Chasse[1]){
+	Chasse[1]=new Array();
+}
+Chasse[1]["D"]=new Array();
+Chasse[1]["D"]["RCh1"]=0;
+Chasse[1]["D"]["RCh2"]=0;
+Chasse[1]["D"]["RCh3"]=0;
+Chasse[1]["D"]["OCh1"]=30;
+Chasse[1]["D"]["OCh2"]=40;
+Chasse[1]["D"]["OCh3"]=30;
+Chasse[1]["D"]["CoefChStr"]=100;
+Chasse[1]["D"]["CoefChCib"]=100;
+Chasse[1]["D"]["CoefChAtt"]=100;
+Chasse[1]["D"]["RCh"]=0;
+Chasse[1]["D"]["CoefCh"]=0;
+
+	Rounds[1]["Events"][event]="<img src=\"../SkinRC/Events/Ballist.png\" class=\"IcoEv\"/> A cette distance, les tirs non ciblés ont un impact de 10% pour l\'attaque et 10% pour la défense<br/>";
+	event++;
+	
+Rounds[1]["Degats"]="<div class=\"Degats\"><b>La Flotte Attaquante tir avec une puissance de feu de <span class=\"StyleDegats\">155,539,858</span></b><div><i>(Tirs ciblés sur les <span class=\"StyleCible\">croiseurs</span> avec une puissance de <span class=\"StyleDegats\">AC 155,539,858, La 0, Pl 0, EM 0</span>)<br/><br/></i></div><b>La Defense tir avec une puissance de feu de <span class=\"StyleDegats\">12,159,460</span></b><div><i>(Tirs <span class=\"StyleCible\">non ciblés</span> avec une puissance de <span class=\"StyleDegats\">AC 7,601,382, La 4,558,078, Pl 0, EM 0</span>)<br/></i></div></div>";
+
+Rounds[1]["ZRC_A"]="0.21198461808057";
+Rounds[1]["ZRC_D"]="0.78801538191943";
+
+Rounds[1]["Str_A"]="0.286318194023";
+Rounds[1]["Str_D"]="0.713681805977";
+
+Rounds[1]["Att_A"]="0.92749249162081";
+Rounds[1]["Att_D"]="0.072507508379193";
+
+		Rounds[2]=new Array();
+		Rounds[2]["Events"]=new Array();
+		event=0;
+		
+Rounds[2]["A"]=new Array();
+
+	Rounds[2]["A"][1]=new Array();
+	
+				Rounds[2]["A"][1]["VD37-91794dfgk5"]=new Array();
+				Rounds[2]["A"][1]["VD37-91794dfgk5"]["IMG"]="VD33_5";
+				Rounds[2]["A"][1]["VD37-91794dfgk5"]["Type"]="D";
+				Rounds[2]["A"][1]["VD37-91794dfgk5"]["Chassis"]="D3";
+				Rounds[2]["A"][1]["VD37-91794dfgk5"]["NbI"]="3";
+				Rounds[2]["A"][1]["VD37-91794dfgk5"]["Nb"]="3";
+				Rounds[2]["A"][1]["VD37-91794dfgk5"]["NbL"]="3";
+				Rounds[2]["A"][1]["VD37-91794dfgk5"]["Deg"]="0.60290570286789";
+				Rounds[2]["A"][1]["VD37-91794dfgk5"]["Caracs"]="";
+				
+				Rounds[2]["A"][1]["VD37-91794dfgk5"]["Caracs"]="Croiseur Aconit<br/><br/>Etat : 79%<br/>Structure : 55,572,807 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Blindage AC : 0<br/>Blindage La : 0<br/>Blindage Pl : 0<br/>Blindage EM : 0<br/>Dégâts AC : 6,904,513 (<span style=\"color:white\">50%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts La : 0 (<span style=\"color:white\">50%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts Pl : 0 (<span style=\"color:white\">50%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts EM : 0 (<span style=\"color:white\">50%</span> <span class=\"StyleOrange\">100%</span>)<br/><br/>Type : Croiseur (exposition 100%)<br/>Chassis : Croiseur Escorteur (exposition 100%)<br/>Dégâts d\'exposition : +400%<br/>Cible : Croiseur";
+				
+if(!Chasse[2]){
+	Chasse[2]=new Array();
+}
+Chasse[2]["A"]=new Array();
+Chasse[2]["A"]["RCh1"]=0;
+Chasse[2]["A"]["RCh2"]=0;
+Chasse[2]["A"]["RCh3"]=0;
+Chasse[2]["A"]["OCh1"]=0;
+Chasse[2]["A"]["OCh2"]=70;
+Chasse[2]["A"]["OCh3"]=30;
+Chasse[2]["A"]["CoefChStr"]=100;
+Chasse[2]["A"]["CoefChCib"]=100;
+Chasse[2]["A"]["CoefChAtt"]=100;
+Chasse[2]["A"]["RCh"]=0;
+Chasse[2]["A"]["CoefCh"]=0;
+
+Rounds[2]["D"]=new Array();
+
+	Rounds[2]["D"][1]=new Array();
+	
+				Rounds[2]["D"][1]["VD16-87820g2p59"]=new Array();
+				Rounds[2]["D"][1]["VD16-87820g2p59"]["IMG"]="VD16";
+				Rounds[2]["D"][1]["VD16-87820g2p59"]["Type"]="D";
+				Rounds[2]["D"][1]["VD16-87820g2p59"]["Chassis"]="D1";
+				Rounds[2]["D"][1]["VD16-87820g2p59"]["NbI"]="1000";
+				Rounds[2]["D"][1]["VD16-87820g2p59"]["Nb"]="132";
+				Rounds[2]["D"][1]["VD16-87820g2p59"]["NbL"]="1000";
+				Rounds[2]["D"][1]["VD16-87820g2p59"]["Deg"]="0.73274109564465";
+				Rounds[2]["D"][1]["VD16-87820g2p59"]["Caracs"]="";
+				
+				Rounds[2]["D"][1]["VD16-87820g2p59"]["Caracs"]="Rorkh**<br/><br/>Etat : 99%<br/>Structure : 415,565 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Blindage AC : 78,300<br/>Blindage La : 0<br/>Blindage Pl : 0<br/>Blindage EM : 0<br/>Dégâts AC : 86,638 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts La : 51,952 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts Pl : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts EM : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/><br/>Type : Croiseur (exposition 100%)<br/>Chassis : Corvette (exposition 100%)<br/>Dégâts d\'exposition : +400%<br/>Cible : Bombardier";
+				
+if(!Chasse[2]){
+	Chasse[2]=new Array();
+}
+Chasse[2]["D"]=new Array();
+Chasse[2]["D"]["RCh1"]=0;
+Chasse[2]["D"]["RCh2"]=0;
+Chasse[2]["D"]["RCh3"]=0;
+Chasse[2]["D"]["OCh1"]=30;
+Chasse[2]["D"]["OCh2"]=39.99;
+Chasse[2]["D"]["OCh3"]=30;
+Chasse[2]["D"]["CoefChStr"]=100;
+Chasse[2]["D"]["CoefChCib"]=100;
+Chasse[2]["D"]["CoefChAtt"]=100;
+Chasse[2]["D"]["RCh"]=0;
+Chasse[2]["D"]["CoefCh"]=0;
+
+	Rounds[2]["Events"][event]="<img src=\"../SkinRC/Events/Ballist.png\" class=\"IcoEv\"/> A cette distance, les tirs non ciblés ont un impact de 20% pour l\'attaque et 20% pour la défense<br/>";
+	event++;
+	
+Rounds[2]["Degats"]="<div class=\"Degats\"><b>La Flotte Attaquante tir avec une puissance de feu de <span class=\"StyleDegats\">41,427,078</span></b><div><i>(Tirs ciblés sur les <span class=\"StyleCible\">croiseurs</span> avec une puissance de <span class=\"StyleDegats\">AC 41,427,078, La 0, Pl 0, EM 0</span>)<br/><br/></i></div><b>La Defense tir avec une puissance de feu de <span class=\"StyleDegats\">4,087,945</span></b><div><i>(Tirs <span class=\"StyleCible\">non ciblés</span> avec une puissance de <span class=\"StyleDegats\">AC 2,555,544, La 1,532,401, Pl 0, EM 0</span>)<br/></i></div></div>";
+
+Rounds[2]["ZRC_A"]="0.67083177654012";
+Rounds[2]["ZRC_D"]="0.32916822345988";
+
+Rounds[2]["Str_A"]="0.75243098791738";
+Rounds[2]["Str_D"]="0.24756901208262";
+
+Rounds[2]["Att_A"]="0.91018470923519";
+Rounds[2]["Att_D"]="0.089815290764807";
+
+		Rounds[3]=new Array();
+		Rounds[3]["Events"]=new Array();
+		event=0;
+		
+Rounds[3]["A"]=new Array();
+
+	Rounds[3]["A"][1]=new Array();
+	
+				Rounds[3]["A"][1]["VD37-91794dfgk5"]=new Array();
+				Rounds[3]["A"][1]["VD37-91794dfgk5"]["IMG"]="VD33_5";
+				Rounds[3]["A"][1]["VD37-91794dfgk5"]["Type"]="D";
+				Rounds[3]["A"][1]["VD37-91794dfgk5"]["Chassis"]="D3";
+				Rounds[3]["A"][1]["VD37-91794dfgk5"]["NbI"]="3";
+				Rounds[3]["A"][1]["VD37-91794dfgk5"]["Nb"]="3";
+				Rounds[3]["A"][1]["VD37-91794dfgk5"]["NbL"]="3";
+				Rounds[3]["A"][1]["VD37-91794dfgk5"]["Deg"]="0.8034226812529";
+				Rounds[3]["A"][1]["VD37-91794dfgk5"]["Caracs"]="";
+				
+				Rounds[3]["A"][1]["VD37-91794dfgk5"]["Caracs"]="Croiseur Aconit<br/><br/>Etat : 73%<br/>Structure : 55,572,807 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Blindage AC : 0<br/>Blindage La : 0<br/>Blindage Pl : 0<br/>Blindage EM : 0<br/>Dégâts AC : 12,653,901 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts La : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts Pl : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts EM : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/><br/>Type : Croiseur (exposition 100%)<br/>Chassis : Croiseur Escorteur (exposition 100%)<br/>Dégâts d\'exposition : +400%<br/>Cible : Croiseur";
+				
+if(!Chasse[3]){
+	Chasse[3]=new Array();
+}
+Chasse[3]["A"]=new Array();
+Chasse[3]["A"]["RCh1"]=0;
+Chasse[3]["A"]["RCh2"]=0;
+Chasse[3]["A"]["RCh3"]=0;
+Chasse[3]["A"]["OCh1"]=0;
+Chasse[3]["A"]["OCh2"]=70;
+Chasse[3]["A"]["OCh3"]=30;
+Chasse[3]["A"]["CoefChStr"]=100;
+Chasse[3]["A"]["CoefChCib"]=100;
+Chasse[3]["A"]["CoefChAtt"]=100;
+Chasse[3]["A"]["RCh"]=0;
+Chasse[3]["A"]["CoefCh"]=0;
+
+Rounds[3]["D"]=new Array();
+
+	Rounds[3]["D"][1]=new Array();
+	
+				Rounds[3]["D"][1]["VD16-87820g2p59"]=new Array();
+				Rounds[3]["D"][1]["VD16-87820g2p59"]["IMG"]="VD16";
+				Rounds[3]["D"][1]["VD16-87820g2p59"]["Type"]="D";
+				Rounds[3]["D"][1]["VD16-87820g2p59"]["Chassis"]="D1";
+				Rounds[3]["D"][1]["VD16-87820g2p59"]["NbI"]="1000";
+				Rounds[3]["D"][1]["VD16-87820g2p59"]["Nb"]="0";
+				Rounds[3]["D"][1]["VD16-87820g2p59"]["NbL"]="132";
+				Rounds[3]["D"][1]["VD16-87820g2p59"]["Deg"]="0";
+				Rounds[3]["D"][1]["VD16-87820g2p59"]["Caracs"]="";
+				
+if(!Chasse[3]){
+	Chasse[3]=new Array();
+}
+Chasse[3]["D"]=new Array();
+Chasse[3]["D"]["RCh1"]=0;
+Chasse[3]["D"]["RCh2"]=0;
+Chasse[3]["D"]["RCh3"]=0;
+Chasse[3]["D"]["OCh1"]=0;
+Chasse[3]["D"]["OCh2"]=0;
+Chasse[3]["D"]["OCh3"]=0;
+Chasse[3]["D"]["CoefChStr"]=100;
+Chasse[3]["D"]["CoefChCib"]=100;
+Chasse[3]["D"]["CoefChAtt"]=100;
+Chasse[3]["D"]["RCh"]=0;
+Chasse[3]["D"]["CoefCh"]=100;
+
+			Rounds[3]["Events"][event]="<img src=\"../SkinRC/Events/Pertes.png\" class=\"IcoEv\"/> <span style=\"color:red;\">Fin du combat : Si des vaisseaux sont trop emdommagés, ils subissent des avaries fatales.</span><br/>";
+			event++;
+			
+Rounds[3]["Degats"]="<div class=\"Degats\"><b>La Flotte Attaquante tir avec une puissance de feu de <span class=\"StyleDegats\">0</span></b><div><i><br/></i></div><b>La Defense tir avec une puissance de feu de <span class=\"StyleDegats\">0</span></b><div><i></i></div></div>";
+
+Rounds[3]["ZRC_A"]="1";
+Rounds[3]["ZRC_D"]="0";
+
+Rounds[3]["Str_A"]="1";
+Rounds[3]["Str_D"]="0";
+
+Rounds[3]["Att_A"]="";
+Rounds[3]["Att_D"]="";
+
+		Rounds[4]=new Array();
+		Rounds[4]["Events"]=new Array();
+		event=0;
+		
+Rounds[4]["A"]=new Array();
+
+	Rounds[4]["A"][1]=new Array();
+	
+				Rounds[4]["A"][1]["VD37-91794dfgk5"]=new Array();
+				Rounds[4]["A"][1]["VD37-91794dfgk5"]["IMG"]="VD33_5";
+				Rounds[4]["A"][1]["VD37-91794dfgk5"]["Type"]="D";
+				Rounds[4]["A"][1]["VD37-91794dfgk5"]["Chassis"]="D3";
+				Rounds[4]["A"][1]["VD37-91794dfgk5"]["NbI"]="3";
+				Rounds[4]["A"][1]["VD37-91794dfgk5"]["Nb"]="3";
+				Rounds[4]["A"][1]["VD37-91794dfgk5"]["NbL"]="3";
+				Rounds[4]["A"][1]["VD37-91794dfgk5"]["Deg"]="0.8034226812529";
+				Rounds[4]["A"][1]["VD37-91794dfgk5"]["Caracs"]="";
+				
+				Rounds[4]["A"][1]["VD37-91794dfgk5"]["Caracs"]="Croiseur Aconit<br/><br/>Etat : 73%<br/>Structure : 55,572,807 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Blindage AC : 0<br/>Blindage La : 0<br/>Blindage Pl : 0<br/>Blindage EM : 0<br/>Dégâts AC : 12,653,901 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts La : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts Pl : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts EM : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/><br/>Type : Croiseur (exposition 100%)<br/>Chassis : Croiseur Escorteur (exposition 100%)<br/>Dégâts d\'exposition : +400%<br/>Cible : Croiseur";
+				
+if(!Chasse[4]){
+	Chasse[4]=new Array();
+}
+Chasse[4]["A"]=new Array();
+Chasse[4]["A"]["RCh1"]=0;
+Chasse[4]["A"]["RCh2"]=0;
+Chasse[4]["A"]["RCh3"]=0;
+Chasse[4]["A"]["OCh1"]=0;
+Chasse[4]["A"]["OCh2"]=70;
+Chasse[4]["A"]["OCh3"]=30;
+Chasse[4]["A"]["CoefChStr"]=100;
+Chasse[4]["A"]["CoefChCib"]=100;
+Chasse[4]["A"]["CoefChAtt"]=100;
+Chasse[4]["A"]["RCh"]=0;
+Chasse[4]["A"]["CoefCh"]=0;
+
+Rounds[4]["D"]=new Array();
+
+	Rounds[4]["D"][1]=new Array();
+	
+				Rounds[4]["D"][1]["VD16-87820g2p59"]=new Array();
+				Rounds[4]["D"][1]["VD16-87820g2p59"]["IMG"]="VD16";
+				Rounds[4]["D"][1]["VD16-87820g2p59"]["Type"]="D";
+				Rounds[4]["D"][1]["VD16-87820g2p59"]["Chassis"]="D1";
+				Rounds[4]["D"][1]["VD16-87820g2p59"]["NbI"]="1000";
+				Rounds[4]["D"][1]["VD16-87820g2p59"]["Nb"]="0";
+				Rounds[4]["D"][1]["VD16-87820g2p59"]["NbL"]="0";
+				Rounds[4]["D"][1]["VD16-87820g2p59"]["Deg"]="0";
+				Rounds[4]["D"][1]["VD16-87820g2p59"]["Caracs"]="";
+				
+if(!Chasse[4]){
+	Chasse[4]=new Array();
+}
+Chasse[4]["D"]=new Array();
+Chasse[4]["D"]["RCh1"]=0;
+Chasse[4]["D"]["RCh2"]=0;
+Chasse[4]["D"]["RCh3"]=0;
+Chasse[4]["D"]["OCh1"]=0;
+Chasse[4]["D"]["OCh2"]=0;
+Chasse[4]["D"]["OCh3"]=0;
+Chasse[4]["D"]["CoefChStr"]=100;
+Chasse[4]["D"]["CoefChCib"]=100;
+Chasse[4]["D"]["CoefChAtt"]=100;
+Chasse[4]["D"]["RCh"]=0;
+Chasse[4]["D"]["CoefCh"]=100;
+
+	Rounds[4]["Events"][event]="<img src=\"../SkinRC/Events/VictAtt.png\" class=\"IcoEv\"/> Victoire de l\'attaquant !<br/> Il remporte <span class=\"StyleRes\">0</span> <div class=\"IcoResM\"></div>, <span class=\"StyleRes\">0</span> <div class=\"IcoResT\"></div> et <span class=\"StyleRes\">0</span> <div class=\"IcoResP\"></div>.<br/>";
+	event++;
+	
+	Rounds[4]["ZRC_A"]="1";
+	Rounds[4]["ZRC_D"]="0";
+	
+	Rounds[4]["Str_A"]="1";
+	Rounds[4]["Str_D"]="0";
+	
+	Rounds[4]["Att_A"]="1";
+	Rounds[4]["Att_D"]="0";
+	
+	Rounds[4]["Events"][event]="<img src=\"../SkinRC/Events/Pertes.png\" class=\"IcoEv\"/> Détail des pertes <i><br/>Attaquants :<br/>----><span class=\"StyleGreen\">Sholpon-Ata</span>(100% <div class=\"IcoPrest\"></div>) a perdu : <br/> &nbsp &nbsp &nbsp &nbsp <span class=\"StyleOrange\">0</span> Vaisseaux<br/><br/>Defenseurs :<br/>----><span class=\"StyleGreen\">FearNyx</span>(100% <div class=\"IcoPrest\"></div>) a perdu : <br/> &nbsp &nbsp &nbsp &nbsp <span class=\"StyleOrange\">1,000</span> Vaisseaux<br/></i>";
+	event++;
+	
+	Rounds[4]["Events"][100]="<table><tr><td>0 <div class=\"IcoPrest\"><br/></div> dont bonus ND : 0%<br/></td><td><img src=\"../SkinRC/Factions/IcoF7.png\"/> <img src=\"../SkinRC/Factions/Diplo0.png\"/> <img src=\"../SkinRC/Factions/IcoF5.png\"/></td><td>0 <div class=\"IcoPrest\"></div><br/> dont bonus ND : 0% <br/></td></tr></table>";
+	
+Rounds[4]["Events"][event]="<img src=\"../SkinRC/Events/XP.png\" class=\"IcoEv\"/> XP Attaquant : <span class=\"StyleRed\">74</span><br/>XP Défenseur : <span class=\"StyleRed\">9</span><i><br/>Ampleur du combat : <span class=\"StyleOrange\">14.85</span><br/>Rentabilité Attaquant : <span class=\"StyleOrange\">5</span><br/>Rentabilité Défenseur : <span class=\"StyleOrange\">0.61</span></i>";
+event++;
+
+Rounds[4]["Events"][event]="<img src=\"../SkinRC/Events/CdR.png\" class=\"IcoEv\"/> La Bataille a généré un champ de ruine de <span class=\"StyleRes\">7,415,000,000</span> <div class=\"IcoResM\"></div> et <span class=\"StyleRes\">2,010,892,500</span> <div class=\"IcoResT\"></div><br/> ";
+event++;
+</script><table class="Page"><tr><td id="Page">Date : 34 Dolahn(6) de l'an 20,400 TSU (08/11/25 15:01:29)<br/></td></tr></table><script type="text/javascript">Rounds[0]["Date"]="Date : 34 Dolahn(6) de l'an 20,400 TSU (08/11/25 15:01:29)";RCplayer();</script></body></html>

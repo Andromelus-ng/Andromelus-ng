@@ -1,0 +1,1665 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"/><link rel="stylesheet" media="screen" type="text/css" title="Celestus V2.0" href="../SkinRC/DesignV3.css?V=24284883"/><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><script type="text/javascript" src="../SkinRC/RCplayer.js?R=9409021"></script><script type="text/javascript" src="../../Interface/Pixi/bin/pixi.js"></script><script type="text/javascript" src="../SkinRC/Polyg.js?R=5020664"></script></head><body><script type="text/javascript">
+	var Version=3;
+	var Rounds=new Array();
+	
+	var Chasse=new Array();
+	
+	Rounds[0]=new Array();
+	Rounds[0]["A"]=new Array();
+	Rounds[0]["D"]=new Array();
+	
+Rounds[0]["A"][1]=new Array();
+Rounds[0]["A"][1]["Pseudo"]="Cartel de Canardtopia";
+Rounds[0]["A"][1]["Eff"]="1";
+Rounds[0]["A"][1]["OfficierNiv"]="60";
+Rounds[0]["A"][1]["OfficierNivMax"]="60";
+Rounds[0]["A"][1]["OfficierNom"]="Mainace";
+Rounds[0]["A"][1]["OfficierImg"]="Off1";
+Rounds[0]["A"][1]["OfficierType"]="Emp";
+Rounds[0]["A"][1]["PCom"]="54826";
+Rounds[0]["A"][1]["PComMax"]="Emp";
+NomOP="328464632";
+Rounds[0]["D"][1]=new Array();
+Rounds[0]["D"][1]["Pseudo"]="Nounours";
+Rounds[0]["D"][1]["Eff"]="1";
+Rounds[0]["D"][1]["OfficierNiv"]="0";
+Rounds[0]["D"][1]["OfficierNivMax"]="0";
+Rounds[0]["D"][1]["OfficierNom"]="0";
+Rounds[0]["D"][1]["OfficierImg"]="0";
+Rounds[0]["D"][1]["OfficierType"]="0";
+Rounds[0]["D"][1]["PCom"]="0";
+Rounds[0]["D"][1]["PComMax"]="0";
+
+	var VaisseauxRP=new Array();
+	VaisseauxRP["VA37-92815w61vb"]="Le Theryon est la réponse apportée par l\'ingénierie spatiale thelios aux croiseurs.<br/>Soutien essentiel du croiseur Thelios Praexios, le Theryon est un chasseur de combat lourd armé de lance torpilles et canons plasma améliorés. Son armement fait de lui un ennemi naturel des croiseurs ennemis, mais sa lenteur de déplacement lors d\'un combat spatial en fait une proie de choix pour les chasseurs d\'interception ennemis.<br/><br/>Le Theryon dispose d\'un blindage renforcé et d\'une énorme capacité destructrice, mais il nécessite la couverture de vaisseaux anti-chasseurs tels que le Thrynios pour pouvoir déployer toute l\'étendue de son armement destructeur.<br/><br/>Le profil du Theryon a été conçu afin de lui garantir une stabilité de tir impeccable. Frontalement armé de 8 lance-torpilles lourdes, et disposant d\'une série de mitrailleuses plasma, le Theryon est un vaisseau dont le coût n\'est pas à prendre à la légère, puisque deux escadrons complets de Theryon coûtent à peu de choses près le prix d\'un Adastra, de classe corvette.<br/><br/>Bien utilisé par un amiral de flotte, le chasseur lourd Theryon est un moyen intelligent pour détruire totalement les vaisseaux de classe croiseur adverses sans subir de trop lourdes pertes dans les rangs de ses propres croiseurs.";
+		VaisseauxRP["VA27"]="L\'intercepteur de combat Thrynios est la deuxième génération de chasseurs, qui fait immédiatement suite aux premières constatations militaires de la nation thelios durant l\'accélération.<br/><br/>Ayant, à l\'époque, une connaissance rudimentaire des forces extra-thelios de par l\'invasion dont avait été victime la planète Thelios avant l\'accélération, le besoin d\'un vaisseau de combat adapté à la lutte anti-chasseurs a rapidement vu le jour. C\'est la raison qui pousse un ingénieur de renom, Preaxios l\'ancien, à inventer un chasseur capable d\'intercepter les chasseurs adverses et de les détruire.<br/><br/>Le Thrynios est ce vaisseau. Doté d\'une mobilité parfaite, grâce à ses moteurs disposés sur l\'ensemble de son fuselage et d\'un armement supérieur à celui de n\'importe quel vaisseau de combat léger, cet intercepteur est l\'outil parfait pour stopper la chasse adverse.<br/><br/>Ses ordinateurs de combat assurent que ses multiples lance-missiles, lance-torpilles et canons laser puissent acquérir des cibles aussi véloces que les chasseurs adverses.<br/><br/>Évidemment, une telle puissance de combat s\'accompagne d\'un prix élevé en tritium. Son entretien est également très difficile, comparativement, parce que de tels moteurs sont souvent soumis à des poussées subites, qui sont propices à des pannes.";
+		VaisseauxRP["VA37"]="Le Theryon est la réponse apportée par l\'ingénierie spatiale thelios aux croiseurs.<br/>Soutien essentiel du croiseur Thelios Praexios, le Theryon est un chasseur de combat lourd armé de lance torpilles et canons plasma améliorés. Son armement fait de lui un ennemi naturel des croiseurs ennemis, mais sa lenteur de déplacement lors d\'un combat spatial en fait une proie de choix pour les chasseurs d\'interception ennemis.<br/><br/>Le Theryon dispose d\'un blindage renforcé et d\'une énorme capacité destructrice, mais il nécessite la couverture de vaisseaux anti-chasseurs tels que le Thrynios pour pouvoir déployer toute l\'étendue de son armement destructeur.<br/><br/>Le profil du Theryon a été conçu afin de lui garantir une stabilité de tir impeccable. Frontalement armé de 8 lance-torpilles lourdes, et disposant d\'une série de mitrailleuses plasma, le Theryon est un vaisseau dont le coût n\'est pas à prendre à la légère, puisque deux escadrons complets de Theryon coûtent à peu de choses près le prix d\'un Adastra, de classe corvette.<br/><br/>Bien utilisé par un amiral de flotte, le chasseur lourd Theryon est un moyen intelligent pour détruire totalement les vaisseaux de classe croiseur adverses sans subir de trop lourdes pertes dans les rangs de ses propres croiseurs.";
+		VaisseauxRP["VA37-88352rb0k9"]="Le Theryon est la réponse apportée par l\'ingénierie spatiale thelios aux croiseurs.<br/>Soutien essentiel du croiseur Thelios Praexios, le Theryon est un chasseur de combat lourd armé de lance torpilles et canons plasma améliorés. Son armement fait de lui un ennemi naturel des croiseurs ennemis, mais sa lenteur de déplacement lors d\'un combat spatial en fait une proie de choix pour les chasseurs d\'interception ennemis.<br/><br/>Le Theryon dispose d\'un blindage renforcé et d\'une énorme capacité destructrice, mais il nécessite la couverture de vaisseaux anti-chasseurs tels que le Thrynios pour pouvoir déployer toute l\'étendue de son armement destructeur.<br/><br/>Le profil du Theryon a été conçu afin de lui garantir une stabilité de tir impeccable. Frontalement armé de 8 lance-torpilles lourdes, et disposant d\'une série de mitrailleuses plasma, le Theryon est un vaisseau dont le coût n\'est pas à prendre à la légère, puisque deux escadrons complets de Theryon coûtent à peu de choses près le prix d\'un Adastra, de classe corvette.<br/><br/>Bien utilisé par un amiral de flotte, le chasseur lourd Theryon est un moyen intelligent pour détruire totalement les vaisseaux de classe croiseur adverses sans subir de trop lourdes pertes dans les rangs de ses propres croiseurs.";
+		VaisseauxRP["VA27-91980xkd6z"]="L\'intercepteur de combat Thrynios est la deuxième génération de chasseurs, qui fait immédiatement suite aux premières constatations militaires de la nation thelios durant l\'accélération.<br/><br/>Ayant, à l\'époque, une connaissance rudimentaire des forces extra-thelios de par l\'invasion dont avait été victime la planète Thelios avant l\'accélération, le besoin d\'un vaisseau de combat adapté à la lutte anti-chasseurs a rapidement vu le jour. C\'est la raison qui pousse un ingénieur de renom, Preaxios l\'ancien, à inventer un chasseur capable d\'intercepter les chasseurs adverses et de les détruire.<br/><br/>Le Thrynios est ce vaisseau. Doté d\'une mobilité parfaite, grâce à ses moteurs disposés sur l\'ensemble de son fuselage et d\'un armement supérieur à celui de n\'importe quel vaisseau de combat léger, cet intercepteur est l\'outil parfait pour stopper la chasse adverse.<br/><br/>Ses ordinateurs de combat assurent que ses multiples lance-missiles, lance-torpilles et canons laser puissent acquérir des cibles aussi véloces que les chasseurs adverses.<br/><br/>Évidemment, une telle puissance de combat s\'accompagne d\'un prix élevé en tritium. Son entretien est également très difficile, comparativement, parce que de tels moteurs sont souvent soumis à des poussées subites, qui sont propices à des pannes.";
+		VaisseauxRP["VA17-92972x96bv"]="Le chasseur de combat Thyos est le premier chasseur spatial thelios jamais produit. Long de 8,26 mètres, propulsé par 3 séries de réacteurs, il embarque un armement léger. A l\'origine de sa conception, il était conçu pour la protection des convois spatiaux contre les pirates.<br/><br/>Cette raison explique pourquoi, contrairement aux vaisseaux plus évolués, le Thyos n\'a pas été conçu spécifiquement pour la lutte contre d\'autres vaisseaux spatiaux.<br/><br/>Malgré cette lacune évidente, c\'est un vaisseau utile à la flotte thelios: très bon marché, de conception minimaliste, il n\'exige de son pilote qu\'une connaissance basique des techniques de vol et peut donc être affrété en énormes quantités, très rapidement.<br/>Il s\'agit d\'un vaisseau qui a dû faire face à l\'évolution des techniques et des connaissances.<br/><br/>Malgré cela, le Thyos est un vaisseau qui présente un énorme intérêt: du fait de son coût très faible, il peut être rapidement produit en des quantités effrayantes.";
+		VaisseauxRP["VA0"]="Les besoins en énergie augmentent de façon considérables sur les planètes, surtout si elles ont besoin de produire des photopiles. Malheureusement le coût de centrales de plus en plus performantes augmente de façon vertigineuse. Pratique à bien des égards, le satellite solaire est un bon compromis entre son coût et ses avantages. Etant de petite taille, les satellites doivent être transportés par portenefs pour être déplacés.";
+		VaisseauxRP["VD67-93339uizjt"]="Sauvée pour un temps de la domination malsaine du Duc Detronian par l\'activation de sa sphère d\'accélération, la jeune Thélios savait toutefois que son oppresseur aurait tôt fait de revenir une fois la situation revenue à la normale. Profitant de ce répit, la prometteuse nation développa ses capacités militaires et fonda la Flotte Fédérale pour protéger ses quelques possessions territoriales et asseoir son indépendance.<br/>Face à la menace des croiseurs Ducaux, les savants Thélios mirent au point un modèle de combat rapide et puissant à même de couvrir les convois expéditionnaires qui ne manqueraient pas d\'être envoyés à travers la galaxie par leur peuple une fois l\'accélération terminée.<br/>Équipé de nombreuses batteries laser et plasma réparties tout autour de sa coque, l\'appareil est capable de faire feu dans toutes les directions, remplissant à la perfection son rôle d\'escorteur lourd.<br/>L\'Æsumbra, ainsi nommé pour sa capacité à s\'immiscer rapidement dans les rangs de croiseurs adverses pour les noyer sous un bombardement intensif ne leur laissant pas le temps de réagir, compte parmi les vaisseaux les plus rapides et les plus agiles de la Flotte Thélios, et ce grâce à l\'ajout de réacteurs d’appoint tout à fait remarquables sur ses flans. Ces derniers, bien que fragiles, confèrent au Bombardier Fédéral une vitesse impressionnante et une capacité à se faufiler avec une souplesse inédite entre les rangs de l\'ennemi, ombre métallique changeant de direction avec une telle célérité qu\'il est bien souvent impossible de la verrouiller ou de la suivre avec des vaisseaux de tonnage équivalent.";
+		VaisseauxRP["M7"]="Les Planètes habitables sont rares dans l\'univers, surtout celles qui ont de grandes productions de ressources. Il existe une solution : le Terraformeur. C\'est une gigantesque machine qui va transformer par un processus lent une planète tellurique en planète habitable. Le Terraformeur n\'est pas à usage unique comme le module de colonisation. Une fois la terraformation effectuée, il peut être réutilisé sur un autre monde. Chaque terraformation vous coûtera 4 photopiles pour réactiver le coeur de la planète. Le processus étant lent et l\'installation coûteuse, il est important de protéger le Terraformeur, à la fin d\'un combat, 60% seront réparés. A plus haut niveau de Terraformation, il est aussi possible de créer des géantes de gaz et de modifier les coefficients planétaires. Une terraformation dure 5 années TSU.";
+		VaisseauxRP["VX13"]="La Guilde des protecteurs a réalisé ce que beaucoup espéraient : une version mobile du canon plasma orbital. La principale difficulté a été de permettre une alimentation stable en énergie pour cette arme imposante loin des stations d\'alimentation en photopiles trouvées sur les colonies. La source d\'énergie utilisée pour compenser les photopiles utilisées en temps normal reste un secret jalousement gardé par la guilde, toujours est il qu\'elle n\'est fiable qu\'à 50%. Si vous disposez de N canons plasma mobiles, le nombre de rangs activés à chaque tour de combat sera un nombre aléatoire compris entre 0 et la racine carrée de N. Pour une unique utilisation, ce module ne vaut pas les rangs de plasmas fixes, il peut cependant être un appui supplémentaire indispensable. Sa rentabilité se fait sur la durée puisque ce dernier dispose de 30% de chances de se reconstruire après un combat. Cette arme défensive n\'est utilisable, comme son nom l\'indique, que du côté défensif puisqu\'elle a besoin d\'être installée et préparée sur place avant un combat.";
+		VaisseauxRP["VX14"]="Les drones de combat sont des armes redoutables contre les chasseurs dans les combats en orbite des grosses planètes. La question s\'est alors posée : comment amener cette énorme force de frappe dans les combats qui font rage dans les profondeurs de l\'espace, loin des mondes habités ? La Guilde des protecteurs a trouvé la solution : des stations de drones mises en orbite. Ces stations en arc de cercle sont des usines de drones capables de refaire leurs stocks entre les batailles de façon autonomes. Lors des combats, elles tirent et guident de drones sur les chasseurs adverses. De même que pour les canons plasmas mobiles, la source d\'énergie utilisée reste un secret de la guilde et n\'est fiable qu\'à 50%, ainsi si vous disposez de N canons plasma mobiles, le nombre de rangs activés à chaque tour de combat sera un nombre aléatoire compris entre 0 et la racine carrée de N. De même que tout autre module, les stations de drones ont 30% de chances d\'être réparées à la fin d\'un combat.";
+		VaisseauxRP["M1T"]="L\'extracteur tellurique fut un tel succès que la Guilde des Explorateurs chercha à réitérer l\'exploit en se penchant, cette fois, sur les géantes gazeuses – dite \"Joviennes\". Un problème quelque peu évident se posa tout de suite : comment construire une base lorsque la planète ciblée n\'a pas de surface accessible ?<br/>Mettant à profit leurs siècles d\'études sur les atmosphères planétaires, les explorateurs conçurent en réponse une vaste station destinée à se mouvoir sur une orbite suffisamment basse pour pénétrer les premières couches gazeuses. Cette structure arachnéenne écope des millions de mètres cubes de gaz à chaque seconde, séparant le précieux tritium des isotopes standards de l\'hydrogène. Mais là où les basiques modules miniers rejettent ces excédents, cet Extracteur Jovien utilise l\'hydrogène Un et le deutérium récoltés dans une réaction de fusion à plusieurs étages ayant comme finalité la production d\'encore plus de tritium. Tout comme son cousin tellurique, ce bâtiment est une véritable ville spatiale où se regroupent nombre d\'ouvriers et contremaîtres dans des conditions proches de la vie coloniale.<br/><br/><br/><br/>Plus efficace et moins onéreux à l\'entretien que le module minier de base, l\'Extracteur Jovien exigera cependant un investissement initial plus important à son propriétaire du fait de son haut degré de perfectionnement, en contrepartie de rendements en tritium supérieurs.";
+		VaisseauxRP["M4"]="La production de photopile est l\'un des plus grands enjeux de cet univers, la domination de cette ressource permet d\'accomplir de grandes choses sur le plan militaire et technologique. Cependant, leur création est souvent très longue et coûteuse sur les colonies puisque souvent trop loin de l\'étoile du système. La solution d\'une usine de production mobile est alors apparue, en effet, on peut les placer près des étoiles et même aller chercher des étoiles plus énergétiques comme les géantes bleues ou plus rares, les pulsars et grands trous noirs (qui dégagent une énergie autre que photonique). Il faut savoir que si la production d\'une photopile est interrompue par le déplacement du module, la photopile en question repartira de 0 lors de l\'arrivée du module à la nouvelle destination. A la fin d\'un combat, 60% des concentrateurs seront réparés.";
+		VaisseauxRP["VX11-852153a4kd"]="Passés maîtres dans l\'art de transporter troupes et ressources, la Guilde du transport spatial a mis au points un prodige technologique : la Meta transporteur MKII. Véritable géant de métal, ce vaisseau civil dispose d\'une capacité de transport extrêmement élevée, de plus bien qu\'étant légèrement plus faible, sa vitesse est souvent comparée à celle de l\'intercepteur et pour cause, près du tiers de la masse totale est composée de propulseurs. Il dispose aussi d\'une défense minime qui le protègent des agresseurs les plus faibles désirant profiter de vos ressources durement acquises pour leur compte personnel.";
+		
+	Rounds[1]=new Array();
+	Rounds[1]["Events"]=new Array();
+	var event=0;
+	
+	Rounds[0]["Debut"]="<br/><br/>Combat sur la Planète (26:37:10:0)<br/><br/>Stratégie de l\'attaque : <span class=\"info1\"><span class=\"StyleOrange\"></span><span class=\"InfoBulle\"></span></span><br/>Stratégie de la défense : <span class=\"info1\"><span class=\"StyleOrange\">Defaut</span><span class=\"InfoBulle\">Defaut, <br/><br/>Rien de particulier, tout se passe comme d\'habitude.<br/><br/><table class=\"TabStrategie\"><tr><td><table><tr><td>&nbsp</td></tr><tr><td>Chasseurs<br/>&nbsp</td></tr><tr><td>Bombardiers<br/>&nbsp</td></tr><tr><td>Croiseurs<br/>&nbsp</td></tr><tr><td>Porte-Nefs<br/>&nbsp</td></tr><tr><td>Autres<br/>&nbsp</td></tr></table></td><td><table><tr><td> Round 1 </td></tr><tr><td>Att : 100% <br>Str : 100% </td></tr><tr><td>Att : 100% <br>Str : 100% </td></tr><tr><td>Att : 100% <br>Str : 100% </td></tr><tr><td>Att : 100% <br>Str : 100% </td></tr><tr><td>Att : 100% <br>Str : 100% </td></tr></table></td><td><table><tr><td> Round 2 </td></tr><tr><td>Att : 100% <br>Str : 100% </td></tr><tr><td>Att : 100% <br>Str : 100% </td></tr><tr><td>Att : 100% <br>Str : 100% </td></tr><tr><td>Att : 100% <br>Str : 100% </td></tr><tr><td>Att : 100% <br>Str : 100% </td></tr></table></td><td><table><tr><td> Round 3 </td></tr><tr><td>Att : 100% <br>Str : 100% </td></tr><tr><td>Att : 100% <br>Str : 100% </td></tr><tr><td>Att : 100% <br>Str : 100% </td></tr><tr><td>Att : 100% <br>Str : 100% </td></tr><tr><td>Att : 100% <br>Str : 100% </td></tr></table></td><td><table><tr><td> Round 4 </td></tr><tr><td>Att : 100% <br>Str : 100% </td></tr><tr><td>Att : 100% <br>Str : 100% </td></tr><tr><td>Att : 100% <br>Str : 100% </td></tr><tr><td>Att : 100% <br>Str : 100% </td></tr><tr><td>Att : 100% <br>Str : 100% </td></tr></table></td><td><table><tr><td> Round 5 </td></tr><tr><td>Att : 100% <br>Str : 100% </td></tr><tr><td>Att : 100% <br>Str : 100% </td></tr><tr><td>Att : 100% <br>Str : 100% </td></tr><tr><td>Att : 100% <br>Str : 100% </td></tr><tr><td>Att : 100% <br>Str : 100% </td></tr></table></td></tr></table></span></span>";
+	
+Rounds[1]["A"]=new Array();
+
+	Rounds[1]["A"][1]=new Array();
+	
+				Rounds[1]["A"][1]["VA37-92815w61vb"]=new Array();
+				Rounds[1]["A"][1]["VA37-92815w61vb"]["IMG"]="VA32_6";
+				Rounds[1]["A"][1]["VA37-92815w61vb"]["Type"]="A";
+				Rounds[1]["A"][1]["VA37-92815w61vb"]["Chassis"]="A3";
+				Rounds[1]["A"][1]["VA37-92815w61vb"]["NbI"]="150";
+				Rounds[1]["A"][1]["VA37-92815w61vb"]["Nb"]="150";
+				Rounds[1]["A"][1]["VA37-92815w61vb"]["NbL"]="";
+				Rounds[1]["A"][1]["VA37-92815w61vb"]["Deg"]="0";
+				Rounds[1]["A"][1]["VA37-92815w61vb"]["Caracs"]="";
+				
+				Rounds[1]["A"][1]["VA37-92815w61vb"]["Caracs"]="Theryon**<br/><br/>Etat : 100%<br/>Structure : 25,163 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">122.56%</span>)<br/>Blindage AC : 0<br/>Blindage La : 0<br/>Blindage Pl : 0<br/>Blindage EM : 0<br/>Dégâts AC : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">97.97%</span>)<br/>Dégâts La : 4,594 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">97.97%</span>)<br/>Dégâts Pl : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">97.97%</span>)<br/>Dégâts EM : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">97.97%</span>)<br/><br/>Type : Chasseur (exposition 0.14%)<br/>Chassis : Chasseur d\'Assaut (exposition 0.04%)<br/>Dégâts d\'exposition : +0%<br/>Cible : Croiseur";
+				
+				Rounds[1]["A"][1]["VA27"]=new Array();
+				Rounds[1]["A"][1]["VA27"]["IMG"]="VA27";
+				Rounds[1]["A"][1]["VA27"]["Type"]="A";
+				Rounds[1]["A"][1]["VA27"]["Chassis"]="A2";
+				Rounds[1]["A"][1]["VA27"]["NbI"]="211";
+				Rounds[1]["A"][1]["VA27"]["Nb"]="211";
+				Rounds[1]["A"][1]["VA27"]["NbL"]="";
+				Rounds[1]["A"][1]["VA27"]["Deg"]="0";
+				Rounds[1]["A"][1]["VA27"]["Caracs"]="";
+				
+				Rounds[1]["A"][1]["VA27"]["Caracs"]="Thrynios<br/><br/>Etat : 100%<br/>Structure : 16,088 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">122.56%</span>)<br/>Blindage AC : 0<br/>Blindage La : 0<br/>Blindage Pl : 0<br/>Blindage EM : 0<br/>Dégâts AC : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">97.97%</span>)<br/>Dégâts La : 10,106 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">97.97%</span>)<br/>Dégâts Pl : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">97.97%</span>)<br/>Dégâts EM : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">97.97%</span>)<br/><br/>Type : Chasseur (exposition 0.14%)<br/>Chassis : Chasseur Intercepteur (exposition 0.01%)<br/>Dégâts d\'exposition : +0%<br/>Cible : Chasseur";
+				
+				Rounds[1]["A"][1]["VA37"]=new Array();
+				Rounds[1]["A"][1]["VA37"]["IMG"]="VA37";
+				Rounds[1]["A"][1]["VA37"]["Type"]="A";
+				Rounds[1]["A"][1]["VA37"]["Chassis"]="A3";
+				Rounds[1]["A"][1]["VA37"]["NbI"]="435";
+				Rounds[1]["A"][1]["VA37"]["Nb"]="435";
+				Rounds[1]["A"][1]["VA37"]["NbL"]="";
+				Rounds[1]["A"][1]["VA37"]["Deg"]="0";
+				Rounds[1]["A"][1]["VA37"]["Caracs"]="";
+				
+				Rounds[1]["A"][1]["VA37"]["Caracs"]="Theryon<br/><br/>Etat : 100%<br/>Structure : 16,088 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">122.56%</span>)<br/>Blindage AC : 0<br/>Blindage La : 0<br/>Blindage Pl : 0<br/>Blindage EM : 0<br/>Dégâts AC : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">97.97%</span>)<br/>Dégâts La : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">97.97%</span>)<br/>Dégâts Pl : 4,177 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">97.97%</span>)<br/>Dégâts EM : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">97.97%</span>)<br/><br/>Type : Chasseur (exposition 0.14%)<br/>Chassis : Chasseur d\'Assaut (exposition 0.04%)<br/>Dégâts d\'exposition : +0%<br/>Cible : Croiseur";
+				
+				Rounds[1]["A"][1]["VA37-88352rb0k9"]=new Array();
+				Rounds[1]["A"][1]["VA37-88352rb0k9"]["IMG"]="VA37_7";
+				Rounds[1]["A"][1]["VA37-88352rb0k9"]["Type"]="A";
+				Rounds[1]["A"][1]["VA37-88352rb0k9"]["Chassis"]="A3";
+				Rounds[1]["A"][1]["VA37-88352rb0k9"]["NbI"]="400";
+				Rounds[1]["A"][1]["VA37-88352rb0k9"]["Nb"]="400";
+				Rounds[1]["A"][1]["VA37-88352rb0k9"]["NbL"]="";
+				Rounds[1]["A"][1]["VA37-88352rb0k9"]["Deg"]="0";
+				Rounds[1]["A"][1]["VA37-88352rb0k9"]["Caracs"]="";
+				
+				Rounds[1]["A"][1]["VA37-88352rb0k9"]["Caracs"]="Theryon**<br/><br/>Etat : 100%<br/>Structure : 16,088 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">122.56%</span>)<br/>Blindage AC : 0<br/>Blindage La : 3,106<br/>Blindage Pl : 0<br/>Blindage EM : 0<br/>Dégâts AC : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">97.97%</span>)<br/>Dégâts La : 4,594 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">97.97%</span>)<br/>Dégâts Pl : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">97.97%</span>)<br/>Dégâts EM : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">97.97%</span>)<br/><br/>Type : Chasseur (exposition 0.14%)<br/>Chassis : Chasseur d\'Assaut (exposition 0.04%)<br/>Dégâts d\'exposition : +0%<br/>Cible : Porte-nefs";
+				
+				Rounds[1]["A"][1]["VA27-91980xkd6z"]=new Array();
+				Rounds[1]["A"][1]["VA27-91980xkd6z"]["IMG"]="VA22_0";
+				Rounds[1]["A"][1]["VA27-91980xkd6z"]["Type"]="A";
+				Rounds[1]["A"][1]["VA27-91980xkd6z"]["Chassis"]="A2";
+				Rounds[1]["A"][1]["VA27-91980xkd6z"]["NbI"]="34";
+				Rounds[1]["A"][1]["VA27-91980xkd6z"]["Nb"]="34";
+				Rounds[1]["A"][1]["VA27-91980xkd6z"]["NbL"]="";
+				Rounds[1]["A"][1]["VA27-91980xkd6z"]["Deg"]="0";
+				Rounds[1]["A"][1]["VA27-91980xkd6z"]["Caracs"]="";
+				
+				Rounds[1]["A"][1]["VA27-91980xkd6z"]["Caracs"]="Thrynios**<br/><br/>Etat : 100%<br/>Structure : 16,088 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">122.56%</span>)<br/>Blindage AC : 3,061<br/>Blindage La : 0<br/>Blindage Pl : 0<br/>Blindage EM : 0<br/>Dégâts AC : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">97.97%</span>)<br/>Dégâts La : 10,106 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">97.97%</span>)<br/>Dégâts Pl : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">97.97%</span>)<br/>Dégâts EM : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">97.97%</span>)<br/><br/>Type : Chasseur (exposition 0.14%)<br/>Chassis : Chasseur Intercepteur (exposition 0.01%)<br/>Dégâts d\'exposition : +0%<br/>Cible : Chasseur";
+				
+				Rounds[1]["A"][1]["VA17-92972x96bv"]=new Array();
+				Rounds[1]["A"][1]["VA17-92972x96bv"]["IMG"]="VA17";
+				Rounds[1]["A"][1]["VA17-92972x96bv"]["Type"]="A";
+				Rounds[1]["A"][1]["VA17-92972x96bv"]["Chassis"]="A1";
+				Rounds[1]["A"][1]["VA17-92972x96bv"]["NbI"]="2376";
+				Rounds[1]["A"][1]["VA17-92972x96bv"]["Nb"]="2376";
+				Rounds[1]["A"][1]["VA17-92972x96bv"]["NbL"]="";
+				Rounds[1]["A"][1]["VA17-92972x96bv"]["Deg"]="0";
+				Rounds[1]["A"][1]["VA17-92972x96bv"]["Caracs"]="";
+				
+				Rounds[1]["A"][1]["VA17-92972x96bv"]["Caracs"]="Thyos**<br/><br/>Etat : 100%<br/>Structure : 16,088 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">122.56%</span>)<br/>Blindage AC : 0<br/>Blindage La : 0<br/>Blindage Pl : 0<br/>Blindage EM : 0<br/>Dégâts AC : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">97.97%</span>)<br/>Dégâts La : 4,594 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">97.97%</span>)<br/>Dégâts Pl : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">97.97%</span>)<br/>Dégâts EM : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">97.97%</span>)<br/><br/>Type : Chasseur (exposition 0.14%)<br/>Chassis : Chasseur Escorteur (exposition 0.09%)<br/>Dégâts d\'exposition : +0%<br/>Cible : Polyvalent";
+				
+				Rounds[1]["A"][1]["VD67-93339uizjt"]=new Array();
+				Rounds[1]["A"][1]["VD67-93339uizjt"]["IMG"]="VD67_7";
+				Rounds[1]["A"][1]["VD67-93339uizjt"]["Type"]="E";
+				Rounds[1]["A"][1]["VD67-93339uizjt"]["Chassis"]="B6";
+				Rounds[1]["A"][1]["VD67-93339uizjt"]["NbI"]="20";
+				Rounds[1]["A"][1]["VD67-93339uizjt"]["Nb"]="20";
+				Rounds[1]["A"][1]["VD67-93339uizjt"]["NbL"]="";
+				Rounds[1]["A"][1]["VD67-93339uizjt"]["Deg"]="0";
+				Rounds[1]["A"][1]["VD67-93339uizjt"]["Caracs"]="";
+				
+				Rounds[1]["A"][1]["VD67-93339uizjt"]["Caracs"]="CST - Classe Balmorra<br/><br/>Etat : 100%<br/>Structure : 2,517,383,521 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">122.56%</span>)<br/>Blindage AC : 0<br/>Blindage La : 0<br/>Blindage Pl : 825,740,156<br/>Blindage EM : 0<br/>Dégâts AC : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">97.97%</span>)<br/>Dégâts La : 1,440,115,820 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">97.97%</span>)<br/>Dégâts Pl : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">97.97%</span>)<br/>Dégâts EM : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">97.97%</span>)<br/><br/>Type : Cuirassé (exposition 99.86%)<br/>Chassis : Bombardier Lourd (exposition 99.86%)<br/>Dégâts d\'exposition : +398.91%<br/>Cible : Polyvalent";
+				
+				Rounds[1]["A"][1]["VX11-852153a4kd"]=new Array();
+				Rounds[1]["A"][1]["VX11-852153a4kd"]["IMG"]="VX11";
+				Rounds[1]["A"][1]["VX11-852153a4kd"]["Type"]="T";
+				Rounds[1]["A"][1]["VX11-852153a4kd"]["Chassis"]="T4";
+				Rounds[1]["A"][1]["VX11-852153a4kd"]["NbI"]="1";
+				Rounds[1]["A"][1]["VX11-852153a4kd"]["Nb"]="1";
+				Rounds[1]["A"][1]["VX11-852153a4kd"]["NbL"]="";
+				Rounds[1]["A"][1]["VX11-852153a4kd"]["Deg"]="0";
+				Rounds[1]["A"][1]["VX11-852153a4kd"]["Caracs"]="";
+				
+				Rounds[1]["A"][1]["VX11-852153a4kd"]["Caracs"]="Transporteur Valdahaz<br/><br/>Etat : 100%<br/>Structure : 21,420,417 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Blindage AC : 0<br/>Blindage La : 0<br/>Blindage Pl : 0<br/>Blindage EM : 0<br/>Dégâts AC : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts La : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts Pl : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts EM : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/><br/>Type : Transporteur (exposition 0%)<br/>Chassis : Transporteur Express (exposition 0%)<br/>Dégâts d\'exposition : +0%<br/>Cible : Polyvalent";
+				
+if(!Chasse[1]){
+	Chasse[1]=new Array();
+}
+Chasse[1]["A"]=new Array();
+Chasse[1]["A"]["RCh1"]=65.89;
+Chasse[1]["A"]["RCh2"]=6.79;
+Chasse[1]["A"]["RCh3"]=27.31;
+Chasse[1]["A"]["OCh1"]=35;
+Chasse[1]["A"]["OCh2"]=20;
+Chasse[1]["A"]["OCh3"]=45;
+Chasse[1]["A"]["CoefChStr"]=122.56;
+Chasse[1]["A"]["CoefChCib"]=97.52;
+Chasse[1]["A"]["CoefChAtt"]=97.96;
+Chasse[1]["A"]["RCh"]=60.1;
+Chasse[1]["A"]["CoefCh"]=20.14;
+
+Rounds[1]["D"]=new Array();
+
+	Rounds[1]["D"][1]=new Array();
+	
+					Rounds[1]["D"][1]["89217"]=new Array();
+					Rounds[1]["D"][1]["89217"]["IMG"]="COLaser1";
+					Rounds[1]["D"][1]["89217"]["Type"]="Def";
+					Rounds[1]["D"][1]["89217"]["Chassis"]="Def";
+					Rounds[1]["D"][1]["89217"]["NbI"]="32";
+					Rounds[1]["D"][1]["89217"]["Nb"]="32";
+					Rounds[1]["D"][1]["89217"]["NbL"]="";
+					Rounds[1]["D"][1]["89217"]["Deg"]="0";
+					Rounds[1]["D"][1]["89217"]["Caracs"]="";
+					
+					Rounds[1]["D"][1]["89217"]["Caracs"]="Laser Kalist I<br/><br/>Etat : 100%<br/>Structure : 1,096,369 (<span style=\"color:white\">100%</span>)<br/><br/>Blindage AC : 0<br/>Blindage La : 0<br/>Blindage Pl : 0<br/>Blindage EM : 0<br/>Dégâts AC : 0 (<span style=\"color:white\">100%</span>)<br/>Dégâts La : 956,358 (<span style=\"color:white\">100%</span>)<br/>Dégâts Pl : 0 (<span style=\"color:white\">100%</span>)<br/>Dégâts EM : 0 (<span style=\"color:white\">100%</span>)<br/><br/>Type : Défense (exposition 100%)<br/>Cible : Chasseur";
+					
+					Rounds[1]["D"][1]["89200"]=new Array();
+					Rounds[1]["D"][1]["89200"]["IMG"]="COLaser1";
+					Rounds[1]["D"][1]["89200"]["Type"]="Def";
+					Rounds[1]["D"][1]["89200"]["Chassis"]="Def";
+					Rounds[1]["D"][1]["89200"]["NbI"]="32";
+					Rounds[1]["D"][1]["89200"]["Nb"]="32";
+					Rounds[1]["D"][1]["89200"]["NbL"]="";
+					Rounds[1]["D"][1]["89200"]["Deg"]="0";
+					Rounds[1]["D"][1]["89200"]["Caracs"]="";
+					
+					Rounds[1]["D"][1]["89200"]["Caracs"]="Laser Kalist I<br/><br/>Etat : 100%<br/>Structure : 1,096,369 (<span style=\"color:white\">100%</span>)<br/><br/>Blindage AC : 0<br/>Blindage La : 0<br/>Blindage Pl : 0<br/>Blindage EM : 0<br/>Dégâts AC : 0 (<span style=\"color:white\">100%</span>)<br/>Dégâts La : 956,358 (<span style=\"color:white\">100%</span>)<br/>Dégâts Pl : 0 (<span style=\"color:white\">100%</span>)<br/>Dégâts EM : 0 (<span style=\"color:white\">100%</span>)<br/><br/>Type : Défense (exposition 100%)<br/>Cible : Chasseur";
+					
+					Rounds[1]["D"][1]["89201"]=new Array();
+					Rounds[1]["D"][1]["89201"]["IMG"]="COLaser1";
+					Rounds[1]["D"][1]["89201"]["Type"]="Def";
+					Rounds[1]["D"][1]["89201"]["Chassis"]="Def";
+					Rounds[1]["D"][1]["89201"]["NbI"]="32";
+					Rounds[1]["D"][1]["89201"]["Nb"]="32";
+					Rounds[1]["D"][1]["89201"]["NbL"]="";
+					Rounds[1]["D"][1]["89201"]["Deg"]="0";
+					Rounds[1]["D"][1]["89201"]["Caracs"]="";
+					
+					Rounds[1]["D"][1]["89201"]["Caracs"]="Laser Kalist I<br/><br/>Etat : 100%<br/>Structure : 1,096,369 (<span style=\"color:white\">100%</span>)<br/><br/>Blindage AC : 0<br/>Blindage La : 0<br/>Blindage Pl : 0<br/>Blindage EM : 0<br/>Dégâts AC : 0 (<span style=\"color:white\">100%</span>)<br/>Dégâts La : 956,358 (<span style=\"color:white\">100%</span>)<br/>Dégâts Pl : 0 (<span style=\"color:white\">100%</span>)<br/>Dégâts EM : 0 (<span style=\"color:white\">100%</span>)<br/><br/>Type : Défense (exposition 100%)<br/>Cible : Chasseur";
+					
+					Rounds[1]["D"][1]["89202"]=new Array();
+					Rounds[1]["D"][1]["89202"]["IMG"]="COLaser1";
+					Rounds[1]["D"][1]["89202"]["Type"]="Def";
+					Rounds[1]["D"][1]["89202"]["Chassis"]="Def";
+					Rounds[1]["D"][1]["89202"]["NbI"]="32";
+					Rounds[1]["D"][1]["89202"]["Nb"]="32";
+					Rounds[1]["D"][1]["89202"]["NbL"]="";
+					Rounds[1]["D"][1]["89202"]["Deg"]="0";
+					Rounds[1]["D"][1]["89202"]["Caracs"]="";
+					
+					Rounds[1]["D"][1]["89202"]["Caracs"]="Laser Kalist I<br/><br/>Etat : 100%<br/>Structure : 1,096,369 (<span style=\"color:white\">100%</span>)<br/><br/>Blindage AC : 0<br/>Blindage La : 0<br/>Blindage Pl : 0<br/>Blindage EM : 0<br/>Dégâts AC : 0 (<span style=\"color:white\">100%</span>)<br/>Dégâts La : 956,358 (<span style=\"color:white\">100%</span>)<br/>Dégâts Pl : 0 (<span style=\"color:white\">100%</span>)<br/>Dégâts EM : 0 (<span style=\"color:white\">100%</span>)<br/><br/>Type : Défense (exposition 100%)<br/>Cible : Chasseur";
+					
+					Rounds[1]["D"][1]["89216"]=new Array();
+					Rounds[1]["D"][1]["89216"]["IMG"]="COLaser1";
+					Rounds[1]["D"][1]["89216"]["Type"]="Def";
+					Rounds[1]["D"][1]["89216"]["Chassis"]="Def";
+					Rounds[1]["D"][1]["89216"]["NbI"]="32";
+					Rounds[1]["D"][1]["89216"]["Nb"]="32";
+					Rounds[1]["D"][1]["89216"]["NbL"]="";
+					Rounds[1]["D"][1]["89216"]["Deg"]="0";
+					Rounds[1]["D"][1]["89216"]["Caracs"]="";
+					
+					Rounds[1]["D"][1]["89216"]["Caracs"]="Laser Kalist I<br/><br/>Etat : 100%<br/>Structure : 1,096,369 (<span style=\"color:white\">100%</span>)<br/><br/>Blindage AC : 0<br/>Blindage La : 0<br/>Blindage Pl : 0<br/>Blindage EM : 0<br/>Dégâts AC : 0 (<span style=\"color:white\">100%</span>)<br/>Dégâts La : 956,358 (<span style=\"color:white\">100%</span>)<br/>Dégâts Pl : 0 (<span style=\"color:white\">100%</span>)<br/>Dégâts EM : 0 (<span style=\"color:white\">100%</span>)<br/><br/>Type : Défense (exposition 100%)<br/>Cible : Chasseur";
+					
+					Rounds[1]["D"][1]["89210"]=new Array();
+					Rounds[1]["D"][1]["89210"]["IMG"]="COLaser1";
+					Rounds[1]["D"][1]["89210"]["Type"]="Def";
+					Rounds[1]["D"][1]["89210"]["Chassis"]="Def";
+					Rounds[1]["D"][1]["89210"]["NbI"]="32";
+					Rounds[1]["D"][1]["89210"]["Nb"]="32";
+					Rounds[1]["D"][1]["89210"]["NbL"]="";
+					Rounds[1]["D"][1]["89210"]["Deg"]="0";
+					Rounds[1]["D"][1]["89210"]["Caracs"]="";
+					
+					Rounds[1]["D"][1]["89210"]["Caracs"]="Laser Kalist I<br/><br/>Etat : 100%<br/>Structure : 1,096,369 (<span style=\"color:white\">100%</span>)<br/><br/>Blindage AC : 0<br/>Blindage La : 0<br/>Blindage Pl : 0<br/>Blindage EM : 0<br/>Dégâts AC : 0 (<span style=\"color:white\">100%</span>)<br/>Dégâts La : 956,358 (<span style=\"color:white\">100%</span>)<br/>Dégâts Pl : 0 (<span style=\"color:white\">100%</span>)<br/>Dégâts EM : 0 (<span style=\"color:white\">100%</span>)<br/><br/>Type : Défense (exposition 100%)<br/>Cible : Chasseur";
+					
+					Rounds[1]["D"][1]["89211"]=new Array();
+					Rounds[1]["D"][1]["89211"]["IMG"]="COLaser1";
+					Rounds[1]["D"][1]["89211"]["Type"]="Def";
+					Rounds[1]["D"][1]["89211"]["Chassis"]="Def";
+					Rounds[1]["D"][1]["89211"]["NbI"]="32";
+					Rounds[1]["D"][1]["89211"]["Nb"]="32";
+					Rounds[1]["D"][1]["89211"]["NbL"]="";
+					Rounds[1]["D"][1]["89211"]["Deg"]="0";
+					Rounds[1]["D"][1]["89211"]["Caracs"]="";
+					
+					Rounds[1]["D"][1]["89211"]["Caracs"]="Laser Kalist I<br/><br/>Etat : 100%<br/>Structure : 1,096,369 (<span style=\"color:white\">100%</span>)<br/><br/>Blindage AC : 0<br/>Blindage La : 0<br/>Blindage Pl : 0<br/>Blindage EM : 0<br/>Dégâts AC : 0 (<span style=\"color:white\">100%</span>)<br/>Dégâts La : 956,358 (<span style=\"color:white\">100%</span>)<br/>Dégâts Pl : 0 (<span style=\"color:white\">100%</span>)<br/>Dégâts EM : 0 (<span style=\"color:white\">100%</span>)<br/><br/>Type : Défense (exposition 100%)<br/>Cible : Chasseur";
+					
+					Rounds[1]["D"][1]["89212"]=new Array();
+					Rounds[1]["D"][1]["89212"]["IMG"]="COLaser1";
+					Rounds[1]["D"][1]["89212"]["Type"]="Def";
+					Rounds[1]["D"][1]["89212"]["Chassis"]="Def";
+					Rounds[1]["D"][1]["89212"]["NbI"]="32";
+					Rounds[1]["D"][1]["89212"]["Nb"]="32";
+					Rounds[1]["D"][1]["89212"]["NbL"]="";
+					Rounds[1]["D"][1]["89212"]["Deg"]="0";
+					Rounds[1]["D"][1]["89212"]["Caracs"]="";
+					
+					Rounds[1]["D"][1]["89212"]["Caracs"]="Laser Kalist I<br/><br/>Etat : 100%<br/>Structure : 1,096,369 (<span style=\"color:white\">100%</span>)<br/><br/>Blindage AC : 0<br/>Blindage La : 0<br/>Blindage Pl : 0<br/>Blindage EM : 0<br/>Dégâts AC : 0 (<span style=\"color:white\">100%</span>)<br/>Dégâts La : 956,358 (<span style=\"color:white\">100%</span>)<br/>Dégâts Pl : 0 (<span style=\"color:white\">100%</span>)<br/>Dégâts EM : 0 (<span style=\"color:white\">100%</span>)<br/><br/>Type : Défense (exposition 100%)<br/>Cible : Chasseur";
+					
+					Rounds[1]["D"][1]["89213"]=new Array();
+					Rounds[1]["D"][1]["89213"]["IMG"]="COLaser1";
+					Rounds[1]["D"][1]["89213"]["Type"]="Def";
+					Rounds[1]["D"][1]["89213"]["Chassis"]="Def";
+					Rounds[1]["D"][1]["89213"]["NbI"]="32";
+					Rounds[1]["D"][1]["89213"]["Nb"]="32";
+					Rounds[1]["D"][1]["89213"]["NbL"]="";
+					Rounds[1]["D"][1]["89213"]["Deg"]="0";
+					Rounds[1]["D"][1]["89213"]["Caracs"]="";
+					
+					Rounds[1]["D"][1]["89213"]["Caracs"]="Laser Kalist I<br/><br/>Etat : 100%<br/>Structure : 1,096,369 (<span style=\"color:white\">100%</span>)<br/><br/>Blindage AC : 0<br/>Blindage La : 0<br/>Blindage Pl : 0<br/>Blindage EM : 0<br/>Dégâts AC : 0 (<span style=\"color:white\">100%</span>)<br/>Dégâts La : 956,358 (<span style=\"color:white\">100%</span>)<br/>Dégâts Pl : 0 (<span style=\"color:white\">100%</span>)<br/>Dégâts EM : 0 (<span style=\"color:white\">100%</span>)<br/><br/>Type : Défense (exposition 100%)<br/>Cible : Chasseur";
+					
+					Rounds[1]["D"][1]["89214"]=new Array();
+					Rounds[1]["D"][1]["89214"]["IMG"]="COLaser1";
+					Rounds[1]["D"][1]["89214"]["Type"]="Def";
+					Rounds[1]["D"][1]["89214"]["Chassis"]="Def";
+					Rounds[1]["D"][1]["89214"]["NbI"]="32";
+					Rounds[1]["D"][1]["89214"]["Nb"]="32";
+					Rounds[1]["D"][1]["89214"]["NbL"]="";
+					Rounds[1]["D"][1]["89214"]["Deg"]="0";
+					Rounds[1]["D"][1]["89214"]["Caracs"]="";
+					
+					Rounds[1]["D"][1]["89214"]["Caracs"]="Laser Kalist I<br/><br/>Etat : 100%<br/>Structure : 1,096,369 (<span style=\"color:white\">100%</span>)<br/><br/>Blindage AC : 0<br/>Blindage La : 0<br/>Blindage Pl : 0<br/>Blindage EM : 0<br/>Dégâts AC : 0 (<span style=\"color:white\">100%</span>)<br/>Dégâts La : 956,358 (<span style=\"color:white\">100%</span>)<br/>Dégâts Pl : 0 (<span style=\"color:white\">100%</span>)<br/>Dégâts EM : 0 (<span style=\"color:white\">100%</span>)<br/><br/>Type : Défense (exposition 100%)<br/>Cible : Chasseur";
+					
+					Rounds[1]["D"][1]["89199"]=new Array();
+					Rounds[1]["D"][1]["89199"]["IMG"]="COLaser1";
+					Rounds[1]["D"][1]["89199"]["Type"]="Def";
+					Rounds[1]["D"][1]["89199"]["Chassis"]="Def";
+					Rounds[1]["D"][1]["89199"]["NbI"]="32";
+					Rounds[1]["D"][1]["89199"]["Nb"]="32";
+					Rounds[1]["D"][1]["89199"]["NbL"]="";
+					Rounds[1]["D"][1]["89199"]["Deg"]="0";
+					Rounds[1]["D"][1]["89199"]["Caracs"]="";
+					
+					Rounds[1]["D"][1]["89199"]["Caracs"]="Laser Kalist I<br/><br/>Etat : 100%<br/>Structure : 1,096,369 (<span style=\"color:white\">100%</span>)<br/><br/>Blindage AC : 0<br/>Blindage La : 0<br/>Blindage Pl : 0<br/>Blindage EM : 0<br/>Dégâts AC : 0 (<span style=\"color:white\">100%</span>)<br/>Dégâts La : 956,358 (<span style=\"color:white\">100%</span>)<br/>Dégâts Pl : 0 (<span style=\"color:white\">100%</span>)<br/>Dégâts EM : 0 (<span style=\"color:white\">100%</span>)<br/><br/>Type : Défense (exposition 100%)<br/>Cible : Chasseur";
+					
+					Rounds[1]["D"][1]["89198"]=new Array();
+					Rounds[1]["D"][1]["89198"]["IMG"]="COLaser1";
+					Rounds[1]["D"][1]["89198"]["Type"]="Def";
+					Rounds[1]["D"][1]["89198"]["Chassis"]="Def";
+					Rounds[1]["D"][1]["89198"]["NbI"]="32";
+					Rounds[1]["D"][1]["89198"]["Nb"]="32";
+					Rounds[1]["D"][1]["89198"]["NbL"]="";
+					Rounds[1]["D"][1]["89198"]["Deg"]="0";
+					Rounds[1]["D"][1]["89198"]["Caracs"]="";
+					
+					Rounds[1]["D"][1]["89198"]["Caracs"]="Laser Kalist I<br/><br/>Etat : 100%<br/>Structure : 1,096,369 (<span style=\"color:white\">100%</span>)<br/><br/>Blindage AC : 0<br/>Blindage La : 0<br/>Blindage Pl : 0<br/>Blindage EM : 0<br/>Dégâts AC : 0 (<span style=\"color:white\">100%</span>)<br/>Dégâts La : 956,358 (<span style=\"color:white\">100%</span>)<br/>Dégâts Pl : 0 (<span style=\"color:white\">100%</span>)<br/>Dégâts EM : 0 (<span style=\"color:white\">100%</span>)<br/><br/>Type : Défense (exposition 100%)<br/>Cible : Chasseur";
+					
+					Rounds[1]["D"][1]["89215"]=new Array();
+					Rounds[1]["D"][1]["89215"]["IMG"]="COLaser1";
+					Rounds[1]["D"][1]["89215"]["Type"]="Def";
+					Rounds[1]["D"][1]["89215"]["Chassis"]="Def";
+					Rounds[1]["D"][1]["89215"]["NbI"]="32";
+					Rounds[1]["D"][1]["89215"]["Nb"]="32";
+					Rounds[1]["D"][1]["89215"]["NbL"]="";
+					Rounds[1]["D"][1]["89215"]["Deg"]="0";
+					Rounds[1]["D"][1]["89215"]["Caracs"]="";
+					
+					Rounds[1]["D"][1]["89215"]["Caracs"]="Laser Kalist I<br/><br/>Etat : 100%<br/>Structure : 1,096,369 (<span style=\"color:white\">100%</span>)<br/><br/>Blindage AC : 0<br/>Blindage La : 0<br/>Blindage Pl : 0<br/>Blindage EM : 0<br/>Dégâts AC : 0 (<span style=\"color:white\">100%</span>)<br/>Dégâts La : 956,358 (<span style=\"color:white\">100%</span>)<br/>Dégâts Pl : 0 (<span style=\"color:white\">100%</span>)<br/>Dégâts EM : 0 (<span style=\"color:white\">100%</span>)<br/><br/>Type : Défense (exposition 100%)<br/>Cible : Chasseur";
+					
+					Rounds[1]["D"][1]["89195"]=new Array();
+					Rounds[1]["D"][1]["89195"]["IMG"]="COLaser1";
+					Rounds[1]["D"][1]["89195"]["Type"]="Def";
+					Rounds[1]["D"][1]["89195"]["Chassis"]="Def";
+					Rounds[1]["D"][1]["89195"]["NbI"]="32";
+					Rounds[1]["D"][1]["89195"]["Nb"]="32";
+					Rounds[1]["D"][1]["89195"]["NbL"]="";
+					Rounds[1]["D"][1]["89195"]["Deg"]="0";
+					Rounds[1]["D"][1]["89195"]["Caracs"]="";
+					
+					Rounds[1]["D"][1]["89195"]["Caracs"]="Laser Kalist I<br/><br/>Etat : 100%<br/>Structure : 1,096,369 (<span style=\"color:white\">100%</span>)<br/><br/>Blindage AC : 0<br/>Blindage La : 0<br/>Blindage Pl : 0<br/>Blindage EM : 0<br/>Dégâts AC : 0 (<span style=\"color:white\">100%</span>)<br/>Dégâts La : 956,358 (<span style=\"color:white\">100%</span>)<br/>Dégâts Pl : 0 (<span style=\"color:white\">100%</span>)<br/>Dégâts EM : 0 (<span style=\"color:white\">100%</span>)<br/><br/>Type : Défense (exposition 100%)<br/>Cible : Chasseur";
+					
+					Rounds[1]["D"][1]["89196"]=new Array();
+					Rounds[1]["D"][1]["89196"]["IMG"]="COLaser1";
+					Rounds[1]["D"][1]["89196"]["Type"]="Def";
+					Rounds[1]["D"][1]["89196"]["Chassis"]="Def";
+					Rounds[1]["D"][1]["89196"]["NbI"]="32";
+					Rounds[1]["D"][1]["89196"]["Nb"]="32";
+					Rounds[1]["D"][1]["89196"]["NbL"]="";
+					Rounds[1]["D"][1]["89196"]["Deg"]="0";
+					Rounds[1]["D"][1]["89196"]["Caracs"]="";
+					
+					Rounds[1]["D"][1]["89196"]["Caracs"]="Laser Kalist I<br/><br/>Etat : 100%<br/>Structure : 1,096,369 (<span style=\"color:white\">100%</span>)<br/><br/>Blindage AC : 0<br/>Blindage La : 0<br/>Blindage Pl : 0<br/>Blindage EM : 0<br/>Dégâts AC : 0 (<span style=\"color:white\">100%</span>)<br/>Dégâts La : 956,358 (<span style=\"color:white\">100%</span>)<br/>Dégâts Pl : 0 (<span style=\"color:white\">100%</span>)<br/>Dégâts EM : 0 (<span style=\"color:white\">100%</span>)<br/><br/>Type : Défense (exposition 100%)<br/>Cible : Chasseur";
+					
+					Rounds[1]["D"][1]["89197"]=new Array();
+					Rounds[1]["D"][1]["89197"]["IMG"]="COLaser1";
+					Rounds[1]["D"][1]["89197"]["Type"]="Def";
+					Rounds[1]["D"][1]["89197"]["Chassis"]="Def";
+					Rounds[1]["D"][1]["89197"]["NbI"]="32";
+					Rounds[1]["D"][1]["89197"]["Nb"]="32";
+					Rounds[1]["D"][1]["89197"]["NbL"]="";
+					Rounds[1]["D"][1]["89197"]["Deg"]="0";
+					Rounds[1]["D"][1]["89197"]["Caracs"]="";
+					
+					Rounds[1]["D"][1]["89197"]["Caracs"]="Laser Kalist I<br/><br/>Etat : 100%<br/>Structure : 1,096,369 (<span style=\"color:white\">100%</span>)<br/><br/>Blindage AC : 0<br/>Blindage La : 0<br/>Blindage Pl : 0<br/>Blindage EM : 0<br/>Dégâts AC : 0 (<span style=\"color:white\">100%</span>)<br/>Dégâts La : 956,358 (<span style=\"color:white\">100%</span>)<br/>Dégâts Pl : 0 (<span style=\"color:white\">100%</span>)<br/>Dégâts EM : 0 (<span style=\"color:white\">100%</span>)<br/><br/>Type : Défense (exposition 100%)<br/>Cible : Chasseur";
+					
+					Rounds[1]["D"][1]["89191"]=new Array();
+					Rounds[1]["D"][1]["89191"]["IMG"]="COLaser2";
+					Rounds[1]["D"][1]["89191"]["Type"]="Def";
+					Rounds[1]["D"][1]["89191"]["Chassis"]="Def";
+					Rounds[1]["D"][1]["89191"]["NbI"]="16";
+					Rounds[1]["D"][1]["89191"]["Nb"]="16";
+					Rounds[1]["D"][1]["89191"]["NbL"]="";
+					Rounds[1]["D"][1]["89191"]["Deg"]="0";
+					Rounds[1]["D"][1]["89191"]["Caracs"]="";
+					
+					Rounds[1]["D"][1]["89191"]["Caracs"]="Laser Kalist II<br/><br/>Etat : 100%<br/>Structure : 4,385,475 (<span style=\"color:white\">100%</span>)<br/><br/>Blindage AC : 0<br/>Blindage La : 0<br/>Blindage Pl : 0<br/>Blindage EM : 0<br/>Dégâts AC : 0 (<span style=\"color:white\">100%</span>)<br/>Dégâts La : 3,825,433 (<span style=\"color:white\">100%</span>)<br/>Dégâts Pl : 0 (<span style=\"color:white\">100%</span>)<br/>Dégâts EM : 0 (<span style=\"color:white\">100%</span>)<br/><br/>Type : Défense (exposition 100%)<br/>Cible : Bombardier";
+					
+					Rounds[1]["D"][1]["89192"]=new Array();
+					Rounds[1]["D"][1]["89192"]["IMG"]="COLaser2";
+					Rounds[1]["D"][1]["89192"]["Type"]="Def";
+					Rounds[1]["D"][1]["89192"]["Chassis"]="Def";
+					Rounds[1]["D"][1]["89192"]["NbI"]="16";
+					Rounds[1]["D"][1]["89192"]["Nb"]="16";
+					Rounds[1]["D"][1]["89192"]["NbL"]="";
+					Rounds[1]["D"][1]["89192"]["Deg"]="0";
+					Rounds[1]["D"][1]["89192"]["Caracs"]="";
+					
+					Rounds[1]["D"][1]["89192"]["Caracs"]="Laser Kalist II<br/><br/>Etat : 100%<br/>Structure : 4,385,475 (<span style=\"color:white\">100%</span>)<br/><br/>Blindage AC : 0<br/>Blindage La : 0<br/>Blindage Pl : 0<br/>Blindage EM : 0<br/>Dégâts AC : 0 (<span style=\"color:white\">100%</span>)<br/>Dégâts La : 3,825,433 (<span style=\"color:white\">100%</span>)<br/>Dégâts Pl : 0 (<span style=\"color:white\">100%</span>)<br/>Dégâts EM : 0 (<span style=\"color:white\">100%</span>)<br/><br/>Type : Défense (exposition 100%)<br/>Cible : Bombardier";
+					
+					Rounds[1]["D"][1]["89193"]=new Array();
+					Rounds[1]["D"][1]["89193"]["IMG"]="COLaser2";
+					Rounds[1]["D"][1]["89193"]["Type"]="Def";
+					Rounds[1]["D"][1]["89193"]["Chassis"]="Def";
+					Rounds[1]["D"][1]["89193"]["NbI"]="16";
+					Rounds[1]["D"][1]["89193"]["Nb"]="16";
+					Rounds[1]["D"][1]["89193"]["NbL"]="";
+					Rounds[1]["D"][1]["89193"]["Deg"]="0";
+					Rounds[1]["D"][1]["89193"]["Caracs"]="";
+					
+					Rounds[1]["D"][1]["89193"]["Caracs"]="Laser Kalist II<br/><br/>Etat : 100%<br/>Structure : 4,385,475 (<span style=\"color:white\">100%</span>)<br/><br/>Blindage AC : 0<br/>Blindage La : 0<br/>Blindage Pl : 0<br/>Blindage EM : 0<br/>Dégâts AC : 0 (<span style=\"color:white\">100%</span>)<br/>Dégâts La : 3,825,433 (<span style=\"color:white\">100%</span>)<br/>Dégâts Pl : 0 (<span style=\"color:white\">100%</span>)<br/>Dégâts EM : 0 (<span style=\"color:white\">100%</span>)<br/><br/>Type : Défense (exposition 100%)<br/>Cible : Bombardier";
+					
+					Rounds[1]["D"][1]["89209"]=new Array();
+					Rounds[1]["D"][1]["89209"]["IMG"]="COLaser2";
+					Rounds[1]["D"][1]["89209"]["Type"]="Def";
+					Rounds[1]["D"][1]["89209"]["Chassis"]="Def";
+					Rounds[1]["D"][1]["89209"]["NbI"]="16";
+					Rounds[1]["D"][1]["89209"]["Nb"]="16";
+					Rounds[1]["D"][1]["89209"]["NbL"]="";
+					Rounds[1]["D"][1]["89209"]["Deg"]="0";
+					Rounds[1]["D"][1]["89209"]["Caracs"]="";
+					
+					Rounds[1]["D"][1]["89209"]["Caracs"]="Laser Kalist II<br/><br/>Etat : 100%<br/>Structure : 4,385,475 (<span style=\"color:white\">100%</span>)<br/><br/>Blindage AC : 0<br/>Blindage La : 0<br/>Blindage Pl : 0<br/>Blindage EM : 0<br/>Dégâts AC : 0 (<span style=\"color:white\">100%</span>)<br/>Dégâts La : 3,825,433 (<span style=\"color:white\">100%</span>)<br/>Dégâts Pl : 0 (<span style=\"color:white\">100%</span>)<br/>Dégâts EM : 0 (<span style=\"color:white\">100%</span>)<br/><br/>Type : Défense (exposition 100%)<br/>Cible : Bombardier";
+					
+					Rounds[1]["D"][1]["89208"]=new Array();
+					Rounds[1]["D"][1]["89208"]["IMG"]="COLaser2";
+					Rounds[1]["D"][1]["89208"]["Type"]="Def";
+					Rounds[1]["D"][1]["89208"]["Chassis"]="Def";
+					Rounds[1]["D"][1]["89208"]["NbI"]="16";
+					Rounds[1]["D"][1]["89208"]["Nb"]="16";
+					Rounds[1]["D"][1]["89208"]["NbL"]="";
+					Rounds[1]["D"][1]["89208"]["Deg"]="0";
+					Rounds[1]["D"][1]["89208"]["Caracs"]="";
+					
+					Rounds[1]["D"][1]["89208"]["Caracs"]="Laser Kalist II<br/><br/>Etat : 100%<br/>Structure : 4,385,475 (<span style=\"color:white\">100%</span>)<br/><br/>Blindage AC : 0<br/>Blindage La : 0<br/>Blindage Pl : 0<br/>Blindage EM : 0<br/>Dégâts AC : 0 (<span style=\"color:white\">100%</span>)<br/>Dégâts La : 3,825,433 (<span style=\"color:white\">100%</span>)<br/>Dégâts Pl : 0 (<span style=\"color:white\">100%</span>)<br/>Dégâts EM : 0 (<span style=\"color:white\">100%</span>)<br/><br/>Type : Défense (exposition 100%)<br/>Cible : Bombardier";
+					
+					Rounds[1]["D"][1]["89206"]=new Array();
+					Rounds[1]["D"][1]["89206"]["IMG"]="COLaser2";
+					Rounds[1]["D"][1]["89206"]["Type"]="Def";
+					Rounds[1]["D"][1]["89206"]["Chassis"]="Def";
+					Rounds[1]["D"][1]["89206"]["NbI"]="16";
+					Rounds[1]["D"][1]["89206"]["Nb"]="16";
+					Rounds[1]["D"][1]["89206"]["NbL"]="";
+					Rounds[1]["D"][1]["89206"]["Deg"]="0";
+					Rounds[1]["D"][1]["89206"]["Caracs"]="";
+					
+					Rounds[1]["D"][1]["89206"]["Caracs"]="Laser Kalist II<br/><br/>Etat : 100%<br/>Structure : 4,385,475 (<span style=\"color:white\">100%</span>)<br/><br/>Blindage AC : 0<br/>Blindage La : 0<br/>Blindage Pl : 0<br/>Blindage EM : 0<br/>Dégâts AC : 0 (<span style=\"color:white\">100%</span>)<br/>Dégâts La : 3,825,433 (<span style=\"color:white\">100%</span>)<br/>Dégâts Pl : 0 (<span style=\"color:white\">100%</span>)<br/>Dégâts EM : 0 (<span style=\"color:white\">100%</span>)<br/><br/>Type : Défense (exposition 100%)<br/>Cible : Bombardier";
+					
+					Rounds[1]["D"][1]["89194"]=new Array();
+					Rounds[1]["D"][1]["89194"]["IMG"]="COLaser2";
+					Rounds[1]["D"][1]["89194"]["Type"]="Def";
+					Rounds[1]["D"][1]["89194"]["Chassis"]="Def";
+					Rounds[1]["D"][1]["89194"]["NbI"]="16";
+					Rounds[1]["D"][1]["89194"]["Nb"]="16";
+					Rounds[1]["D"][1]["89194"]["NbL"]="";
+					Rounds[1]["D"][1]["89194"]["Deg"]="0";
+					Rounds[1]["D"][1]["89194"]["Caracs"]="";
+					
+					Rounds[1]["D"][1]["89194"]["Caracs"]="Laser Kalist II<br/><br/>Etat : 100%<br/>Structure : 4,385,475 (<span style=\"color:white\">100%</span>)<br/><br/>Blindage AC : 0<br/>Blindage La : 0<br/>Blindage Pl : 0<br/>Blindage EM : 0<br/>Dégâts AC : 0 (<span style=\"color:white\">100%</span>)<br/>Dégâts La : 3,825,433 (<span style=\"color:white\">100%</span>)<br/>Dégâts Pl : 0 (<span style=\"color:white\">100%</span>)<br/>Dégâts EM : 0 (<span style=\"color:white\">100%</span>)<br/><br/>Type : Défense (exposition 100%)<br/>Cible : Bombardier";
+					
+					Rounds[1]["D"][1]["89207"]=new Array();
+					Rounds[1]["D"][1]["89207"]["IMG"]="COLaser2";
+					Rounds[1]["D"][1]["89207"]["Type"]="Def";
+					Rounds[1]["D"][1]["89207"]["Chassis"]="Def";
+					Rounds[1]["D"][1]["89207"]["NbI"]="16";
+					Rounds[1]["D"][1]["89207"]["Nb"]="16";
+					Rounds[1]["D"][1]["89207"]["NbL"]="";
+					Rounds[1]["D"][1]["89207"]["Deg"]="0";
+					Rounds[1]["D"][1]["89207"]["Caracs"]="";
+					
+					Rounds[1]["D"][1]["89207"]["Caracs"]="Laser Kalist II<br/><br/>Etat : 100%<br/>Structure : 4,385,475 (<span style=\"color:white\">100%</span>)<br/><br/>Blindage AC : 0<br/>Blindage La : 0<br/>Blindage Pl : 0<br/>Blindage EM : 0<br/>Dégâts AC : 0 (<span style=\"color:white\">100%</span>)<br/>Dégâts La : 3,825,433 (<span style=\"color:white\">100%</span>)<br/>Dégâts Pl : 0 (<span style=\"color:white\">100%</span>)<br/>Dégâts EM : 0 (<span style=\"color:white\">100%</span>)<br/><br/>Type : Défense (exposition 100%)<br/>Cible : Bombardier";
+					
+					Rounds[1]["D"][1]["89205"]=new Array();
+					Rounds[1]["D"][1]["89205"]["IMG"]="COLaser3";
+					Rounds[1]["D"][1]["89205"]["Type"]="Def";
+					Rounds[1]["D"][1]["89205"]["Chassis"]="Def";
+					Rounds[1]["D"][1]["89205"]["NbI"]="8";
+					Rounds[1]["D"][1]["89205"]["Nb"]="8";
+					Rounds[1]["D"][1]["89205"]["NbL"]="";
+					Rounds[1]["D"][1]["89205"]["Deg"]="0";
+					Rounds[1]["D"][1]["89205"]["Caracs"]="";
+					
+					Rounds[1]["D"][1]["89205"]["Caracs"]="Laser Kalist III<br/><br/>Etat : 100%<br/>Structure : 17,541,899 (<span style=\"color:white\">100%</span>)<br/><br/>Blindage AC : 0<br/>Blindage La : 0<br/>Blindage Pl : 0<br/>Blindage EM : 0<br/>Dégâts AC : 0 (<span style=\"color:white\">100%</span>)<br/>Dégâts La : 13,771,560 (<span style=\"color:white\">100%</span>)<br/>Dégâts Pl : 0 (<span style=\"color:white\">100%</span>)<br/>Dégâts EM : 0 (<span style=\"color:white\">100%</span>)<br/><br/>Type : Défense (exposition 100%)<br/>Cible : Bombardier";
+					
+					Rounds[1]["D"][1]["89204"]=new Array();
+					Rounds[1]["D"][1]["89204"]["IMG"]="COLaser3";
+					Rounds[1]["D"][1]["89204"]["Type"]="Def";
+					Rounds[1]["D"][1]["89204"]["Chassis"]="Def";
+					Rounds[1]["D"][1]["89204"]["NbI"]="8";
+					Rounds[1]["D"][1]["89204"]["Nb"]="8";
+					Rounds[1]["D"][1]["89204"]["NbL"]="";
+					Rounds[1]["D"][1]["89204"]["Deg"]="0";
+					Rounds[1]["D"][1]["89204"]["Caracs"]="";
+					
+					Rounds[1]["D"][1]["89204"]["Caracs"]="Laser Kalist III<br/><br/>Etat : 100%<br/>Structure : 17,541,899 (<span style=\"color:white\">100%</span>)<br/><br/>Blindage AC : 0<br/>Blindage La : 0<br/>Blindage Pl : 0<br/>Blindage EM : 0<br/>Dégâts AC : 0 (<span style=\"color:white\">100%</span>)<br/>Dégâts La : 13,771,560 (<span style=\"color:white\">100%</span>)<br/>Dégâts Pl : 0 (<span style=\"color:white\">100%</span>)<br/>Dégâts EM : 0 (<span style=\"color:white\">100%</span>)<br/><br/>Type : Défense (exposition 100%)<br/>Cible : Bombardier";
+					
+					Rounds[1]["D"][1]["89190"]=new Array();
+					Rounds[1]["D"][1]["89190"]["IMG"]="COLaser3";
+					Rounds[1]["D"][1]["89190"]["Type"]="Def";
+					Rounds[1]["D"][1]["89190"]["Chassis"]="Def";
+					Rounds[1]["D"][1]["89190"]["NbI"]="8";
+					Rounds[1]["D"][1]["89190"]["Nb"]="8";
+					Rounds[1]["D"][1]["89190"]["NbL"]="";
+					Rounds[1]["D"][1]["89190"]["Deg"]="0";
+					Rounds[1]["D"][1]["89190"]["Caracs"]="";
+					
+					Rounds[1]["D"][1]["89190"]["Caracs"]="Laser Kalist III<br/><br/>Etat : 100%<br/>Structure : 17,541,899 (<span style=\"color:white\">100%</span>)<br/><br/>Blindage AC : 0<br/>Blindage La : 0<br/>Blindage Pl : 0<br/>Blindage EM : 0<br/>Dégâts AC : 0 (<span style=\"color:white\">100%</span>)<br/>Dégâts La : 13,771,560 (<span style=\"color:white\">100%</span>)<br/>Dégâts Pl : 0 (<span style=\"color:white\">100%</span>)<br/>Dégâts EM : 0 (<span style=\"color:white\">100%</span>)<br/><br/>Type : Défense (exposition 100%)<br/>Cible : Bombardier";
+					
+					Rounds[1]["D"][1]["89189"]=new Array();
+					Rounds[1]["D"][1]["89189"]["IMG"]="COLaser3";
+					Rounds[1]["D"][1]["89189"]["Type"]="Def";
+					Rounds[1]["D"][1]["89189"]["Chassis"]="Def";
+					Rounds[1]["D"][1]["89189"]["NbI"]="8";
+					Rounds[1]["D"][1]["89189"]["Nb"]="8";
+					Rounds[1]["D"][1]["89189"]["NbL"]="";
+					Rounds[1]["D"][1]["89189"]["Deg"]="0";
+					Rounds[1]["D"][1]["89189"]["Caracs"]="";
+					
+					Rounds[1]["D"][1]["89189"]["Caracs"]="Laser Kalist III<br/><br/>Etat : 100%<br/>Structure : 17,541,899 (<span style=\"color:white\">100%</span>)<br/><br/>Blindage AC : 0<br/>Blindage La : 0<br/>Blindage Pl : 0<br/>Blindage EM : 0<br/>Dégâts AC : 0 (<span style=\"color:white\">100%</span>)<br/>Dégâts La : 13,771,560 (<span style=\"color:white\">100%</span>)<br/>Dégâts Pl : 0 (<span style=\"color:white\">100%</span>)<br/>Dégâts EM : 0 (<span style=\"color:white\">100%</span>)<br/><br/>Type : Défense (exposition 100%)<br/>Cible : Bombardier";
+					
+					Rounds[1]["D"][1]["89203"]=new Array();
+					Rounds[1]["D"][1]["89203"]["IMG"]="COLaser4";
+					Rounds[1]["D"][1]["89203"]["Type"]="Def";
+					Rounds[1]["D"][1]["89203"]["Chassis"]="Def";
+					Rounds[1]["D"][1]["89203"]["NbI"]="4";
+					Rounds[1]["D"][1]["89203"]["Nb"]="4";
+					Rounds[1]["D"][1]["89203"]["NbL"]="";
+					Rounds[1]["D"][1]["89203"]["Deg"]="0";
+					Rounds[1]["D"][1]["89203"]["Caracs"]="";
+					
+					Rounds[1]["D"][1]["89203"]["Caracs"]="Laser Kalist IV<br/><br/>Etat : 100%<br/>Structure : 438,547,483 (<span style=\"color:white\">100%</span>)<br/><br/>Blindage AC : 0<br/>Blindage La : 0<br/>Blindage Pl : 0<br/>Blindage EM : 0<br/>Dégâts AC : 0 (<span style=\"color:white\">100%</span>)<br/>Dégâts La : 74,715,497 (<span style=\"color:white\">100%</span>)<br/>Dégâts Pl : 0 (<span style=\"color:white\">100%</span>)<br/>Dégâts EM : 0 (<span style=\"color:white\">100%</span>)<br/><br/>Type : Défense (exposition 100%)<br/>Cible : Croiseur";
+					
+					Rounds[1]["D"][1]["89188"]=new Array();
+					Rounds[1]["D"][1]["89188"]["IMG"]="COPlasma4";
+					Rounds[1]["D"][1]["89188"]["Type"]="Def";
+					Rounds[1]["D"][1]["89188"]["Chassis"]="Def";
+					Rounds[1]["D"][1]["89188"]["NbI"]="4";
+					Rounds[1]["D"][1]["89188"]["Nb"]="4";
+					Rounds[1]["D"][1]["89188"]["NbL"]="";
+					Rounds[1]["D"][1]["89188"]["Deg"]="0";
+					Rounds[1]["D"][1]["89188"]["Caracs"]="";
+					
+					Rounds[1]["D"][1]["89188"]["Caracs"]="Plasma Kalist IV<br/><br/>Etat : 100%<br/>Structure : 389,819,985 (<span style=\"color:white\">100%</span>)<br/><br/>Blindage AC : 0<br/>Blindage La : 0<br/>Blindage Pl : 0<br/>Blindage EM : 0<br/>Dégâts AC : 0 (<span style=\"color:white\">100%</span>)<br/>Dégâts La : 0 (<span style=\"color:white\">100%</span>)<br/>Dégâts Pl : 62,753,741 (<span style=\"color:white\">100%</span>)<br/>Dégâts EM : 0 (<span style=\"color:white\">100%</span>)<br/><br/>Type : Défense (exposition 100%)<br/>Cible : Cuirassé";
+					
+				Rounds[1]["D"][1]["VA0"]=new Array();
+				Rounds[1]["D"][1]["VA0"]["IMG"]="VA0";
+				Rounds[1]["D"][1]["VA0"]["Type"]="A";
+				Rounds[1]["D"][1]["VA0"]["Chassis"]="Div";
+				Rounds[1]["D"][1]["VA0"]["NbI"]="1340";
+				Rounds[1]["D"][1]["VA0"]["Nb"]="1340";
+				Rounds[1]["D"][1]["VA0"]["NbL"]="";
+				Rounds[1]["D"][1]["VA0"]["Deg"]="0";
+				Rounds[1]["D"][1]["VA0"]["Caracs"]="";
+				
+				Rounds[1]["D"][1]["VA0"]["Caracs"]="Satellite solaire<br/><br/>Etat : 100%<br/>Structure : 254 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Blindage AC : 0<br/>Blindage La : 0<br/>Blindage Pl : 0<br/>Blindage EM : 0<br/>Dégâts AC : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts La : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts Pl : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts EM : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/><br/>Type : Chasseur (exposition 0%)<br/>Chassis : Divers (exposition 0%)<br/>Dégâts d\'exposition : +0%<br/>Cible : Polyvalent";
+				
+				Rounds[1]["D"][1]["M7"]=new Array();
+				Rounds[1]["D"][1]["M7"]["IMG"]="M7";
+				Rounds[1]["D"][1]["M7"]["Type"]="M";
+				Rounds[1]["D"][1]["M7"]["Chassis"]="M";
+				Rounds[1]["D"][1]["M7"]["NbI"]="1";
+				Rounds[1]["D"][1]["M7"]["Nb"]="1";
+				Rounds[1]["D"][1]["M7"]["NbL"]="";
+				Rounds[1]["D"][1]["M7"]["Deg"]="0";
+				Rounds[1]["D"][1]["M7"]["Caracs"]="";
+				
+				Rounds[1]["D"][1]["M7"]["Caracs"]="Terraformeur<br/><br/>Etat : 100%<br/>Structure : 635,576 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Blindage AC : 0<br/>Blindage La : 0<br/>Blindage Pl : 0<br/>Blindage EM : 0<br/>Dégâts AC : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts La : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts Pl : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts EM : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/><br/>Type : Module (exposition 0%)<br/>Chassis : Module Utilitaire (exposition 0%)<br/>Dégâts d\'exposition : +0%<br/>Cible : Polyvalent";
+				
+				Rounds[1]["D"][1]["VX13"]=new Array();
+				Rounds[1]["D"][1]["VX13"]["IMG"]="VX13";
+				Rounds[1]["D"][1]["VX13"]["Type"]="M";
+				Rounds[1]["D"][1]["VX13"]["Chassis"]="M2";
+				Rounds[1]["D"][1]["VX13"]["NbI"]="25";
+				Rounds[1]["D"][1]["VX13"]["Nb"]="25";
+				Rounds[1]["D"][1]["VX13"]["NbL"]="";
+				Rounds[1]["D"][1]["VX13"]["Deg"]="0";
+				Rounds[1]["D"][1]["VX13"]["Caracs"]="";
+				
+				Rounds[1]["D"][1]["VX13"]["Caracs"]="Plasma Mobile<br/><br/>Etat : 100%<br/>Structure : 381,346 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Blindage AC : 0<br/>Blindage La : 0<br/>Blindage Pl : 0<br/>Blindage EM : 0<br/>Dégâts AC : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts La : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts Pl : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts EM : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/><br/>Type : Module (exposition 0%)<br/>Chassis : Plateforme de Combat (exposition 0%)<br/>Dégâts d\'exposition : +0%<br/>Cible : Polyvalent";
+				
+				Rounds[1]["D"][1]["VX14"]=new Array();
+				Rounds[1]["D"][1]["VX14"]["IMG"]="VX14";
+				Rounds[1]["D"][1]["VX14"]["Type"]="M";
+				Rounds[1]["D"][1]["VX14"]["Chassis"]="M2";
+				Rounds[1]["D"][1]["VX14"]["NbI"]="25";
+				Rounds[1]["D"][1]["VX14"]["Nb"]="25";
+				Rounds[1]["D"][1]["VX14"]["NbL"]="";
+				Rounds[1]["D"][1]["VX14"]["Deg"]="0";
+				Rounds[1]["D"][1]["VX14"]["Caracs"]="";
+				
+				Rounds[1]["D"][1]["VX14"]["Caracs"]="Station de Drones<br/><br/>Etat : 100%<br/>Structure : 254,230 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Blindage AC : 0<br/>Blindage La : 0<br/>Blindage Pl : 0<br/>Blindage EM : 0<br/>Dégâts AC : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts La : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts Pl : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts EM : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/><br/>Type : Module (exposition 0%)<br/>Chassis : Plateforme de Combat (exposition 0%)<br/>Dégâts d\'exposition : +0%<br/>Cible : Polyvalent";
+				
+				Rounds[1]["D"][1]["M1T"]=new Array();
+				Rounds[1]["D"][1]["M1T"]["IMG"]="M1T";
+				Rounds[1]["D"][1]["M1T"]["Type"]="M";
+				Rounds[1]["D"][1]["M1T"]["Chassis"]="M";
+				Rounds[1]["D"][1]["M1T"]["NbI"]="194";
+				Rounds[1]["D"][1]["M1T"]["Nb"]="194";
+				Rounds[1]["D"][1]["M1T"]["NbL"]="";
+				Rounds[1]["D"][1]["M1T"]["Deg"]="0";
+				Rounds[1]["D"][1]["M1T"]["Caracs"]="";
+				
+				Rounds[1]["D"][1]["M1T"]["Caracs"]="Extracteur jovien<br/><br/>Etat : 100%<br/>Structure : 254,230 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Blindage AC : 0<br/>Blindage La : 0<br/>Blindage Pl : 0<br/>Blindage EM : 0<br/>Dégâts AC : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts La : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts Pl : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts EM : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/><br/>Type : Module (exposition 0%)<br/>Chassis : Module Utilitaire (exposition 0%)<br/>Dégâts d\'exposition : +0%<br/>Cible : Polyvalent";
+				
+				Rounds[1]["D"][1]["M4"]=new Array();
+				Rounds[1]["D"][1]["M4"]["IMG"]="M4";
+				Rounds[1]["D"][1]["M4"]["Type"]="M";
+				Rounds[1]["D"][1]["M4"]["Chassis"]="M";
+				Rounds[1]["D"][1]["M4"]["NbI"]="2030";
+				Rounds[1]["D"][1]["M4"]["Nb"]="2030";
+				Rounds[1]["D"][1]["M4"]["NbL"]="";
+				Rounds[1]["D"][1]["M4"]["Deg"]="0";
+				Rounds[1]["D"][1]["M4"]["Caracs"]="";
+				
+				Rounds[1]["D"][1]["M4"]["Caracs"]="Concentrateur<br/><br/>Etat : 100%<br/>Structure : 5,085 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Blindage AC : 0<br/>Blindage La : 0<br/>Blindage Pl : 0<br/>Blindage EM : 0<br/>Dégâts AC : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts La : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts Pl : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts EM : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/><br/>Type : Module (exposition 0%)<br/>Chassis : Module Utilitaire (exposition 0%)<br/>Dégâts d\'exposition : +0%<br/>Cible : Polyvalent";
+				
+if(!Chasse[1]){
+	Chasse[1]=new Array();
+}
+Chasse[1]["D"]=new Array();
+Chasse[1]["D"]["RCh1"]=0;
+Chasse[1]["D"]["RCh2"]=0;
+Chasse[1]["D"]["RCh3"]=0;
+Chasse[1]["D"]["OCh1"]=0;
+Chasse[1]["D"]["OCh2"]=0;
+Chasse[1]["D"]["OCh3"]=0;
+Chasse[1]["D"]["CoefChStr"]=100;
+Chasse[1]["D"]["CoefChCib"]=100;
+Chasse[1]["D"]["CoefChAtt"]=100;
+Chasse[1]["D"]["RCh"]=0;
+Chasse[1]["D"]["CoefCh"]=100;
+
+		Rounds[1]["Events"][event]="<img src=\"../SkinRC/Events/Drones.png\" class=\"IcoEv\"/> Le défenseur active 3 escadrons de drones de défense. 150,000 tirs avec une puissance de feu de 3,532,200,000<br/>";
+		event++;
+		
+		Rounds[1]["Events"][event]="<img src=\"../SkinRC/Events/Plasma.png\" class=\"IcoEv\"/> Le défenseur active 3 lignes de canons plasma orbitaux. 1,500 tirs avec une puissance de feu de 2,949,450,000<br/>";
+		event++;
+		
+	Rounds[1]["Events"][event]="<img src=\"../SkinRC/Events/Ballist.png\" class=\"IcoEv\"/> A cette distance, les tirs non ciblés ont un impact de 10% pour l\'attaque et 10% pour la défense<br/>";
+	event++;
+	
+Rounds[1]["Degats"]="<div class=\"Degats\"><b>La Flotte Attaquante tir avec une puissance de feu de <span class=\"StyleDegats\">28,817,032,474</span></b><div><i>(Tirs ciblés sur les <span class=\"StyleCible\">chasseurs</span> avec une puissance de <span class=\"StyleDegats\">AC 0, La 3,301,618, Pl 0, EM 0</span>)<br/>(Tirs <span class=\"StyleCible\">polyvalents</span> avec une puissance de <span class=\"StyleDegats\">AC 0, La 28,813,230,885, Pl 0, EM 0</span>)<br/>(Tirs <span class=\"StyleCible\">non ciblés</span> avec une puissance de <span class=\"StyleDegats\">AC 0, La 322,770, Pl 177,202, EM 0</span>)<br/><br/></i></div><b>La Defense tir avec une puissance de feu de <span class=\"StyleDegats\">4,086,912,869</span></b><div><i>(Tirs ciblés sur les <span class=\"StyleCible\">chasseurs</span> avec une puissance de <span class=\"StyleDegats\">AC 0, La 124,692,209, Pl 0, EM 0</span>)<br/>(Tirs ciblés sur les <span class=\"StyleCible\">cuirassés</span> avec une puissance de <span class=\"StyleDegats\">AC 0, La 0, Pl 3,576,987,409, EM 0</span>)<br/>(Tirs <span class=\"StyleCible\">non ciblés</span> avec une puissance de <span class=\"StyleDegats\">AC 0, La 385,233,250, Pl 0, EM 0</span>)<br/></i></div></div>";
+
+Rounds[1]["ZRC_A"]="0.5656969036873";
+Rounds[1]["ZRC_D"]="0.4343030963127";
+
+Rounds[1]["Str_A"]="0.89022832381556";
+Rounds[1]["Str_D"]="0.10977167618444";
+
+Rounds[1]["Att_A"]="0.87579261919817";
+Rounds[1]["Att_D"]="0.12420738080183";
+
+		Rounds[2]=new Array();
+		Rounds[2]["Events"]=new Array();
+		event=0;
+		
+Rounds[2]["A"]=new Array();
+
+	Rounds[2]["A"][1]=new Array();
+	
+				Rounds[2]["A"][1]["VA37-92815w61vb"]=new Array();
+				Rounds[2]["A"][1]["VA37-92815w61vb"]["IMG"]="VA32_6";
+				Rounds[2]["A"][1]["VA37-92815w61vb"]["Type"]="A";
+				Rounds[2]["A"][1]["VA37-92815w61vb"]["Chassis"]="A3";
+				Rounds[2]["A"][1]["VA37-92815w61vb"]["NbI"]="150";
+				Rounds[2]["A"][1]["VA37-92815w61vb"]["Nb"]="0";
+				Rounds[2]["A"][1]["VA37-92815w61vb"]["NbL"]="150";
+				Rounds[2]["A"][1]["VA37-92815w61vb"]["Deg"]="0";
+				Rounds[2]["A"][1]["VA37-92815w61vb"]["Caracs"]="";
+				
+				Rounds[2]["A"][1]["VA27"]=new Array();
+				Rounds[2]["A"][1]["VA27"]["IMG"]="VA27";
+				Rounds[2]["A"][1]["VA27"]["Type"]="A";
+				Rounds[2]["A"][1]["VA27"]["Chassis"]="A2";
+				Rounds[2]["A"][1]["VA27"]["NbI"]="211";
+				Rounds[2]["A"][1]["VA27"]["Nb"]="0";
+				Rounds[2]["A"][1]["VA27"]["NbL"]="211";
+				Rounds[2]["A"][1]["VA27"]["Deg"]="0";
+				Rounds[2]["A"][1]["VA27"]["Caracs"]="";
+				
+				Rounds[2]["A"][1]["VA37"]=new Array();
+				Rounds[2]["A"][1]["VA37"]["IMG"]="VA37";
+				Rounds[2]["A"][1]["VA37"]["Type"]="A";
+				Rounds[2]["A"][1]["VA37"]["Chassis"]="A3";
+				Rounds[2]["A"][1]["VA37"]["NbI"]="435";
+				Rounds[2]["A"][1]["VA37"]["Nb"]="0";
+				Rounds[2]["A"][1]["VA37"]["NbL"]="435";
+				Rounds[2]["A"][1]["VA37"]["Deg"]="0";
+				Rounds[2]["A"][1]["VA37"]["Caracs"]="";
+				
+				Rounds[2]["A"][1]["VA37-88352rb0k9"]=new Array();
+				Rounds[2]["A"][1]["VA37-88352rb0k9"]["IMG"]="VA37_7";
+				Rounds[2]["A"][1]["VA37-88352rb0k9"]["Type"]="A";
+				Rounds[2]["A"][1]["VA37-88352rb0k9"]["Chassis"]="A3";
+				Rounds[2]["A"][1]["VA37-88352rb0k9"]["NbI"]="400";
+				Rounds[2]["A"][1]["VA37-88352rb0k9"]["Nb"]="11";
+				Rounds[2]["A"][1]["VA37-88352rb0k9"]["NbL"]="400";
+				Rounds[2]["A"][1]["VA37-88352rb0k9"]["Deg"]="0.23026978161084";
+				Rounds[2]["A"][1]["VA37-88352rb0k9"]["Caracs"]="";
+				
+				Rounds[2]["A"][1]["VA37-88352rb0k9"]["Caracs"]="Theryon**<br/><br/>Etat : 97%<br/>Structure : 13,126 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Blindage AC : 0<br/>Blindage La : 3,107<br/>Blindage Pl : 0<br/>Blindage EM : 0<br/>Dégâts AC : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100.12%</span>)<br/>Dégâts La : 4,596 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100.12%</span>)<br/>Dégâts Pl : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100.12%</span>)<br/>Dégâts EM : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100.12%</span>)<br/><br/>Type : Chasseur (exposition 0%)<br/>Chassis : Chasseur d\'Assaut (exposition 0%)<br/>Dégâts d\'exposition : +0%<br/>Cible : Porte-nefs";
+				
+				Rounds[2]["A"][1]["VA27-91980xkd6z"]=new Array();
+				Rounds[2]["A"][1]["VA27-91980xkd6z"]["IMG"]="VA22_0";
+				Rounds[2]["A"][1]["VA27-91980xkd6z"]["Type"]="A";
+				Rounds[2]["A"][1]["VA27-91980xkd6z"]["Chassis"]="A2";
+				Rounds[2]["A"][1]["VA27-91980xkd6z"]["NbI"]="34";
+				Rounds[2]["A"][1]["VA27-91980xkd6z"]["Nb"]="0";
+				Rounds[2]["A"][1]["VA27-91980xkd6z"]["NbL"]="34";
+				Rounds[2]["A"][1]["VA27-91980xkd6z"]["Deg"]="0";
+				Rounds[2]["A"][1]["VA27-91980xkd6z"]["Caracs"]="";
+				
+				Rounds[2]["A"][1]["VA17-92972x96bv"]=new Array();
+				Rounds[2]["A"][1]["VA17-92972x96bv"]["IMG"]="VA17";
+				Rounds[2]["A"][1]["VA17-92972x96bv"]["Type"]="A";
+				Rounds[2]["A"][1]["VA17-92972x96bv"]["Chassis"]="A1";
+				Rounds[2]["A"][1]["VA17-92972x96bv"]["NbI"]="2376";
+				Rounds[2]["A"][1]["VA17-92972x96bv"]["Nb"]="0";
+				Rounds[2]["A"][1]["VA17-92972x96bv"]["NbL"]="2376";
+				Rounds[2]["A"][1]["VA17-92972x96bv"]["Deg"]="0";
+				Rounds[2]["A"][1]["VA17-92972x96bv"]["Caracs"]="";
+				
+				Rounds[2]["A"][1]["VD67-93339uizjt"]=new Array();
+				Rounds[2]["A"][1]["VD67-93339uizjt"]["IMG"]="VD67_7";
+				Rounds[2]["A"][1]["VD67-93339uizjt"]["Type"]="E";
+				Rounds[2]["A"][1]["VD67-93339uizjt"]["Chassis"]="B6";
+				Rounds[2]["A"][1]["VD67-93339uizjt"]["NbI"]="20";
+				Rounds[2]["A"][1]["VD67-93339uizjt"]["Nb"]="17";
+				Rounds[2]["A"][1]["VD67-93339uizjt"]["NbL"]="20";
+				Rounds[2]["A"][1]["VD67-93339uizjt"]["Deg"]="0";
+				Rounds[2]["A"][1]["VD67-93339uizjt"]["Caracs"]="";
+				
+				Rounds[2]["A"][1]["VD67-93339uizjt"]["Caracs"]="CST - Classe Balmorra<br/><br/>Etat : 100%<br/>Structure : 2,053,967,755 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Blindage AC : 0<br/>Blindage La : 0<br/>Blindage Pl : 843,854,062<br/>Blindage EM : 0<br/>Dégâts AC : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100.12%</span>)<br/>Dégâts La : 1,471,707,021 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100.12%</span>)<br/>Dégâts Pl : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100.12%</span>)<br/>Dégâts EM : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100.12%</span>)<br/><br/>Type : Cuirassé (exposition 100%)<br/>Chassis : Bombardier Lourd (exposition 100%)<br/>Dégâts d\'exposition : +400%<br/>Cible : Polyvalent";
+				
+				Rounds[2]["A"][1]["VX11-852153a4kd"]=new Array();
+				Rounds[2]["A"][1]["VX11-852153a4kd"]["IMG"]="VX11";
+				Rounds[2]["A"][1]["VX11-852153a4kd"]["Type"]="T";
+				Rounds[2]["A"][1]["VX11-852153a4kd"]["Chassis"]="T4";
+				Rounds[2]["A"][1]["VX11-852153a4kd"]["NbI"]="1";
+				Rounds[2]["A"][1]["VX11-852153a4kd"]["Nb"]="1";
+				Rounds[2]["A"][1]["VX11-852153a4kd"]["NbL"]="1";
+				Rounds[2]["A"][1]["VX11-852153a4kd"]["Deg"]="0.0040277729874177";
+				Rounds[2]["A"][1]["VX11-852153a4kd"]["Caracs"]="";
+				
+				Rounds[2]["A"][1]["VX11-852153a4kd"]["Caracs"]="Transporteur Valdahaz<br/><br/>Etat : 99%<br/>Structure : 21,420,417 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Blindage AC : 0<br/>Blindage La : 0<br/>Blindage Pl : 0<br/>Blindage EM : 0<br/>Dégâts AC : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts La : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts Pl : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts EM : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/><br/>Type : Transporteur (exposition 0%)<br/>Chassis : Transporteur Express (exposition 0%)<br/>Dégâts d\'exposition : +0%<br/>Cible : Polyvalent";
+				
+if(!Chasse[2]){
+	Chasse[2]=new Array();
+}
+Chasse[2]["A"]=new Array();
+Chasse[2]["A"]["RCh1"]=0;
+Chasse[2]["A"]["RCh2"]=0;
+Chasse[2]["A"]["RCh3"]=100;
+Chasse[2]["A"]["OCh1"]=35;
+Chasse[2]["A"]["OCh2"]=20;
+Chasse[2]["A"]["OCh3"]=45;
+Chasse[2]["A"]["CoefChStr"]=100;
+Chasse[2]["A"]["CoefChCib"]=99.94;
+Chasse[2]["A"]["CoefChAtt"]=100.11;
+Chasse[2]["A"]["RCh"]=0.21;
+Chasse[2]["A"]["CoefCh"]=8.15;
+
+Rounds[2]["D"]=new Array();
+
+	Rounds[2]["D"][1]=new Array();
+	
+					Rounds[2]["D"][1]["89217"]=new Array();
+					Rounds[2]["D"][1]["89217"]["IMG"]="COLaser1";
+					Rounds[2]["D"][1]["89217"]["Type"]="Def";
+					Rounds[2]["D"][1]["89217"]["Chassis"]="Def";
+					Rounds[2]["D"][1]["89217"]["NbI"]="32";
+					Rounds[2]["D"][1]["89217"]["Nb"]="0";
+					Rounds[2]["D"][1]["89217"]["NbL"]="32";
+					Rounds[2]["D"][1]["89217"]["Deg"]="0";
+					Rounds[2]["D"][1]["89217"]["Caracs"]="";
+					
+					Rounds[2]["D"][1]["89200"]=new Array();
+					Rounds[2]["D"][1]["89200"]["IMG"]="COLaser1";
+					Rounds[2]["D"][1]["89200"]["Type"]="Def";
+					Rounds[2]["D"][1]["89200"]["Chassis"]="Def";
+					Rounds[2]["D"][1]["89200"]["NbI"]="32";
+					Rounds[2]["D"][1]["89200"]["Nb"]="0";
+					Rounds[2]["D"][1]["89200"]["NbL"]="32";
+					Rounds[2]["D"][1]["89200"]["Deg"]="0";
+					Rounds[2]["D"][1]["89200"]["Caracs"]="";
+					
+					Rounds[2]["D"][1]["89201"]=new Array();
+					Rounds[2]["D"][1]["89201"]["IMG"]="COLaser1";
+					Rounds[2]["D"][1]["89201"]["Type"]="Def";
+					Rounds[2]["D"][1]["89201"]["Chassis"]="Def";
+					Rounds[2]["D"][1]["89201"]["NbI"]="32";
+					Rounds[2]["D"][1]["89201"]["Nb"]="0";
+					Rounds[2]["D"][1]["89201"]["NbL"]="32";
+					Rounds[2]["D"][1]["89201"]["Deg"]="0";
+					Rounds[2]["D"][1]["89201"]["Caracs"]="";
+					
+					Rounds[2]["D"][1]["89202"]=new Array();
+					Rounds[2]["D"][1]["89202"]["IMG"]="COLaser1";
+					Rounds[2]["D"][1]["89202"]["Type"]="Def";
+					Rounds[2]["D"][1]["89202"]["Chassis"]="Def";
+					Rounds[2]["D"][1]["89202"]["NbI"]="32";
+					Rounds[2]["D"][1]["89202"]["Nb"]="0";
+					Rounds[2]["D"][1]["89202"]["NbL"]="32";
+					Rounds[2]["D"][1]["89202"]["Deg"]="0";
+					Rounds[2]["D"][1]["89202"]["Caracs"]="";
+					
+					Rounds[2]["D"][1]["89216"]=new Array();
+					Rounds[2]["D"][1]["89216"]["IMG"]="COLaser1";
+					Rounds[2]["D"][1]["89216"]["Type"]="Def";
+					Rounds[2]["D"][1]["89216"]["Chassis"]="Def";
+					Rounds[2]["D"][1]["89216"]["NbI"]="32";
+					Rounds[2]["D"][1]["89216"]["Nb"]="0";
+					Rounds[2]["D"][1]["89216"]["NbL"]="32";
+					Rounds[2]["D"][1]["89216"]["Deg"]="0";
+					Rounds[2]["D"][1]["89216"]["Caracs"]="";
+					
+					Rounds[2]["D"][1]["89210"]=new Array();
+					Rounds[2]["D"][1]["89210"]["IMG"]="COLaser1";
+					Rounds[2]["D"][1]["89210"]["Type"]="Def";
+					Rounds[2]["D"][1]["89210"]["Chassis"]="Def";
+					Rounds[2]["D"][1]["89210"]["NbI"]="32";
+					Rounds[2]["D"][1]["89210"]["Nb"]="0";
+					Rounds[2]["D"][1]["89210"]["NbL"]="32";
+					Rounds[2]["D"][1]["89210"]["Deg"]="0";
+					Rounds[2]["D"][1]["89210"]["Caracs"]="";
+					
+					Rounds[2]["D"][1]["89211"]=new Array();
+					Rounds[2]["D"][1]["89211"]["IMG"]="COLaser1";
+					Rounds[2]["D"][1]["89211"]["Type"]="Def";
+					Rounds[2]["D"][1]["89211"]["Chassis"]="Def";
+					Rounds[2]["D"][1]["89211"]["NbI"]="32";
+					Rounds[2]["D"][1]["89211"]["Nb"]="0";
+					Rounds[2]["D"][1]["89211"]["NbL"]="32";
+					Rounds[2]["D"][1]["89211"]["Deg"]="0";
+					Rounds[2]["D"][1]["89211"]["Caracs"]="";
+					
+					Rounds[2]["D"][1]["89212"]=new Array();
+					Rounds[2]["D"][1]["89212"]["IMG"]="COLaser1";
+					Rounds[2]["D"][1]["89212"]["Type"]="Def";
+					Rounds[2]["D"][1]["89212"]["Chassis"]="Def";
+					Rounds[2]["D"][1]["89212"]["NbI"]="32";
+					Rounds[2]["D"][1]["89212"]["Nb"]="0";
+					Rounds[2]["D"][1]["89212"]["NbL"]="32";
+					Rounds[2]["D"][1]["89212"]["Deg"]="0";
+					Rounds[2]["D"][1]["89212"]["Caracs"]="";
+					
+					Rounds[2]["D"][1]["89213"]=new Array();
+					Rounds[2]["D"][1]["89213"]["IMG"]="COLaser1";
+					Rounds[2]["D"][1]["89213"]["Type"]="Def";
+					Rounds[2]["D"][1]["89213"]["Chassis"]="Def";
+					Rounds[2]["D"][1]["89213"]["NbI"]="32";
+					Rounds[2]["D"][1]["89213"]["Nb"]="0";
+					Rounds[2]["D"][1]["89213"]["NbL"]="32";
+					Rounds[2]["D"][1]["89213"]["Deg"]="0";
+					Rounds[2]["D"][1]["89213"]["Caracs"]="";
+					
+					Rounds[2]["D"][1]["89214"]=new Array();
+					Rounds[2]["D"][1]["89214"]["IMG"]="COLaser1";
+					Rounds[2]["D"][1]["89214"]["Type"]="Def";
+					Rounds[2]["D"][1]["89214"]["Chassis"]="Def";
+					Rounds[2]["D"][1]["89214"]["NbI"]="32";
+					Rounds[2]["D"][1]["89214"]["Nb"]="0";
+					Rounds[2]["D"][1]["89214"]["NbL"]="32";
+					Rounds[2]["D"][1]["89214"]["Deg"]="0";
+					Rounds[2]["D"][1]["89214"]["Caracs"]="";
+					
+					Rounds[2]["D"][1]["89199"]=new Array();
+					Rounds[2]["D"][1]["89199"]["IMG"]="COLaser1";
+					Rounds[2]["D"][1]["89199"]["Type"]="Def";
+					Rounds[2]["D"][1]["89199"]["Chassis"]="Def";
+					Rounds[2]["D"][1]["89199"]["NbI"]="32";
+					Rounds[2]["D"][1]["89199"]["Nb"]="0";
+					Rounds[2]["D"][1]["89199"]["NbL"]="32";
+					Rounds[2]["D"][1]["89199"]["Deg"]="0";
+					Rounds[2]["D"][1]["89199"]["Caracs"]="";
+					
+					Rounds[2]["D"][1]["89198"]=new Array();
+					Rounds[2]["D"][1]["89198"]["IMG"]="COLaser1";
+					Rounds[2]["D"][1]["89198"]["Type"]="Def";
+					Rounds[2]["D"][1]["89198"]["Chassis"]="Def";
+					Rounds[2]["D"][1]["89198"]["NbI"]="32";
+					Rounds[2]["D"][1]["89198"]["Nb"]="0";
+					Rounds[2]["D"][1]["89198"]["NbL"]="32";
+					Rounds[2]["D"][1]["89198"]["Deg"]="0";
+					Rounds[2]["D"][1]["89198"]["Caracs"]="";
+					
+					Rounds[2]["D"][1]["89215"]=new Array();
+					Rounds[2]["D"][1]["89215"]["IMG"]="COLaser1";
+					Rounds[2]["D"][1]["89215"]["Type"]="Def";
+					Rounds[2]["D"][1]["89215"]["Chassis"]="Def";
+					Rounds[2]["D"][1]["89215"]["NbI"]="32";
+					Rounds[2]["D"][1]["89215"]["Nb"]="0";
+					Rounds[2]["D"][1]["89215"]["NbL"]="32";
+					Rounds[2]["D"][1]["89215"]["Deg"]="0";
+					Rounds[2]["D"][1]["89215"]["Caracs"]="";
+					
+					Rounds[2]["D"][1]["89195"]=new Array();
+					Rounds[2]["D"][1]["89195"]["IMG"]="COLaser1";
+					Rounds[2]["D"][1]["89195"]["Type"]="Def";
+					Rounds[2]["D"][1]["89195"]["Chassis"]="Def";
+					Rounds[2]["D"][1]["89195"]["NbI"]="32";
+					Rounds[2]["D"][1]["89195"]["Nb"]="0";
+					Rounds[2]["D"][1]["89195"]["NbL"]="32";
+					Rounds[2]["D"][1]["89195"]["Deg"]="0";
+					Rounds[2]["D"][1]["89195"]["Caracs"]="";
+					
+					Rounds[2]["D"][1]["89196"]=new Array();
+					Rounds[2]["D"][1]["89196"]["IMG"]="COLaser1";
+					Rounds[2]["D"][1]["89196"]["Type"]="Def";
+					Rounds[2]["D"][1]["89196"]["Chassis"]="Def";
+					Rounds[2]["D"][1]["89196"]["NbI"]="32";
+					Rounds[2]["D"][1]["89196"]["Nb"]="0";
+					Rounds[2]["D"][1]["89196"]["NbL"]="32";
+					Rounds[2]["D"][1]["89196"]["Deg"]="0";
+					Rounds[2]["D"][1]["89196"]["Caracs"]="";
+					
+					Rounds[2]["D"][1]["89197"]=new Array();
+					Rounds[2]["D"][1]["89197"]["IMG"]="COLaser1";
+					Rounds[2]["D"][1]["89197"]["Type"]="Def";
+					Rounds[2]["D"][1]["89197"]["Chassis"]="Def";
+					Rounds[2]["D"][1]["89197"]["NbI"]="32";
+					Rounds[2]["D"][1]["89197"]["Nb"]="0";
+					Rounds[2]["D"][1]["89197"]["NbL"]="32";
+					Rounds[2]["D"][1]["89197"]["Deg"]="0";
+					Rounds[2]["D"][1]["89197"]["Caracs"]="";
+					
+					Rounds[2]["D"][1]["89191"]=new Array();
+					Rounds[2]["D"][1]["89191"]["IMG"]="COLaser2";
+					Rounds[2]["D"][1]["89191"]["Type"]="Def";
+					Rounds[2]["D"][1]["89191"]["Chassis"]="Def";
+					Rounds[2]["D"][1]["89191"]["NbI"]="16";
+					Rounds[2]["D"][1]["89191"]["Nb"]="0";
+					Rounds[2]["D"][1]["89191"]["NbL"]="16";
+					Rounds[2]["D"][1]["89191"]["Deg"]="0";
+					Rounds[2]["D"][1]["89191"]["Caracs"]="";
+					
+					Rounds[2]["D"][1]["89192"]=new Array();
+					Rounds[2]["D"][1]["89192"]["IMG"]="COLaser2";
+					Rounds[2]["D"][1]["89192"]["Type"]="Def";
+					Rounds[2]["D"][1]["89192"]["Chassis"]="Def";
+					Rounds[2]["D"][1]["89192"]["NbI"]="16";
+					Rounds[2]["D"][1]["89192"]["Nb"]="0";
+					Rounds[2]["D"][1]["89192"]["NbL"]="16";
+					Rounds[2]["D"][1]["89192"]["Deg"]="0";
+					Rounds[2]["D"][1]["89192"]["Caracs"]="";
+					
+					Rounds[2]["D"][1]["89193"]=new Array();
+					Rounds[2]["D"][1]["89193"]["IMG"]="COLaser2";
+					Rounds[2]["D"][1]["89193"]["Type"]="Def";
+					Rounds[2]["D"][1]["89193"]["Chassis"]="Def";
+					Rounds[2]["D"][1]["89193"]["NbI"]="16";
+					Rounds[2]["D"][1]["89193"]["Nb"]="0";
+					Rounds[2]["D"][1]["89193"]["NbL"]="16";
+					Rounds[2]["D"][1]["89193"]["Deg"]="0";
+					Rounds[2]["D"][1]["89193"]["Caracs"]="";
+					
+					Rounds[2]["D"][1]["89209"]=new Array();
+					Rounds[2]["D"][1]["89209"]["IMG"]="COLaser2";
+					Rounds[2]["D"][1]["89209"]["Type"]="Def";
+					Rounds[2]["D"][1]["89209"]["Chassis"]="Def";
+					Rounds[2]["D"][1]["89209"]["NbI"]="16";
+					Rounds[2]["D"][1]["89209"]["Nb"]="0";
+					Rounds[2]["D"][1]["89209"]["NbL"]="16";
+					Rounds[2]["D"][1]["89209"]["Deg"]="0";
+					Rounds[2]["D"][1]["89209"]["Caracs"]="";
+					
+					Rounds[2]["D"][1]["89208"]=new Array();
+					Rounds[2]["D"][1]["89208"]["IMG"]="COLaser2";
+					Rounds[2]["D"][1]["89208"]["Type"]="Def";
+					Rounds[2]["D"][1]["89208"]["Chassis"]="Def";
+					Rounds[2]["D"][1]["89208"]["NbI"]="16";
+					Rounds[2]["D"][1]["89208"]["Nb"]="0";
+					Rounds[2]["D"][1]["89208"]["NbL"]="16";
+					Rounds[2]["D"][1]["89208"]["Deg"]="0";
+					Rounds[2]["D"][1]["89208"]["Caracs"]="";
+					
+					Rounds[2]["D"][1]["89206"]=new Array();
+					Rounds[2]["D"][1]["89206"]["IMG"]="COLaser2";
+					Rounds[2]["D"][1]["89206"]["Type"]="Def";
+					Rounds[2]["D"][1]["89206"]["Chassis"]="Def";
+					Rounds[2]["D"][1]["89206"]["NbI"]="16";
+					Rounds[2]["D"][1]["89206"]["Nb"]="0";
+					Rounds[2]["D"][1]["89206"]["NbL"]="16";
+					Rounds[2]["D"][1]["89206"]["Deg"]="0";
+					Rounds[2]["D"][1]["89206"]["Caracs"]="";
+					
+					Rounds[2]["D"][1]["89194"]=new Array();
+					Rounds[2]["D"][1]["89194"]["IMG"]="COLaser2";
+					Rounds[2]["D"][1]["89194"]["Type"]="Def";
+					Rounds[2]["D"][1]["89194"]["Chassis"]="Def";
+					Rounds[2]["D"][1]["89194"]["NbI"]="16";
+					Rounds[2]["D"][1]["89194"]["Nb"]="0";
+					Rounds[2]["D"][1]["89194"]["NbL"]="16";
+					Rounds[2]["D"][1]["89194"]["Deg"]="0";
+					Rounds[2]["D"][1]["89194"]["Caracs"]="";
+					
+					Rounds[2]["D"][1]["89207"]=new Array();
+					Rounds[2]["D"][1]["89207"]["IMG"]="COLaser2";
+					Rounds[2]["D"][1]["89207"]["Type"]="Def";
+					Rounds[2]["D"][1]["89207"]["Chassis"]="Def";
+					Rounds[2]["D"][1]["89207"]["NbI"]="16";
+					Rounds[2]["D"][1]["89207"]["Nb"]="0";
+					Rounds[2]["D"][1]["89207"]["NbL"]="16";
+					Rounds[2]["D"][1]["89207"]["Deg"]="0";
+					Rounds[2]["D"][1]["89207"]["Caracs"]="";
+					
+					Rounds[2]["D"][1]["89205"]=new Array();
+					Rounds[2]["D"][1]["89205"]["IMG"]="COLaser3";
+					Rounds[2]["D"][1]["89205"]["Type"]="Def";
+					Rounds[2]["D"][1]["89205"]["Chassis"]="Def";
+					Rounds[2]["D"][1]["89205"]["NbI"]="8";
+					Rounds[2]["D"][1]["89205"]["Nb"]="0";
+					Rounds[2]["D"][1]["89205"]["NbL"]="8";
+					Rounds[2]["D"][1]["89205"]["Deg"]="0";
+					Rounds[2]["D"][1]["89205"]["Caracs"]="";
+					
+					Rounds[2]["D"][1]["89204"]=new Array();
+					Rounds[2]["D"][1]["89204"]["IMG"]="COLaser3";
+					Rounds[2]["D"][1]["89204"]["Type"]="Def";
+					Rounds[2]["D"][1]["89204"]["Chassis"]="Def";
+					Rounds[2]["D"][1]["89204"]["NbI"]="8";
+					Rounds[2]["D"][1]["89204"]["Nb"]="0";
+					Rounds[2]["D"][1]["89204"]["NbL"]="8";
+					Rounds[2]["D"][1]["89204"]["Deg"]="0";
+					Rounds[2]["D"][1]["89204"]["Caracs"]="";
+					
+					Rounds[2]["D"][1]["89190"]=new Array();
+					Rounds[2]["D"][1]["89190"]["IMG"]="COLaser3";
+					Rounds[2]["D"][1]["89190"]["Type"]="Def";
+					Rounds[2]["D"][1]["89190"]["Chassis"]="Def";
+					Rounds[2]["D"][1]["89190"]["NbI"]="8";
+					Rounds[2]["D"][1]["89190"]["Nb"]="0";
+					Rounds[2]["D"][1]["89190"]["NbL"]="8";
+					Rounds[2]["D"][1]["89190"]["Deg"]="0";
+					Rounds[2]["D"][1]["89190"]["Caracs"]="";
+					
+					Rounds[2]["D"][1]["89189"]=new Array();
+					Rounds[2]["D"][1]["89189"]["IMG"]="COLaser3";
+					Rounds[2]["D"][1]["89189"]["Type"]="Def";
+					Rounds[2]["D"][1]["89189"]["Chassis"]="Def";
+					Rounds[2]["D"][1]["89189"]["NbI"]="8";
+					Rounds[2]["D"][1]["89189"]["Nb"]="0";
+					Rounds[2]["D"][1]["89189"]["NbL"]="8";
+					Rounds[2]["D"][1]["89189"]["Deg"]="0";
+					Rounds[2]["D"][1]["89189"]["Caracs"]="";
+					
+					Rounds[2]["D"][1]["89203"]=new Array();
+					Rounds[2]["D"][1]["89203"]["IMG"]="COLaser4";
+					Rounds[2]["D"][1]["89203"]["Type"]="Def";
+					Rounds[2]["D"][1]["89203"]["Chassis"]="Def";
+					Rounds[2]["D"][1]["89203"]["NbI"]="4";
+					Rounds[2]["D"][1]["89203"]["Nb"]="0";
+					Rounds[2]["D"][1]["89203"]["NbL"]="4";
+					Rounds[2]["D"][1]["89203"]["Deg"]="0";
+					Rounds[2]["D"][1]["89203"]["Caracs"]="";
+					
+					Rounds[2]["D"][1]["89188"]=new Array();
+					Rounds[2]["D"][1]["89188"]["IMG"]="COPlasma4";
+					Rounds[2]["D"][1]["89188"]["Type"]="Def";
+					Rounds[2]["D"][1]["89188"]["Chassis"]="Def";
+					Rounds[2]["D"][1]["89188"]["NbI"]="4";
+					Rounds[2]["D"][1]["89188"]["Nb"]="0";
+					Rounds[2]["D"][1]["89188"]["NbL"]="4";
+					Rounds[2]["D"][1]["89188"]["Deg"]="0";
+					Rounds[2]["D"][1]["89188"]["Caracs"]="";
+					
+				Rounds[2]["D"][1]["VA0"]=new Array();
+				Rounds[2]["D"][1]["VA0"]["IMG"]="VA0";
+				Rounds[2]["D"][1]["VA0"]["Type"]="A";
+				Rounds[2]["D"][1]["VA0"]["Chassis"]="Div";
+				Rounds[2]["D"][1]["VA0"]["NbI"]="1340";
+				Rounds[2]["D"][1]["VA0"]["Nb"]="0";
+				Rounds[2]["D"][1]["VA0"]["NbL"]="1340";
+				Rounds[2]["D"][1]["VA0"]["Deg"]="0";
+				Rounds[2]["D"][1]["VA0"]["Caracs"]="";
+				
+				Rounds[2]["D"][1]["M7"]=new Array();
+				Rounds[2]["D"][1]["M7"]["IMG"]="M7";
+				Rounds[2]["D"][1]["M7"]["Type"]="M";
+				Rounds[2]["D"][1]["M7"]["Chassis"]="M";
+				Rounds[2]["D"][1]["M7"]["NbI"]="1";
+				Rounds[2]["D"][1]["M7"]["Nb"]="0";
+				Rounds[2]["D"][1]["M7"]["NbL"]="1";
+				Rounds[2]["D"][1]["M7"]["Deg"]="0";
+				Rounds[2]["D"][1]["M7"]["Caracs"]="";
+				
+				Rounds[2]["D"][1]["VX13"]=new Array();
+				Rounds[2]["D"][1]["VX13"]["IMG"]="VX13";
+				Rounds[2]["D"][1]["VX13"]["Type"]="M";
+				Rounds[2]["D"][1]["VX13"]["Chassis"]="M2";
+				Rounds[2]["D"][1]["VX13"]["NbI"]="25";
+				Rounds[2]["D"][1]["VX13"]["Nb"]="0";
+				Rounds[2]["D"][1]["VX13"]["NbL"]="25";
+				Rounds[2]["D"][1]["VX13"]["Deg"]="0";
+				Rounds[2]["D"][1]["VX13"]["Caracs"]="";
+				
+				Rounds[2]["D"][1]["VX14"]=new Array();
+				Rounds[2]["D"][1]["VX14"]["IMG"]="VX14";
+				Rounds[2]["D"][1]["VX14"]["Type"]="M";
+				Rounds[2]["D"][1]["VX14"]["Chassis"]="M2";
+				Rounds[2]["D"][1]["VX14"]["NbI"]="25";
+				Rounds[2]["D"][1]["VX14"]["Nb"]="0";
+				Rounds[2]["D"][1]["VX14"]["NbL"]="25";
+				Rounds[2]["D"][1]["VX14"]["Deg"]="0";
+				Rounds[2]["D"][1]["VX14"]["Caracs"]="";
+				
+				Rounds[2]["D"][1]["M1T"]=new Array();
+				Rounds[2]["D"][1]["M1T"]["IMG"]="M1T";
+				Rounds[2]["D"][1]["M1T"]["Type"]="M";
+				Rounds[2]["D"][1]["M1T"]["Chassis"]="M";
+				Rounds[2]["D"][1]["M1T"]["NbI"]="194";
+				Rounds[2]["D"][1]["M1T"]["Nb"]="0";
+				Rounds[2]["D"][1]["M1T"]["NbL"]="194";
+				Rounds[2]["D"][1]["M1T"]["Deg"]="0";
+				Rounds[2]["D"][1]["M1T"]["Caracs"]="";
+				
+				Rounds[2]["D"][1]["M4"]=new Array();
+				Rounds[2]["D"][1]["M4"]["IMG"]="M4";
+				Rounds[2]["D"][1]["M4"]["Type"]="M";
+				Rounds[2]["D"][1]["M4"]["Chassis"]="M";
+				Rounds[2]["D"][1]["M4"]["NbI"]="2030";
+				Rounds[2]["D"][1]["M4"]["Nb"]="0";
+				Rounds[2]["D"][1]["M4"]["NbL"]="2030";
+				Rounds[2]["D"][1]["M4"]["Deg"]="0";
+				Rounds[2]["D"][1]["M4"]["Caracs"]="";
+				
+if(!Chasse[2]){
+	Chasse[2]=new Array();
+}
+Chasse[2]["D"]=new Array();
+Chasse[2]["D"]["RCh1"]=0;
+Chasse[2]["D"]["RCh2"]=0;
+Chasse[2]["D"]["RCh3"]=0;
+Chasse[2]["D"]["OCh1"]=0;
+Chasse[2]["D"]["OCh2"]=0;
+Chasse[2]["D"]["OCh3"]=0;
+Chasse[2]["D"]["CoefChStr"]=100;
+Chasse[2]["D"]["CoefChCib"]=100;
+Chasse[2]["D"]["CoefChAtt"]=100;
+Chasse[2]["D"]["RCh"]=0;
+Chasse[2]["D"]["CoefCh"]=100;
+
+			Rounds[2]["Events"][event]="<img src=\"../SkinRC/Events/Pertes.png\" class=\"IcoEv\"/> <span style=\"color:red;\">Fin du combat : Si des vaisseaux sont trop emdommagés, ils subissent des avaries fatales.</span><br/>";
+			event++;
+			
+Rounds[2]["Degats"]="<div class=\"Degats\"><b>La Flotte Attaquante tir avec une puissance de feu de <span class=\"StyleDegats\">0</span></b><div><i><br/></i></div><b>La Defense tir avec une puissance de feu de <span class=\"StyleDegats\">0</span></b><div><i></i></div></div>";
+
+Rounds[2]["ZRC_A"]="1";
+Rounds[2]["ZRC_D"]="0";
+
+Rounds[2]["Str_A"]="1";
+Rounds[2]["Str_D"]="0";
+
+Rounds[2]["Att_A"]="";
+Rounds[2]["Att_D"]="";
+
+		Rounds[3]=new Array();
+		Rounds[3]["Events"]=new Array();
+		event=0;
+		
+Rounds[3]["A"]=new Array();
+
+	Rounds[3]["A"][1]=new Array();
+	
+				Rounds[3]["A"][1]["VA37-92815w61vb"]=new Array();
+				Rounds[3]["A"][1]["VA37-92815w61vb"]["IMG"]="VA32_6";
+				Rounds[3]["A"][1]["VA37-92815w61vb"]["Type"]="A";
+				Rounds[3]["A"][1]["VA37-92815w61vb"]["Chassis"]="A3";
+				Rounds[3]["A"][1]["VA37-92815w61vb"]["NbI"]="150";
+				Rounds[3]["A"][1]["VA37-92815w61vb"]["Nb"]="0";
+				Rounds[3]["A"][1]["VA37-92815w61vb"]["NbL"]="0";
+				Rounds[3]["A"][1]["VA37-92815w61vb"]["Deg"]="0";
+				Rounds[3]["A"][1]["VA37-92815w61vb"]["Caracs"]="";
+				
+				Rounds[3]["A"][1]["VA27"]=new Array();
+				Rounds[3]["A"][1]["VA27"]["IMG"]="VA27";
+				Rounds[3]["A"][1]["VA27"]["Type"]="A";
+				Rounds[3]["A"][1]["VA27"]["Chassis"]="A2";
+				Rounds[3]["A"][1]["VA27"]["NbI"]="211";
+				Rounds[3]["A"][1]["VA27"]["Nb"]="0";
+				Rounds[3]["A"][1]["VA27"]["NbL"]="0";
+				Rounds[3]["A"][1]["VA27"]["Deg"]="0";
+				Rounds[3]["A"][1]["VA27"]["Caracs"]="";
+				
+				Rounds[3]["A"][1]["VA37"]=new Array();
+				Rounds[3]["A"][1]["VA37"]["IMG"]="VA37";
+				Rounds[3]["A"][1]["VA37"]["Type"]="A";
+				Rounds[3]["A"][1]["VA37"]["Chassis"]="A3";
+				Rounds[3]["A"][1]["VA37"]["NbI"]="435";
+				Rounds[3]["A"][1]["VA37"]["Nb"]="0";
+				Rounds[3]["A"][1]["VA37"]["NbL"]="0";
+				Rounds[3]["A"][1]["VA37"]["Deg"]="0";
+				Rounds[3]["A"][1]["VA37"]["Caracs"]="";
+				
+				Rounds[3]["A"][1]["VA37-88352rb0k9"]=new Array();
+				Rounds[3]["A"][1]["VA37-88352rb0k9"]["IMG"]="VA37_7";
+				Rounds[3]["A"][1]["VA37-88352rb0k9"]["Type"]="A";
+				Rounds[3]["A"][1]["VA37-88352rb0k9"]["Chassis"]="A3";
+				Rounds[3]["A"][1]["VA37-88352rb0k9"]["NbI"]="400";
+				Rounds[3]["A"][1]["VA37-88352rb0k9"]["Nb"]="11";
+				Rounds[3]["A"][1]["VA37-88352rb0k9"]["NbL"]="11";
+				Rounds[3]["A"][1]["VA37-88352rb0k9"]["Deg"]="0.23026978161084";
+				Rounds[3]["A"][1]["VA37-88352rb0k9"]["Caracs"]="";
+				
+				Rounds[3]["A"][1]["VA37-88352rb0k9"]["Caracs"]="Theryon**<br/><br/>Etat : 97%<br/>Structure : 13,126 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Blindage AC : 0<br/>Blindage La : 3,107<br/>Blindage Pl : 0<br/>Blindage EM : 0<br/>Dégâts AC : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100.12%</span>)<br/>Dégâts La : 4,596 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100.12%</span>)<br/>Dégâts Pl : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100.12%</span>)<br/>Dégâts EM : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100.12%</span>)<br/><br/>Type : Chasseur (exposition 0%)<br/>Chassis : Chasseur d\'Assaut (exposition 0%)<br/>Dégâts d\'exposition : +0%<br/>Cible : Porte-nefs";
+				
+				Rounds[3]["A"][1]["VA27-91980xkd6z"]=new Array();
+				Rounds[3]["A"][1]["VA27-91980xkd6z"]["IMG"]="VA22_0";
+				Rounds[3]["A"][1]["VA27-91980xkd6z"]["Type"]="A";
+				Rounds[3]["A"][1]["VA27-91980xkd6z"]["Chassis"]="A2";
+				Rounds[3]["A"][1]["VA27-91980xkd6z"]["NbI"]="34";
+				Rounds[3]["A"][1]["VA27-91980xkd6z"]["Nb"]="0";
+				Rounds[3]["A"][1]["VA27-91980xkd6z"]["NbL"]="0";
+				Rounds[3]["A"][1]["VA27-91980xkd6z"]["Deg"]="0";
+				Rounds[3]["A"][1]["VA27-91980xkd6z"]["Caracs"]="";
+				
+				Rounds[3]["A"][1]["VA17-92972x96bv"]=new Array();
+				Rounds[3]["A"][1]["VA17-92972x96bv"]["IMG"]="VA17";
+				Rounds[3]["A"][1]["VA17-92972x96bv"]["Type"]="A";
+				Rounds[3]["A"][1]["VA17-92972x96bv"]["Chassis"]="A1";
+				Rounds[3]["A"][1]["VA17-92972x96bv"]["NbI"]="2376";
+				Rounds[3]["A"][1]["VA17-92972x96bv"]["Nb"]="0";
+				Rounds[3]["A"][1]["VA17-92972x96bv"]["NbL"]="0";
+				Rounds[3]["A"][1]["VA17-92972x96bv"]["Deg"]="0";
+				Rounds[3]["A"][1]["VA17-92972x96bv"]["Caracs"]="";
+				
+				Rounds[3]["A"][1]["VD67-93339uizjt"]=new Array();
+				Rounds[3]["A"][1]["VD67-93339uizjt"]["IMG"]="VD67_7";
+				Rounds[3]["A"][1]["VD67-93339uizjt"]["Type"]="E";
+				Rounds[3]["A"][1]["VD67-93339uizjt"]["Chassis"]="B6";
+				Rounds[3]["A"][1]["VD67-93339uizjt"]["NbI"]="20";
+				Rounds[3]["A"][1]["VD67-93339uizjt"]["Nb"]="17";
+				Rounds[3]["A"][1]["VD67-93339uizjt"]["NbL"]="17";
+				Rounds[3]["A"][1]["VD67-93339uizjt"]["Deg"]="0";
+				Rounds[3]["A"][1]["VD67-93339uizjt"]["Caracs"]="";
+				
+				Rounds[3]["A"][1]["VD67-93339uizjt"]["Caracs"]="CST - Classe Balmorra<br/><br/>Etat : 100%<br/>Structure : 2,053,967,755 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Blindage AC : 0<br/>Blindage La : 0<br/>Blindage Pl : 843,854,062<br/>Blindage EM : 0<br/>Dégâts AC : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100.12%</span>)<br/>Dégâts La : 1,471,707,021 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100.12%</span>)<br/>Dégâts Pl : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100.12%</span>)<br/>Dégâts EM : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100.12%</span>)<br/><br/>Type : Cuirassé (exposition 100%)<br/>Chassis : Bombardier Lourd (exposition 100%)<br/>Dégâts d\'exposition : +400%<br/>Cible : Polyvalent";
+				
+				Rounds[3]["A"][1]["VX11-852153a4kd"]=new Array();
+				Rounds[3]["A"][1]["VX11-852153a4kd"]["IMG"]="VX11";
+				Rounds[3]["A"][1]["VX11-852153a4kd"]["Type"]="T";
+				Rounds[3]["A"][1]["VX11-852153a4kd"]["Chassis"]="T4";
+				Rounds[3]["A"][1]["VX11-852153a4kd"]["NbI"]="1";
+				Rounds[3]["A"][1]["VX11-852153a4kd"]["Nb"]="1";
+				Rounds[3]["A"][1]["VX11-852153a4kd"]["NbL"]="1";
+				Rounds[3]["A"][1]["VX11-852153a4kd"]["Deg"]="0.0040277729874177";
+				Rounds[3]["A"][1]["VX11-852153a4kd"]["Caracs"]="";
+				
+				Rounds[3]["A"][1]["VX11-852153a4kd"]["Caracs"]="Transporteur Valdahaz<br/><br/>Etat : 99%<br/>Structure : 21,420,417 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Blindage AC : 0<br/>Blindage La : 0<br/>Blindage Pl : 0<br/>Blindage EM : 0<br/>Dégâts AC : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts La : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts Pl : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/>Dégâts EM : 0 (<span style=\"color:white\">100%</span> <span class=\"StyleOrange\">100%</span>)<br/><br/>Type : Transporteur (exposition 0%)<br/>Chassis : Transporteur Express (exposition 0%)<br/>Dégâts d\'exposition : +0%<br/>Cible : Polyvalent";
+				
+if(!Chasse[3]){
+	Chasse[3]=new Array();
+}
+Chasse[3]["A"]=new Array();
+Chasse[3]["A"]["RCh1"]=0;
+Chasse[3]["A"]["RCh2"]=0;
+Chasse[3]["A"]["RCh3"]=100;
+Chasse[3]["A"]["OCh1"]=35;
+Chasse[3]["A"]["OCh2"]=20;
+Chasse[3]["A"]["OCh3"]=45;
+Chasse[3]["A"]["CoefChStr"]=100;
+Chasse[3]["A"]["CoefChCib"]=99.94;
+Chasse[3]["A"]["CoefChAtt"]=100.11;
+Chasse[3]["A"]["RCh"]=0.21;
+Chasse[3]["A"]["CoefCh"]=8.15;
+
+Rounds[3]["D"]=new Array();
+
+	Rounds[3]["D"][1]=new Array();
+	
+					Rounds[3]["D"][1]["89217"]=new Array();
+					Rounds[3]["D"][1]["89217"]["IMG"]="COLaser1";
+					Rounds[3]["D"][1]["89217"]["Type"]="Def";
+					Rounds[3]["D"][1]["89217"]["Chassis"]="Def";
+					Rounds[3]["D"][1]["89217"]["NbI"]="32";
+					Rounds[3]["D"][1]["89217"]["Nb"]="0";
+					Rounds[3]["D"][1]["89217"]["NbL"]="0";
+					Rounds[3]["D"][1]["89217"]["Deg"]="0";
+					Rounds[3]["D"][1]["89217"]["Caracs"]="";
+					
+					Rounds[3]["D"][1]["89200"]=new Array();
+					Rounds[3]["D"][1]["89200"]["IMG"]="COLaser1";
+					Rounds[3]["D"][1]["89200"]["Type"]="Def";
+					Rounds[3]["D"][1]["89200"]["Chassis"]="Def";
+					Rounds[3]["D"][1]["89200"]["NbI"]="32";
+					Rounds[3]["D"][1]["89200"]["Nb"]="0";
+					Rounds[3]["D"][1]["89200"]["NbL"]="0";
+					Rounds[3]["D"][1]["89200"]["Deg"]="0";
+					Rounds[3]["D"][1]["89200"]["Caracs"]="";
+					
+					Rounds[3]["D"][1]["89201"]=new Array();
+					Rounds[3]["D"][1]["89201"]["IMG"]="COLaser1";
+					Rounds[3]["D"][1]["89201"]["Type"]="Def";
+					Rounds[3]["D"][1]["89201"]["Chassis"]="Def";
+					Rounds[3]["D"][1]["89201"]["NbI"]="32";
+					Rounds[3]["D"][1]["89201"]["Nb"]="0";
+					Rounds[3]["D"][1]["89201"]["NbL"]="0";
+					Rounds[3]["D"][1]["89201"]["Deg"]="0";
+					Rounds[3]["D"][1]["89201"]["Caracs"]="";
+					
+					Rounds[3]["D"][1]["89202"]=new Array();
+					Rounds[3]["D"][1]["89202"]["IMG"]="COLaser1";
+					Rounds[3]["D"][1]["89202"]["Type"]="Def";
+					Rounds[3]["D"][1]["89202"]["Chassis"]="Def";
+					Rounds[3]["D"][1]["89202"]["NbI"]="32";
+					Rounds[3]["D"][1]["89202"]["Nb"]="0";
+					Rounds[3]["D"][1]["89202"]["NbL"]="0";
+					Rounds[3]["D"][1]["89202"]["Deg"]="0";
+					Rounds[3]["D"][1]["89202"]["Caracs"]="";
+					
+					Rounds[3]["D"][1]["89216"]=new Array();
+					Rounds[3]["D"][1]["89216"]["IMG"]="COLaser1";
+					Rounds[3]["D"][1]["89216"]["Type"]="Def";
+					Rounds[3]["D"][1]["89216"]["Chassis"]="Def";
+					Rounds[3]["D"][1]["89216"]["NbI"]="32";
+					Rounds[3]["D"][1]["89216"]["Nb"]="0";
+					Rounds[3]["D"][1]["89216"]["NbL"]="0";
+					Rounds[3]["D"][1]["89216"]["Deg"]="0";
+					Rounds[3]["D"][1]["89216"]["Caracs"]="";
+					
+					Rounds[3]["D"][1]["89210"]=new Array();
+					Rounds[3]["D"][1]["89210"]["IMG"]="COLaser1";
+					Rounds[3]["D"][1]["89210"]["Type"]="Def";
+					Rounds[3]["D"][1]["89210"]["Chassis"]="Def";
+					Rounds[3]["D"][1]["89210"]["NbI"]="32";
+					Rounds[3]["D"][1]["89210"]["Nb"]="0";
+					Rounds[3]["D"][1]["89210"]["NbL"]="0";
+					Rounds[3]["D"][1]["89210"]["Deg"]="0";
+					Rounds[3]["D"][1]["89210"]["Caracs"]="";
+					
+					Rounds[3]["D"][1]["89211"]=new Array();
+					Rounds[3]["D"][1]["89211"]["IMG"]="COLaser1";
+					Rounds[3]["D"][1]["89211"]["Type"]="Def";
+					Rounds[3]["D"][1]["89211"]["Chassis"]="Def";
+					Rounds[3]["D"][1]["89211"]["NbI"]="32";
+					Rounds[3]["D"][1]["89211"]["Nb"]="0";
+					Rounds[3]["D"][1]["89211"]["NbL"]="0";
+					Rounds[3]["D"][1]["89211"]["Deg"]="0";
+					Rounds[3]["D"][1]["89211"]["Caracs"]="";
+					
+					Rounds[3]["D"][1]["89212"]=new Array();
+					Rounds[3]["D"][1]["89212"]["IMG"]="COLaser1";
+					Rounds[3]["D"][1]["89212"]["Type"]="Def";
+					Rounds[3]["D"][1]["89212"]["Chassis"]="Def";
+					Rounds[3]["D"][1]["89212"]["NbI"]="32";
+					Rounds[3]["D"][1]["89212"]["Nb"]="0";
+					Rounds[3]["D"][1]["89212"]["NbL"]="0";
+					Rounds[3]["D"][1]["89212"]["Deg"]="0";
+					Rounds[3]["D"][1]["89212"]["Caracs"]="";
+					
+					Rounds[3]["D"][1]["89213"]=new Array();
+					Rounds[3]["D"][1]["89213"]["IMG"]="COLaser1";
+					Rounds[3]["D"][1]["89213"]["Type"]="Def";
+					Rounds[3]["D"][1]["89213"]["Chassis"]="Def";
+					Rounds[3]["D"][1]["89213"]["NbI"]="32";
+					Rounds[3]["D"][1]["89213"]["Nb"]="0";
+					Rounds[3]["D"][1]["89213"]["NbL"]="0";
+					Rounds[3]["D"][1]["89213"]["Deg"]="0";
+					Rounds[3]["D"][1]["89213"]["Caracs"]="";
+					
+					Rounds[3]["D"][1]["89214"]=new Array();
+					Rounds[3]["D"][1]["89214"]["IMG"]="COLaser1";
+					Rounds[3]["D"][1]["89214"]["Type"]="Def";
+					Rounds[3]["D"][1]["89214"]["Chassis"]="Def";
+					Rounds[3]["D"][1]["89214"]["NbI"]="32";
+					Rounds[3]["D"][1]["89214"]["Nb"]="0";
+					Rounds[3]["D"][1]["89214"]["NbL"]="0";
+					Rounds[3]["D"][1]["89214"]["Deg"]="0";
+					Rounds[3]["D"][1]["89214"]["Caracs"]="";
+					
+					Rounds[3]["D"][1]["89199"]=new Array();
+					Rounds[3]["D"][1]["89199"]["IMG"]="COLaser1";
+					Rounds[3]["D"][1]["89199"]["Type"]="Def";
+					Rounds[3]["D"][1]["89199"]["Chassis"]="Def";
+					Rounds[3]["D"][1]["89199"]["NbI"]="32";
+					Rounds[3]["D"][1]["89199"]["Nb"]="0";
+					Rounds[3]["D"][1]["89199"]["NbL"]="0";
+					Rounds[3]["D"][1]["89199"]["Deg"]="0";
+					Rounds[3]["D"][1]["89199"]["Caracs"]="";
+					
+					Rounds[3]["D"][1]["89198"]=new Array();
+					Rounds[3]["D"][1]["89198"]["IMG"]="COLaser1";
+					Rounds[3]["D"][1]["89198"]["Type"]="Def";
+					Rounds[3]["D"][1]["89198"]["Chassis"]="Def";
+					Rounds[3]["D"][1]["89198"]["NbI"]="32";
+					Rounds[3]["D"][1]["89198"]["Nb"]="0";
+					Rounds[3]["D"][1]["89198"]["NbL"]="0";
+					Rounds[3]["D"][1]["89198"]["Deg"]="0";
+					Rounds[3]["D"][1]["89198"]["Caracs"]="";
+					
+					Rounds[3]["D"][1]["89215"]=new Array();
+					Rounds[3]["D"][1]["89215"]["IMG"]="COLaser1";
+					Rounds[3]["D"][1]["89215"]["Type"]="Def";
+					Rounds[3]["D"][1]["89215"]["Chassis"]="Def";
+					Rounds[3]["D"][1]["89215"]["NbI"]="32";
+					Rounds[3]["D"][1]["89215"]["Nb"]="0";
+					Rounds[3]["D"][1]["89215"]["NbL"]="0";
+					Rounds[3]["D"][1]["89215"]["Deg"]="0";
+					Rounds[3]["D"][1]["89215"]["Caracs"]="";
+					
+					Rounds[3]["D"][1]["89195"]=new Array();
+					Rounds[3]["D"][1]["89195"]["IMG"]="COLaser1";
+					Rounds[3]["D"][1]["89195"]["Type"]="Def";
+					Rounds[3]["D"][1]["89195"]["Chassis"]="Def";
+					Rounds[3]["D"][1]["89195"]["NbI"]="32";
+					Rounds[3]["D"][1]["89195"]["Nb"]="0";
+					Rounds[3]["D"][1]["89195"]["NbL"]="0";
+					Rounds[3]["D"][1]["89195"]["Deg"]="0";
+					Rounds[3]["D"][1]["89195"]["Caracs"]="";
+					
+					Rounds[3]["D"][1]["89196"]=new Array();
+					Rounds[3]["D"][1]["89196"]["IMG"]="COLaser1";
+					Rounds[3]["D"][1]["89196"]["Type"]="Def";
+					Rounds[3]["D"][1]["89196"]["Chassis"]="Def";
+					Rounds[3]["D"][1]["89196"]["NbI"]="32";
+					Rounds[3]["D"][1]["89196"]["Nb"]="0";
+					Rounds[3]["D"][1]["89196"]["NbL"]="0";
+					Rounds[3]["D"][1]["89196"]["Deg"]="0";
+					Rounds[3]["D"][1]["89196"]["Caracs"]="";
+					
+					Rounds[3]["D"][1]["89197"]=new Array();
+					Rounds[3]["D"][1]["89197"]["IMG"]="COLaser1";
+					Rounds[3]["D"][1]["89197"]["Type"]="Def";
+					Rounds[3]["D"][1]["89197"]["Chassis"]="Def";
+					Rounds[3]["D"][1]["89197"]["NbI"]="32";
+					Rounds[3]["D"][1]["89197"]["Nb"]="0";
+					Rounds[3]["D"][1]["89197"]["NbL"]="0";
+					Rounds[3]["D"][1]["89197"]["Deg"]="0";
+					Rounds[3]["D"][1]["89197"]["Caracs"]="";
+					
+					Rounds[3]["D"][1]["89191"]=new Array();
+					Rounds[3]["D"][1]["89191"]["IMG"]="COLaser2";
+					Rounds[3]["D"][1]["89191"]["Type"]="Def";
+					Rounds[3]["D"][1]["89191"]["Chassis"]="Def";
+					Rounds[3]["D"][1]["89191"]["NbI"]="16";
+					Rounds[3]["D"][1]["89191"]["Nb"]="0";
+					Rounds[3]["D"][1]["89191"]["NbL"]="0";
+					Rounds[3]["D"][1]["89191"]["Deg"]="0";
+					Rounds[3]["D"][1]["89191"]["Caracs"]="";
+					
+					Rounds[3]["D"][1]["89192"]=new Array();
+					Rounds[3]["D"][1]["89192"]["IMG"]="COLaser2";
+					Rounds[3]["D"][1]["89192"]["Type"]="Def";
+					Rounds[3]["D"][1]["89192"]["Chassis"]="Def";
+					Rounds[3]["D"][1]["89192"]["NbI"]="16";
+					Rounds[3]["D"][1]["89192"]["Nb"]="0";
+					Rounds[3]["D"][1]["89192"]["NbL"]="0";
+					Rounds[3]["D"][1]["89192"]["Deg"]="0";
+					Rounds[3]["D"][1]["89192"]["Caracs"]="";
+					
+					Rounds[3]["D"][1]["89193"]=new Array();
+					Rounds[3]["D"][1]["89193"]["IMG"]="COLaser2";
+					Rounds[3]["D"][1]["89193"]["Type"]="Def";
+					Rounds[3]["D"][1]["89193"]["Chassis"]="Def";
+					Rounds[3]["D"][1]["89193"]["NbI"]="16";
+					Rounds[3]["D"][1]["89193"]["Nb"]="0";
+					Rounds[3]["D"][1]["89193"]["NbL"]="0";
+					Rounds[3]["D"][1]["89193"]["Deg"]="0";
+					Rounds[3]["D"][1]["89193"]["Caracs"]="";
+					
+					Rounds[3]["D"][1]["89209"]=new Array();
+					Rounds[3]["D"][1]["89209"]["IMG"]="COLaser2";
+					Rounds[3]["D"][1]["89209"]["Type"]="Def";
+					Rounds[3]["D"][1]["89209"]["Chassis"]="Def";
+					Rounds[3]["D"][1]["89209"]["NbI"]="16";
+					Rounds[3]["D"][1]["89209"]["Nb"]="0";
+					Rounds[3]["D"][1]["89209"]["NbL"]="0";
+					Rounds[3]["D"][1]["89209"]["Deg"]="0";
+					Rounds[3]["D"][1]["89209"]["Caracs"]="";
+					
+					Rounds[3]["D"][1]["89208"]=new Array();
+					Rounds[3]["D"][1]["89208"]["IMG"]="COLaser2";
+					Rounds[3]["D"][1]["89208"]["Type"]="Def";
+					Rounds[3]["D"][1]["89208"]["Chassis"]="Def";
+					Rounds[3]["D"][1]["89208"]["NbI"]="16";
+					Rounds[3]["D"][1]["89208"]["Nb"]="0";
+					Rounds[3]["D"][1]["89208"]["NbL"]="0";
+					Rounds[3]["D"][1]["89208"]["Deg"]="0";
+					Rounds[3]["D"][1]["89208"]["Caracs"]="";
+					
+					Rounds[3]["D"][1]["89206"]=new Array();
+					Rounds[3]["D"][1]["89206"]["IMG"]="COLaser2";
+					Rounds[3]["D"][1]["89206"]["Type"]="Def";
+					Rounds[3]["D"][1]["89206"]["Chassis"]="Def";
+					Rounds[3]["D"][1]["89206"]["NbI"]="16";
+					Rounds[3]["D"][1]["89206"]["Nb"]="0";
+					Rounds[3]["D"][1]["89206"]["NbL"]="0";
+					Rounds[3]["D"][1]["89206"]["Deg"]="0";
+					Rounds[3]["D"][1]["89206"]["Caracs"]="";
+					
+					Rounds[3]["D"][1]["89194"]=new Array();
+					Rounds[3]["D"][1]["89194"]["IMG"]="COLaser2";
+					Rounds[3]["D"][1]["89194"]["Type"]="Def";
+					Rounds[3]["D"][1]["89194"]["Chassis"]="Def";
+					Rounds[3]["D"][1]["89194"]["NbI"]="16";
+					Rounds[3]["D"][1]["89194"]["Nb"]="0";
+					Rounds[3]["D"][1]["89194"]["NbL"]="0";
+					Rounds[3]["D"][1]["89194"]["Deg"]="0";
+					Rounds[3]["D"][1]["89194"]["Caracs"]="";
+					
+					Rounds[3]["D"][1]["89207"]=new Array();
+					Rounds[3]["D"][1]["89207"]["IMG"]="COLaser2";
+					Rounds[3]["D"][1]["89207"]["Type"]="Def";
+					Rounds[3]["D"][1]["89207"]["Chassis"]="Def";
+					Rounds[3]["D"][1]["89207"]["NbI"]="16";
+					Rounds[3]["D"][1]["89207"]["Nb"]="0";
+					Rounds[3]["D"][1]["89207"]["NbL"]="0";
+					Rounds[3]["D"][1]["89207"]["Deg"]="0";
+					Rounds[3]["D"][1]["89207"]["Caracs"]="";
+					
+					Rounds[3]["D"][1]["89205"]=new Array();
+					Rounds[3]["D"][1]["89205"]["IMG"]="COLaser3";
+					Rounds[3]["D"][1]["89205"]["Type"]="Def";
+					Rounds[3]["D"][1]["89205"]["Chassis"]="Def";
+					Rounds[3]["D"][1]["89205"]["NbI"]="8";
+					Rounds[3]["D"][1]["89205"]["Nb"]="0";
+					Rounds[3]["D"][1]["89205"]["NbL"]="0";
+					Rounds[3]["D"][1]["89205"]["Deg"]="0";
+					Rounds[3]["D"][1]["89205"]["Caracs"]="";
+					
+					Rounds[3]["D"][1]["89204"]=new Array();
+					Rounds[3]["D"][1]["89204"]["IMG"]="COLaser3";
+					Rounds[3]["D"][1]["89204"]["Type"]="Def";
+					Rounds[3]["D"][1]["89204"]["Chassis"]="Def";
+					Rounds[3]["D"][1]["89204"]["NbI"]="8";
+					Rounds[3]["D"][1]["89204"]["Nb"]="0";
+					Rounds[3]["D"][1]["89204"]["NbL"]="0";
+					Rounds[3]["D"][1]["89204"]["Deg"]="0";
+					Rounds[3]["D"][1]["89204"]["Caracs"]="";
+					
+					Rounds[3]["D"][1]["89190"]=new Array();
+					Rounds[3]["D"][1]["89190"]["IMG"]="COLaser3";
+					Rounds[3]["D"][1]["89190"]["Type"]="Def";
+					Rounds[3]["D"][1]["89190"]["Chassis"]="Def";
+					Rounds[3]["D"][1]["89190"]["NbI"]="8";
+					Rounds[3]["D"][1]["89190"]["Nb"]="0";
+					Rounds[3]["D"][1]["89190"]["NbL"]="0";
+					Rounds[3]["D"][1]["89190"]["Deg"]="0";
+					Rounds[3]["D"][1]["89190"]["Caracs"]="";
+					
+					Rounds[3]["D"][1]["89189"]=new Array();
+					Rounds[3]["D"][1]["89189"]["IMG"]="COLaser3";
+					Rounds[3]["D"][1]["89189"]["Type"]="Def";
+					Rounds[3]["D"][1]["89189"]["Chassis"]="Def";
+					Rounds[3]["D"][1]["89189"]["NbI"]="8";
+					Rounds[3]["D"][1]["89189"]["Nb"]="0";
+					Rounds[3]["D"][1]["89189"]["NbL"]="0";
+					Rounds[3]["D"][1]["89189"]["Deg"]="0";
+					Rounds[3]["D"][1]["89189"]["Caracs"]="";
+					
+					Rounds[3]["D"][1]["89203"]=new Array();
+					Rounds[3]["D"][1]["89203"]["IMG"]="COLaser4";
+					Rounds[3]["D"][1]["89203"]["Type"]="Def";
+					Rounds[3]["D"][1]["89203"]["Chassis"]="Def";
+					Rounds[3]["D"][1]["89203"]["NbI"]="4";
+					Rounds[3]["D"][1]["89203"]["Nb"]="0";
+					Rounds[3]["D"][1]["89203"]["NbL"]="0";
+					Rounds[3]["D"][1]["89203"]["Deg"]="0";
+					Rounds[3]["D"][1]["89203"]["Caracs"]="";
+					
+					Rounds[3]["D"][1]["89188"]=new Array();
+					Rounds[3]["D"][1]["89188"]["IMG"]="COPlasma4";
+					Rounds[3]["D"][1]["89188"]["Type"]="Def";
+					Rounds[3]["D"][1]["89188"]["Chassis"]="Def";
+					Rounds[3]["D"][1]["89188"]["NbI"]="4";
+					Rounds[3]["D"][1]["89188"]["Nb"]="0";
+					Rounds[3]["D"][1]["89188"]["NbL"]="0";
+					Rounds[3]["D"][1]["89188"]["Deg"]="0";
+					Rounds[3]["D"][1]["89188"]["Caracs"]="";
+					
+				Rounds[3]["D"][1]["VA0"]=new Array();
+				Rounds[3]["D"][1]["VA0"]["IMG"]="VA0";
+				Rounds[3]["D"][1]["VA0"]["Type"]="A";
+				Rounds[3]["D"][1]["VA0"]["Chassis"]="Div";
+				Rounds[3]["D"][1]["VA0"]["NbI"]="1340";
+				Rounds[3]["D"][1]["VA0"]["Nb"]="0";
+				Rounds[3]["D"][1]["VA0"]["NbL"]="0";
+				Rounds[3]["D"][1]["VA0"]["Deg"]="0";
+				Rounds[3]["D"][1]["VA0"]["Caracs"]="";
+				
+				Rounds[3]["D"][1]["M7"]=new Array();
+				Rounds[3]["D"][1]["M7"]["IMG"]="M7";
+				Rounds[3]["D"][1]["M7"]["Type"]="M";
+				Rounds[3]["D"][1]["M7"]["Chassis"]="M";
+				Rounds[3]["D"][1]["M7"]["NbI"]="1";
+				Rounds[3]["D"][1]["M7"]["Nb"]="0";
+				Rounds[3]["D"][1]["M7"]["NbL"]="0";
+				Rounds[3]["D"][1]["M7"]["Deg"]="0";
+				Rounds[3]["D"][1]["M7"]["Caracs"]="";
+				
+				Rounds[3]["D"][1]["VX13"]=new Array();
+				Rounds[3]["D"][1]["VX13"]["IMG"]="VX13";
+				Rounds[3]["D"][1]["VX13"]["Type"]="M";
+				Rounds[3]["D"][1]["VX13"]["Chassis"]="M2";
+				Rounds[3]["D"][1]["VX13"]["NbI"]="25";
+				Rounds[3]["D"][1]["VX13"]["Nb"]="0";
+				Rounds[3]["D"][1]["VX13"]["NbL"]="0";
+				Rounds[3]["D"][1]["VX13"]["Deg"]="0";
+				Rounds[3]["D"][1]["VX13"]["Caracs"]="";
+				
+				Rounds[3]["D"][1]["VX14"]=new Array();
+				Rounds[3]["D"][1]["VX14"]["IMG"]="VX14";
+				Rounds[3]["D"][1]["VX14"]["Type"]="M";
+				Rounds[3]["D"][1]["VX14"]["Chassis"]="M2";
+				Rounds[3]["D"][1]["VX14"]["NbI"]="25";
+				Rounds[3]["D"][1]["VX14"]["Nb"]="0";
+				Rounds[3]["D"][1]["VX14"]["NbL"]="0";
+				Rounds[3]["D"][1]["VX14"]["Deg"]="0";
+				Rounds[3]["D"][1]["VX14"]["Caracs"]="";
+				
+				Rounds[3]["D"][1]["M1T"]=new Array();
+				Rounds[3]["D"][1]["M1T"]["IMG"]="M1T";
+				Rounds[3]["D"][1]["M1T"]["Type"]="M";
+				Rounds[3]["D"][1]["M1T"]["Chassis"]="M";
+				Rounds[3]["D"][1]["M1T"]["NbI"]="194";
+				Rounds[3]["D"][1]["M1T"]["Nb"]="0";
+				Rounds[3]["D"][1]["M1T"]["NbL"]="0";
+				Rounds[3]["D"][1]["M1T"]["Deg"]="0";
+				Rounds[3]["D"][1]["M1T"]["Caracs"]="";
+				
+				Rounds[3]["D"][1]["M4"]=new Array();
+				Rounds[3]["D"][1]["M4"]["IMG"]="M4";
+				Rounds[3]["D"][1]["M4"]["Type"]="M";
+				Rounds[3]["D"][1]["M4"]["Chassis"]="M";
+				Rounds[3]["D"][1]["M4"]["NbI"]="2030";
+				Rounds[3]["D"][1]["M4"]["Nb"]="0";
+				Rounds[3]["D"][1]["M4"]["NbL"]="0";
+				Rounds[3]["D"][1]["M4"]["Deg"]="0";
+				Rounds[3]["D"][1]["M4"]["Caracs"]="";
+				
+if(!Chasse[3]){
+	Chasse[3]=new Array();
+}
+Chasse[3]["D"]=new Array();
+Chasse[3]["D"]["RCh1"]=0;
+Chasse[3]["D"]["RCh2"]=0;
+Chasse[3]["D"]["RCh3"]=0;
+Chasse[3]["D"]["OCh1"]=0;
+Chasse[3]["D"]["OCh2"]=0;
+Chasse[3]["D"]["OCh3"]=0;
+Chasse[3]["D"]["CoefChStr"]=100;
+Chasse[3]["D"]["CoefChCib"]=100;
+Chasse[3]["D"]["CoefChAtt"]=100;
+Chasse[3]["D"]["RCh"]=0;
+Chasse[3]["D"]["CoefCh"]=100;
+
+	Rounds[3]["Events"][event]="<img src=\"../SkinRC/Events/VictAtt.png\" class=\"IcoEv\"/> Victoire de l\'attaquant !<br/> Il remporte <span class=\"StyleRes\">0</span> <div class=\"IcoResM\"></div>, <span class=\"StyleRes\">43,853,109,915</span> <div class=\"IcoResT\"></div> et <span class=\"StyleRes\">16</span> <div class=\"IcoResP\"></div>.<br/>";
+	event++;
+	
+	Rounds[3]["ZRC_A"]="1";
+	Rounds[3]["ZRC_D"]="0";
+	
+	Rounds[3]["Str_A"]="1";
+	Rounds[3]["Str_D"]="0";
+	
+	Rounds[3]["Att_A"]="1";
+	Rounds[3]["Att_D"]="0";
+	
+		Rounds[3]["Events"][event]="<img src=\"../SkinRC/Events/Repare.png\" class=\"IcoEv\"/> Détail des réparations <i><br/> Défenses réparées (Nounours) : <br/> 26 Laser Kalist I (60%)<br/> 18 Laser Kalist I (60%)<br/> 19 Laser Kalist I (60%)<br/> 12 Laser Kalist I (60%)<br/> 20 Laser Kalist I (60%)<br/> 30 Laser Kalist I (60%)<br/> 27 Laser Kalist I (60%)<br/> 20 Laser Kalist I (60%)<br/> 11 Laser Kalist I (60%)<br/> 18 Laser Kalist I (60%)<br/> 22 Laser Kalist I (60%)<br/> 22 Laser Kalist I (60%)<br/> 25 Laser Kalist I (60%)<br/> 19 Laser Kalist I (60%)<br/> 27 Laser Kalist I (60%)<br/> 12 Laser Kalist I (60%)<br/> 10 Laser Kalist II (60%)<br/> 8 Laser Kalist II (60%)<br/> 13 Laser Kalist II (60%)<br/> 8 Laser Kalist II (60%)<br/> 10 Laser Kalist II (60%)<br/> 11 Laser Kalist II (60%)<br/> 4 Laser Kalist II (60%)<br/> 5 Laser Kalist II (60%)<br/> 5 Laser Kalist III (60%)<br/> 6 Laser Kalist III (60%)<br/> 4 Laser Kalist III (60%)<br/> 5 Laser Kalist III (60%)<br/> 1 Laser Kalist IV (60%)<br/> 1 Plasma Kalist IV (60%)<br/></i>";
+		event++;
+		
+	Rounds[3]["Events"][event]="<img src=\"../SkinRC/Events/Pertes.png\" class=\"IcoEv\"/> Détail des pertes <i><br/>Attaquants :<br/>----><span class=\"StyleGreen\">Cartel de Canardtopia</span>(100% <div class=\"IcoPrest\"></div>) a perdu : <br/> &nbsp &nbsp &nbsp &nbsp <span class=\"StyleOrange\">3,598</span> Vaisseaux<br/><br/>Defenseurs :<br/>----><span class=\"StyleGreen\">Nounours</span>(100% <div class=\"IcoPrest\"></div>) a perdu : <br/> &nbsp &nbsp &nbsp &nbsp <span class=\"StyleOrange\">261</span> Défenses<br/> &nbsp &nbsp &nbsp &nbsp <span class=\"StyleOrange\">3,615</span> Vaisseaux<br/></i>";
+	event++;
+	
+	Rounds[3]["Events"][100]="<table><tr><td>0 <div class=\"IcoPrest\"><br/></div> dont bonus ND : -10%<br/> +prime 765,514,147<div class=\"IcoPrest\"></div></td><td><img src=\"../SkinRC/Factions/IcoF7.png\"/> <img src=\"../SkinRC/Factions/Diplo0.png\"/> <img src=\"../SkinRC/Factions/IcoF5.png\"/></td><td>0 <div class=\"IcoPrest\"></div><br/> dont bonus ND : 10% <br/></td></tr></table>";
+	
+Rounds[3]["Events"][event]="<img src=\"../SkinRC/Events/XP.png\" class=\"IcoEv\"/> XP Attaquant : <span class=\"StyleRed\">448</span><br/>XP Défenseur : <span class=\"StyleRed\">23</span><i><br/>Ampleur du combat : <span class=\"StyleOrange\">89.66</span><br/>Rentabilité Attaquant : <span class=\"StyleOrange\">5</span><br/>Rentabilité Défenseur : <span class=\"StyleOrange\">0.26</span></i>";
+event++;
+
+	Rounds[3]["Events"][event]="<img src=\"../SkinRC/Events/XP.png\" class=\"IcoEv\"/> XP des Officiers<div><div class=\"CaseOffX\"><div class=\"CaseOff\"><div class=\"VignetteOff\"><img class=\"VOffImg\" src=\"../../Interface/Decors/Officiers/B60.jpg\"/><img class=\"VOffImg\" src=\"../../Interface/Decors/Officiers/Off1.png\"/><div class=\"VNbOff\"><span class=\"Off60\">60</span></div><div class=\"Officier\"><img class=\"OfficierImg\" src=\"../../Interface/Decors/Officiers/B60.jpg\"/><img class=\"OfficierImg\" src=\"../../Interface/Decors/Officiers/Off1.png\"/><div class=\"OfficierB\">Mainace<br/>Niv Max : <span class=\"Off60\">60</span></div><img class=\"OfficierT\" src=\"../../Interface/Decors/Officiers/Emp.png\"/><div class=\"OfficierN\">Niv : <span class=\"Off60\">60</span></div></div></div></div><span class=\"StyleGreen\">+134493xp</span></div></div><div></div>";
+	event++;
+	
+Rounds[3]["Events"][event]="<img src=\"../SkinRC/Events/CdR.png\" class=\"IcoEv\"/> La Bataille a généré un champ de ruine de <span class=\"StyleRes\">99,166,016,873</span> <div class=\"IcoResM\"></div> et <span class=\"StyleRes\">25,072,653,376</span> <div class=\"IcoResT\"></div><br/> ";
+event++;
+</script><table class="Page"><tr><td id="Page">Date : 6 Celetahn(2) de l'an 20,398 TSU (06/11/25 03:44:35)<br/></td></tr></table><script type="text/javascript">Rounds[0]["Date"]="Date : 6 Celetahn(2) de l'an 20,398 TSU (06/11/25 03:44:35)";RCplayer();</script></body></html>
