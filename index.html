@@ -1,184 +1,484 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
-    <!-- Make sure you put this AFTER Leaflet's CSS -->
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-    <script src="reports.js"></script>
-
-    <title>Amatens - Historique combats</title>
-
+    <title>Archives Tactiques - Commandement Galactique</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
-        #map {
-            height: 80vh;
+        :root {
+            --bg-deep: #050b14;
+            --panel-bg: rgba(10, 25, 47, 0.9);
+            --neon-blue: #00f2ff;
+            --neon-red: #ff0055;
+            --text-main: #c4d7ed;
+            --border-glow: 0 0 15px rgba(0, 242, 255, 0.3);
         }
 
-        table,
-        th,
-        td {
-            border: 1px solid black;
+        body, html {
+            margin: 0; padding: 0;
+            height: 100%; width: 100%;
+            background-color: var(--bg-deep);
+            color: var(--text-main);
+            font-family: 'Oxanium', 'Segoe UI', Roboto, sans-serif;
+            overflow: hidden;
+            background-image:
+                radial-gradient(circle at 50% 50%, rgba(0, 242, 255, 0.05) 0%, transparent 70%),
+                linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%),
+                linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+            background-size: 100% 100%, 100% 2px, 3px 100%;
         }
+
+        /* Dashboard Area */
+        #dashboard {
+            height: 70%;
+            width: 100%;
+            overflow-y: auto;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
+            gap: 25px;
+            box-sizing: border-box;
+        }
+
+        .chart-container {
+            background: var(--panel-bg);
+            border: 1px solid rgba(0, 242, 255, 0.3);
+            border-radius: 4px;
+            padding: 15px;
+            box-shadow: var(--border-glow);
+            position: relative;
+        }
+
+        .chart-container::before {
+            content: ""; position: absolute; top: 0; left: 0; width: 10px; height: 10px;
+            border-top: 2px solid var(--neon-blue); border-left: 2px solid var(--neon-blue);
+        }
+
+        .chart-title {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--neon-blue);
+            margin-bottom: 15px;
+            border-bottom: 1px solid rgba(0, 242, 255, 0.1);
+            padding-bottom: 5px;
+        }
+
+        /* Timeline Area */
+        #timeline-anchor {
+            position: fixed;
+            bottom: 0; left: 0; width: 100%;
+            height: 30%;
+            background: rgba(2, 5, 10, 0.95);
+            border-top: 2px solid var(--neon-blue);
+            z-index: 100;
+            user-select: none;
+        }
+
+        #timeline-viewport {
+            width: 100%; height: 100%;
+            overflow: hidden;
+            position: relative;
+            cursor: grab;
+        }
+
+        #timeline-content {
+            height: 100%;
+            position: absolute;
+            top: 0; left: 0;
+            transition: transform 0.1s ease-out;
+        }
+
+        .time-axis {
+            position: absolute;
+            bottom: 30px; left: 0; width: 100%;
+            height: 2px; background: var(--neon-blue);
+        }
+
+        .year-tick {
+            position: absolute;
+            bottom: 0;
+            width: 1px; height: 15px;
+            background: var(--neon-blue);
+        }
+
+        .year-label {
+            position: absolute;
+            bottom: -25px;
+            transform: translateX(-50%);
+            font-size: 10px;
+            color: var(--neon-blue);
+            font-family: monospace;
+        }
+
+        /* Timeline Elements */
+        .event-point {
+            position: absolute;
+            background: var(--neon-red);
+            color: white;
+            padding: 2px 8px;
+            font-size: 11px;
+            white-space: nowrap;
+            cursor: pointer;
+            border-radius: 2px;
+            box-shadow: 0 0 8px var(--neon-red);
+            z-index: 10;
+        }
+
+        .period-block {
+            position: absolute;
+            background: rgba(0, 242, 255, 0.15);
+            border-left: 1px solid var(--neon-blue);
+            border-right: 1px solid var(--neon-blue);
+            color: var(--neon-blue);
+            height: 24px;
+            font-size: 11px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 5;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+
+        .stem {
+            position: absolute;
+            width: 1px;
+            background: rgba(255, 255, 255, 0.3);
+            pointer-events: none;
+        }
+
+        /* Modal Overlay */
+        #modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.85);
+            z-index: 2000;
+            justify-content: center; align-items: center;
+        }
+
+        #info-modal {
+            background: #0a192f;
+            border: 2px solid var(--neon-blue);
+            padding: 40px;
+            max-width: 650px;
+            width: 85%;
+            box-shadow: 0 0 30px rgba(0, 242, 255, 0.4);
+            position: relative;
+        }
+
+        #info-modal h2 { color: var(--neon-blue); margin-top: 0; text-transform: uppercase; }
+        #info-modal .date-info { color: var(--neon-red); font-weight: bold; margin-bottom: 20px; font-family: monospace; }
+        #info-modal p { line-height: 1.6; }
+        #info-modal .close-btn {
+            position: absolute; top: 15px; right: 15px;
+            cursor: pointer; color: var(--neon-red); font-weight: bold;
+            border: 1px solid var(--neon-red); padding: 5px 10px;
+        }
+
+        #zoom-indicator {
+            position: absolute; top: 10px; right: 20px;
+            font-size: 10px; color: var(--neon-blue);
+            text-transform: uppercase;
+        }
+
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-thumb { background: var(--neon-blue); }
+        ::-webkit-scrollbar-track { background: transparent; }
+
     </style>
-
 </head>
-
 <body>
-    <label for="start">Date début</label>
 
-    <input type="date" id="start" name="trip-start" />
+    <div id="dashboard">
+        <!-- Graphs are dynamically inserted here -->
+    </div>
 
-    <label for="start">Date fin</label>
-
-    <input type="date" id="end" name="trip-start" />
-
-    <button id="date-select-ok">OK</button>
-    <span><-- Sélectionnez un interval de date</span>
-            <div id="map"></div>
-
-            <div>
-                <table id="report-list-table">
-                    <tr>
-                        <th>Date TSU</th>
-                        <th>Date IRL</th>
-                        <th>Faction attaquant</th>
-                        <th>Faction défenseur</th>
-                        <th>Empires attaquants</th>
-                        <th>Empires défenseurs</th>
-                        <th>Lieu du combat</th>
-                        <th>Lien du rapport</th>
-                    </tr>
-                </table>
+    <div id="timeline-anchor">
+        <div id="zoom-indicator">Utilisez la molette pour Zoomer</div>
+        <div id="timeline-viewport" id="viewport">
+            <div id="timeline-content">
+                <div class="time-axis" id="main-axis"></div>
             </div>
+        </div>
+    </div>
 
+    <div id="modal-overlay">
+        <div id="info-modal">
+            <div class="close-btn" onclick="closeModal()">FERMER [X]</div>
+            <h2 id="modal-title"></h2>
+            <div class="date-info" id="modal-date"></div>
+            <p id="modal-desc"></p>
+        </div>
+    </div>
 
+<script>
+    // --- DONNÉES ---
+    const Histo = [];
+    const Periodes = [];
 
-            <script>
-                var bounds = [[0, 0], [1000, 1083]];
+    // Remplissage Histo (Event ponctuels)
+    const rawHisto = [
+        [-9402, "Fin des Lanthaniens", "Les Lanthaniens ont été presque éradiqués à la suite d'un incident expérimental impliquant des recherches sur l'âme et la bio-informatique. Une Intelligence Semi-Artificielle entreprit alors d'éliminer l'univers lui même."],
+        [-9401, "Création de l'anomalie Eope", "Dans une ultime tentative de contrecarrer le plan de destruction de l'Univers par l'Intelligence Semi-Artificielle, une anomalie touchant aux fondements des lois universelles empêcha alors l'utilisation de toute technologie électrique. L'humanité fut replongée dans le noir."],
+        [0, "Etoile du Jour", "Lumière visible depuis chaque planète pendant une année. Devenue le point de repère du nouveau calendrier post-lanthanien."],
+        [13885, "Colonisation Melrehn", "La Faction Melrehn se développe dans un coin reculé de la Galaxie, encore inexplorée par les autres nations. Elle se trouve dans une enclave de l\'anomalie d\'Eope qui se dissipera dans les siècles suivants."],
+        [14218, "Fondation de l'Empire Amaranth", "L'Empire Amaranth entame une rapide phase de colonisation."],
+        [14312, "Unification des Ducs", "Multitude d'empires belliqueux s'unissant sous la bannière des Domaines Ducaux."],
+        [14341, "Schisme Léanth", "Groupe se séparant de l'Empire Amaranth pour chercher les préceptes Lanthaniens."],
+        [14356, "Apparition de l'OPU", "L'Organisation des Planètes Unifiées désireuse de propager la démocratie."],
+        [14440, "Avènement du Dominion Zetran", "Colonisation massive financée par l'OPU contre les Domaines Ducaux."],
+        [14451, "Indépendance de Thelios", "Bulle temporelle accélérée (facteur 2000), sortie avec avance technologique massive."],
+        [15177, "Création des Grandes Portes", "Réseau connectant les Cadrans Aelron et Varden."],
+        [15482, "Fin de l'OPU", "Striker utilise des puces de contrôle pour renverser le gouvernement corrompu."],
+        [15489, "Fondation R.C.A.", "République Corporatiste Adreane émerge après la chute de l'OPU."],
+        [15293, "Première Trace Fanatiques Shankari", "Première trace des Fanatiques Shankari, sous la forme d'un petit empire Thélios au nom inconnu. Une fois en contact avec les Fanatiques d'Arnor, un Empire Melrehn, le petit empire Thélios se tourne très rapidement vers le Cercle Shankar et rejoint le Peuple Melrehn sous le nom de son dirigeant: Deus Ex Umbra."],
+        [15367, "Guerre contre Oph-X023", "Deus Ex Umbra lutte contre l'entité Oph-X023."],
+        [15431, "Condamnation de Thélios", "Deus Ex Umbra condamne publiquement l'attaque de Thélios de la part d'un groupe d'empires Melrehns, dirigé par les Fanatiques d'Arnor."],
+        [15587, "Période isolationiste", "Deus Ex Umbra se retire suite aux conflits incessants."],
+        [16228, "Titre Patron Dei Tenebrarum", "Première trace de l'utilisation du titre."],
+        [17042, "Bataille Forteresse Cetyn", "Les ancêtres des Fanatiques Shankari participèrent à une bataille victorieuse contre une forteresse Cetyn, accompagnant des forces venues de l'EOS, la CLA et l'ODN."],
+        [17395, "Destruction de l'Orakor", "Durant la rébellion de (à l'époque) l'Empire Andromélien, les forces de la Triade du Kâ-Nâr, menées par sa Noirceur Erhazël, mobilise l'Orakor, qui est détruit par la défense Andromélienne en orbite de la planète mère Grande Bibliothèque Andromélienne. Ses débris chutent sur l'immense bibliothèque. Les dégâts sont catastrophiques."],
+        [17395, "Chute Bibliothèque Andromélienne", "Les forces de la Triade font chuter les défenses du joyaux Andromélien. Plusieurs milliards de civils décédés par les maladies. 340 millions de civils tués dans les combats. Destruction de vaisseaux reliques antiques. Destruction de structures millénaires en surface de la planète."],
+        [17395, "Rédition Empire Andromélien", "Patron Dei Tenebrarum se rend en personne sur Kanardtopia pour entendre les terme de la rédition, alors même que les troupes du Kâ-Nâr occupent encore la Grande Bibliothèque Andromélienne."],
+        [17664, "Attentat chimique sur les modnes Shankari", "Le Patron Dei Tenebrarum de l'époque orchestre en secret un attentat chimique. Un gaz est diffusé par les Ora Eredhor sur tous les mondes Shankari. Le gaz est issu de la symbiose entre le vaisseau et l'équipage, que le Patron Dei Tenebrarum considérait être 'l'héritage' d'Arnor."],
+        [17717, "Batailles de Ioranth, Oga", "Incursion en territoire Amaranth. Batailles contre les Gouverneurs Luciole, Wayne et Voyageur. Nombreuses attaques et contres-attaques."],
+        [17719, "Combats frontalliers Léanth", "Lutte pour contenir l'expansionisme Léanth aux frontières Melrehns. Les Fanatiques Shankari luttent aux côtés de l'Empire Technocratique d'Enkoy contre le Gouverneur Léanth Nounours pour la domination d'un avant-poste."],
+        [17720, "Défense de Dilisya", "Le Gouverneur Léanth Amaurrry, tentant d'envahir la colonie Dilisya, se retrouve à faire face aux flottes de l'Oranor Phantom et aux Fanatiques Shankari, menant à sa perte la flotte Léanthe."],
+        [17724, "Crash flotte Shankari", "4La flotte Shankari est perdue corps et bien durant les combats à la frontière Melrehno-Léanthe. 4 cuirassés et une centaine de croiseur lourd finissent en débris en orbite d'un avant poste contesté."],
+        [17725, "Batailles d'Ahkokionr", "Plusieurs batailles ont lieu pour un avant poste frontalier. Ce dernier chanque de main plusieurs fois au cours de l'année. une colonie Léanth proche se voit victime d'une attaque à la bombe P menée par les forces Shankari."],
+        [17733, "Orakor contre Avenor", "Le nom de cet événement peut être trompeur. L'Orakor fut détruit lors de la tentative échouée de capture d'un avant poste Léanth par les Fanatiques Shankari. Suite à cette mobilisation exceptionnelle, l'Avenor se présenta aussi dans la région et participa à la conquête d'un avant poste Melrehn par le Gouverneur DayNine. Donc, ces deux mastodontes, bien que présent au même endroit la même année, ne sont pas rencontré durant cet événement."],
+        [17739, "Empire lémurien", "Le saint empire lémurien, très peu présent jusque là sur les conflits frontaliers, assigne une grande flotte à la défense des avant postes Léanth."],
+        [17784, "Destruction forteresse Lémurienne", "Le saint empire lémurien, ayant grandement renforcé la défense Léanthe à la frontière, perd une de ses forteresses face à l'Empire Technocratique Enkoy et aux forces Shankari."],
+        [17838, "Destruction station Z-Omega", "La station Z-Omega, du GIC, dont sont membres les Fanatiques Shankari, est détruite par les Gouverneurs Léanth Keith Narl et Ren Hootohime, sans raison valable (reconnue par les deux parties)"],
+        [18247, "Pirate Niokh Khahn", "Attaques terroristes massives en Varden."],
+        [18273, "Mort de Niokh Khahn", "Groupe pirate retourne vers les colonies Shankari."],
+        [18257, "Mort de Kaena Avalon", "Lahkora Khian, Amiral d'une flotte d'interception Shankari, détruit une flotte de l'Empire de Welgaïa (kalas, Cercle Léanth), commandée par Kaena Avalon, dirigeant de l'Empire. Son corps est retourné 3 ans plus tard à l'Empire de Welgaïa. Lahkora Khian est décorée de l'Ordre Shankar du Mérite."],
+        [18315, "Exterminium Autem Mundi", "Les Fanatiques Shankari font usage du Kharinerin sur la colonie Block Hole du Gouverneur Ray Volver, en plein coeur du territoire Amaranth. De nombreux Amaranths viennent défendre, sans succès. Quelques jours plus tard, la flotte Shankari périt sous les assaults de l'Empire Amaranth. 1.3 milliards de morts sont officiellement répertoriés. Grands honneurs rendus à Athitinos Orioricus, commémorateur de la flotte."],
+        [18395, "Incident 24566", "Les Archives Aqualiennes (Amaranth) détruisent Kharinerin, alors en transit vers une position inconnue, durant un conflit contre le Cercle Léanth."],
+        [18402, "Culte Kharinerin au pouvoir", "Suite à de violents combats sur Lux Tenebris, capitale Shankari, contre les Gouverneurs Sao Feng, Nounours et la Technocratie de Charis, causant plus de 45 milliards de morts dans une lutte urbaine acharnée, le Culte de Kharinerin, branche la plus radicale de l'Idéologie Shankari, prend le pouvoir sur tous les mondes Shankari."],
+        [18500, "Non respect Traité de Verdon", "Le traité de Verdon, initié par les Fondateurs des Mondes Noirs, n'est pas respecté par plusieurs Gouverneurs Amaranths (nombre de colonie, production minière). Ce fait est dénoncé par le Culte de Kharinerin. Ce dernier menace d'envoyer la Legio Kharinerin faire respecter le traité par la force."],
+        [18631, "Invasion Celestus de Manr", "Le Celestus de Manr, ouvert par le Cercle Léanth, plus précisément le Gouverneur Kalas, est pris d'assaut et envahi par le Culte de Kharinerin."],
+        [18636, "Guerre Melrehno-Zetranne", "Phalange de Mohr contre le Dominion Zétran."],
+        [19706, "In memoriam Orioricus", "Le Culte de Kharinerin fait usage du Kharinerin contre la colonie Raybélion du Gouverneur Ray Volver. Cette destruction est motivée par sa position: Le lieu de mort d'Orioricus, commémorateur de l'Exterminium Autem Mundi, 1391 années plus tôt. Cette attaque, bien que destructrice, est à but purement symbolique. Environ 11 milliards de victimes. Le Patron Dei Tenebrarum de l'époque n'aurait prononcé que deux mots suite à cela: Dignus Sepultura"],
+        [20030, "Invasion Celestus 134", "Début des préparatifs d'invasion."],
+        [19932, "Guerre Melrehno-Thélios", ""],
+        [20009, "Destruction Lux Triumphans", "La Legio Tenebris des Fanatiques Shankari détruit un Lux Triumphans de la Fédération Thélios."],
+        [19995, "Bombes P sur mondes Shankari", "Le harcélement de l'industrie Thélios sur plusieurs années par la Legio Tempestus déclenche une très violente contre attaque Thélios. Une vingtaine de monde Shankari tombent sous les bombe P du Cartel de Canardtopia."],
+        [19880, "Bataille Comptoire Thaos", "Alors en orbite de Comptoire Thaos (Empire Amaranth), une flotte civile dont le tonnage fut estimée à environ 6 millions méga tonnes est détruite par la Legio Tenebris des Fanatiques Shankari."],
+        [19480, "Destruction Dominator Amaranth", "Alors en plein conflit frontalier intensif, l'Empire Amaranth fait intervenir un Dominator pour détruire une colonie avant poste, mais la Legio Technicus créa un trou noir qui aspira le Dominator et son escorte."],
+        [19481, "Second Dominator intercepté", "La colonie avant poste Terminus Amaranth fut de nouveau l'objet d'une tentative de destruction par Dominator. Mais l'Oranor Morwen Sombre Roi intercepta la flotte Amaranthe, protégeant la colonie des Fanatiques Shankari."],
+        [19503, "Destruction Terminus Amaranth", "La colonie avant poste Terminus Amaranth est détruite par le Gouverneur Amaranth John Hastings"],
+        [19493, "Seigneurs de Scarr", "Les catastrophes militaires Amaranthes précédentes poussent les Seigneurs de Scarr à mettre une grande pression sur les mondes Shankari, négociant par cela la décolonisation de Terminus Amaranth, refusée par le Haut Commandement Shankar."],
+        [18566, "Allégement des charges de l'Empire Sakura", "Le Culte de Kharinerin participe à l'allégement des charges de l'Empire Sakura en satomisant 1 500 000 canonnières"],
+        [18561, "Destruction de l'Orakor", "L'Oranor Khor Anéanth fait sécession et lance l'Orakor sur la Legio Tenebris, qui sera détruit par la défense locale."]
+    ];
 
-                var map = L.map('map', {
-                    crs: L.CRS.Simple
-                });
+    rawHisto.forEach(item => {
+        Histo.push({ Date: item[0], Nom: item[1], Description: item[2] });
+    });
 
-                var image = L.imageOverlay('img/amatens.jpg', bounds).addTo(map);
-                map.fitBounds(bounds);
+    const rawPeriodes = [
+        [14950, 14975, "Guerre de l'Ombre", "La Guerre de l\'Ombre est une tentative de prise de pouvoir par une branche dissidente de la Faction Melrehn. Dirigée par un ancien Amiral Melrehn aux idées extrême et à la moralité inexistante, l\'Ombre utilisa une flotte composée de machines aux quelles ont été greffés des humains vidés de leur personnalité pour prendre le pouvoir."],
+        [16228, 16229, "Première Croisade", "Première traces d'une Croisade. Celle-ci fut menée en région Tehkh (27) d'Aelron. Elle fut menée contre les Gouverneurs Rotaliens, Lannister et Trevors. Les archives font mention de l'utilisation de la satomisation et d'épuration éthnique"],
+        [17394, 17395, "Révolte contre Pègre de Fer", "La Pègre De Fer attaque les mondes des Fondateurs des Mondes Noirs, afin de prendre la tête du Peuple Melrehn. Les Fondateurs étants pacifiques, seuls Patron Dei Tenebrarum décide de résister à la Pègre, et plus spécifiquement face à la Triade du Kâ-Nâr."],
+        [17717, 17784, "Conflits territoriaux", "Un conflit frontalier, commencant avec les avant postes Amaranths et finissant par s'enliser après de nombreuses batailles sur la frontière Melrehno-Léanthe"],
+        [18247, 18273, "Piraterie en Varden", "Les pirates de Niokh Khahn harcèle régulièrement les possessions d'Empire de Varden et vont jusqu'à provoquer des destructions matérielles massives."],
+        [18391, 18397, "Petite Guerre de 3 ans", "Guerre entre le Gouverneur Léanth Suprem System Lord et les Fanatiques Shankari, déclenchée suite à une attaque sur un Oranor. L'utilisation de la bombe P est reconnue. Le conflit semble cesser brusquement alors que les Fanatiques Shankari impose un embargo commercial violent sur tous les mondes de Suprem System Lord."],
+        [18636, 18666, "Guerre Melrehno-Zetranne", "La Phalange de Mohr, dont fait partie le Culte de Kharinerin, dirigée par l'Oranor Morwen Sombre Roi, déclare la guerre au Dominion Zétran. De colossales pertes civiles sont référencées dans le Dominion."],
+        [20030, 20043, "Invasion Celestus 134", "Ouvert par l'Empire Amaranth, il s'avèra presque entièrement vide."],
+        [19932, 20009, "Guerre Melrehno-Thélios", "Guerre contre la Fédération Thélios."]
+    ];
 
-                var table = document.getElementById("report-list-table")
+    rawPeriodes.forEach(item => {
+        Periodes.push({ Debut: item[0], Fin: item[1], Nom: item[2], Description: item[3] });
+    });
 
-                document.getElementById("date-select-ok").onclick = function () {
-                    table.getElementsByTagName("tbody")[0].innerHTML = table.rows[0].innerHTML;
+    // --- LOGIQUE FRISE ---
+    const START_YEAR = -9402;
+    const END_YEAR = 21000;
+    let zoom = 0.5; // pixels par année
+    let offsetX = 0;
 
-                    reports.forEach(report => {
-                        console.log(report)
-                        if (report.marker != undefined) {
-                            map.removeLayer(report.marker)
-                        }
-                        var report_date = report.dateIRL.split(" ")[0]
-                        var report_year = report_date.split("/")[2]
-                        var report_month = report_date.split("/")[1]
-                        var report_day = report_date.split("/")[0]
+    const viewport = document.getElementById('timeline-viewport');
+    const content = document.getElementById('timeline-content');
+    const mainAxis = document.getElementById('main-axis');
 
-                        var report_date = new Date(report_month + "/" + report_day + "/" + report_year)
-                        let lowerDate = new Date(document.getElementById("start").value)
-                        let upperDate = new Date(document.getElementById("end").value)
-                        if (report_date >= lowerDate && report_date <= upperDate) {
-                            if (report.coordinates != "") {
-                                var m = L.marker(report.position,
-                                    { title: report.title })
-                                m.bindPopup(`<h1>${report.title}</h1>
-                            <table>
+    function renderTimeline() {
+        const totalYears = END_YEAR - START_YEAR;
+        const totalWidth = totalYears * zoom;
+        content.style.width = totalWidth + "px";
 
-                            <tr>
-                            <th>Date TSU</th><td>${report.dateTSU}</td>
-                            </tr>
+        // Nettoyage
+        content.querySelectorAll('.event-point, .period-block, .year-tick, .year-label, .stem').forEach(e => e.remove());
 
-                            <tr>
-                            <th>Date IRL</th><td>${report.dateIRL}</td>
-                            </tr>
+        // Générer Axe et Ticks (500 ans)
+        for (let y = Math.ceil(START_YEAR/500)*500; y <= END_YEAR; y += 500) {
+            const x = (y - START_YEAR) * zoom;
+            const tick = document.createElement('div');
+            tick.className = 'year-tick';
+            tick.style.left = x + "px";
+            
+            const label = document.createElement('div');
+            label.className = 'year-label';
+            label.style.left = x + "px";
+            label.innerText = y;
 
-                            <tr>
-                            <th>Lien du rapport</th><td><a href="${report.onlineLink}"> Click me</a></td>
-                            </tr>
+            mainAxis.appendChild(tick);
+            mainAxis.appendChild(label);
+        }
 
-                            <tr>
-                            <th>Attaquants</th><td>${report.attackers}</td>
-                            </tr>
+        // Générer Périodes
+        Periodes.forEach(p => {
+            const startX = (p.Debut - START_YEAR) * zoom;
+            const width = (p.Fin - p.Debut) * zoom;
+            const div = document.createElement('div');
+            div.className = 'period-block';
+            div.style.left = startX + "px";
+            div.style.width = Math.max(width, 2) + "px";
+            div.style.bottom = "32px";
+            div.innerText = p.Nom;
+            div.onclick = (e) => { e.stopPropagation(); openModal(p.Nom, `De ${p.Debut} à ${p.Fin}`, p.Description); };
+            
+            // Stem traits (début et fin)
+            createStem(startX, 32, 15);
+            createStem(startX + width, 32, 15);
+            
+            content.appendChild(div);
+        });
 
-                            <tr>
-                            <th>Défenseurs</th><td>${report.defenders}</td>
-                            </tr>
+        // Générer Événements (avec gestion de superposition)
+        const levels = []; 
+        const sortedHisto = [...Histo].sort((a,b) => a.Date - b.Date);
 
-                            <tr>
-                            <th>Faction de l'attaquant principal</th><td><img src="${report.facAttackersImg}" style="background-color:black"> ${report.facAttackers}</td>
-                            </tr>
+        sortedHisto.forEach(h => {
+            const x = (h.Date - START_YEAR) * zoom;
+            const div = document.createElement('div');
+            div.className = 'event-point';
+            div.innerText = h.Nom;
+            content.appendChild(div);
 
-                            <tr>
-                            <th>Faction du défenseur principal</th><td><img src="${report.facDefendersImg}" style="background-color:black"> ${report.facDefenders}</td>
-                            </tr>
+            // Calculer hauteur pour éviter overlap
+            const width = div.offsetWidth + 20; 
+            let level = 0;
+            while(levels[level] > x - 50) { level++; }
+            levels[level] = x + width;
 
-                            <tr>
-                            <th>Victoire de l'attaquant</th><td>${report.win}</td>
-                            </tr>
+            const finalY = 70 + (level * 28);
+            div.style.left = x + "px";
+            div.style.bottom = finalY + "px";
+            div.onclick = (e) => { e.stopPropagation(); openModal(h.Nom, h.Date, h.Description); };
 
-                            <tr>
-                            <th>Détails supplémentaires</th><td>${report.details}</td>
-                            </tr>
+            createStem(x, finalY, finalY - 30);
+        });
 
-                            <tr>
-                            <th>Lieu du combat</th><td>${report.coordinates}</td>
-                            </tr>
+        updateTransform();
+    }
 
-                            </table>
-                            `)
-                                report.marker = m
-                                console.log(report.position)
-                                m.addTo(map)
-                            }
-                            var row = table.insertRow(-1)
-                            cell = row.insertCell(-1)
-                            cell.innerHTML = report.dateTSU
+    function createStem(x, bottom, height) {
+        const stem = document.createElement('div');
+        stem.className = 'stem';
+        stem.style.left = x + "px";
+        stem.style.bottom = (bottom - height) + "px";
+        stem.style.height = height + "px";
+        content.appendChild(stem);
+    }
 
-                            cell = row.insertCell(-1)
-                            cell.innerHTML = report.dateIRL
+    // --- ZOOM ET PAN ---
+    viewport.addEventListener('wheel', (e) => {
+        e.preventDefault();
+        const rect = viewport.getBoundingClientRect();
+        const mouseX = e.clientX - rect.left;
+        
+        // Année sous la souris avant zoom
+        const yearBefore = START_YEAR + (mouseX - offsetX) / zoom;
+        
+        const delta = e.deltaY > 0 ? 0.85 : 1.15;
+        zoom *= delta;
+        zoom = Math.min(Math.max(zoom, 0.005), 50);
 
-                            cell = row.insertCell(-1)
-                            cell.innerHTML = `<img src="${report.facAttackersImg}" style="background-color:black"> ${report.facAttackers}</img>`
+        // Ajuster l'offset pour zoomer vers la souris
+        offsetX = mouseX - (yearBefore - START_YEAR) * zoom;
+        clampOffset();
+        renderTimeline();
+    });
 
-                            cell = row.insertCell(-1)
-                            cell.innerHTML = `<img src="${report.facDefendersImg}" style="background-color:black"> ${report.facDefenders}</img>`
+    let isDragging = false;
+    let startDragX = 0;
+    viewport.addEventListener('mousedown', (e) => { isDragging = true; startDragX = e.clientX - offsetX; viewport.style.cursor = 'grabbing'; });
+    window.addEventListener('mousemove', (e) => { if (!isDragging) return; offsetX = e.clientX - startDragX; clampOffset(); updateTransform(); });
+    window.addEventListener('mouseup', () => { isDragging = false; viewport.style.cursor = 'grab'; });
 
-                            cell = row.insertCell(-1)
-                            cell.innerHTML = `${report.attackers}`
+    function clampOffset() {
+        const totalWidth = (END_YEAR - START_YEAR) * zoom;
+        if (offsetX > 0) offsetX = 0;
+        if (offsetX < viewport.offsetWidth - totalWidth) offsetX = viewport.offsetWidth - totalWidth;
+    }
 
-                            cell = row.insertCell(-1)
-                            cell.innerHTML = `${report.defenders}`
+    function updateTransform() {
+        content.style.transform = `translateX(${offsetX}px)`;
+    }
 
-                            cell = row.insertCell(-1)
-                            cell.innerHTML = `${report.coordinates}`
+    // --- MODAL ---
+    function openModal(title, date, desc) {
+        document.getElementById('modal-title').innerText = title;
+        document.getElementById('modal-date').innerText = "An : " + date;
+        document.getElementById('modal-desc').innerText = desc || "Aucune description supplémentaire disponible.";
+        document.getElementById('modal-overlay').style.display = 'flex';
+    }
+    function closeModal() { document.getElementById('modal-overlay').style.display = 'none'; }
 
-                            cell = row.insertCell(-1)
-                            cell.innerHTML = `${report.onlineLink}`
-                        }
+    // --- GRAPHS UTILITY ---
+    function addChart(type, title, labels, data, color = '#00f2ff') {
+        const container = document.getElementById('dashboard');
+        const wrapper = document.createElement('div');
+        wrapper.className = 'chart-container';
+        wrapper.innerHTML = `<div class="chart-title">${title}</div><canvas></canvas>`;
+        container.appendChild(wrapper);
 
-                    });
-                }
+        const ctx = wrapper.querySelector('canvas').getContext('2d');
+        const config = {
+            type: type === 'courbe' ? 'line' : (type === 'histogramme' ? 'bar' : 'doughnut'),
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: title,
+                    data: data,
+                    borderColor: color,
+                    backgroundColor: type === 'secteur' ? ['#00f2ff', '#ff0055', '#7000ff', '#00ff70'] : color + '33',
+                    borderWidth: 2,
+                    pointBackgroundColor: color,
+                    tension: 0.4
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: { legend: { labels: { color: '#c4d7ed', font: { family: 'monospace' } } } },
+                scales: type !== 'secteur' ? {
+                    y: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#c4d7ed' } },
+                    x: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#c4d7ed' } }
+                } : {}
+            }
+        };
+        new Chart(ctx, config);
+    }
 
-                map.on('click', function (e) {
-                    console.log(e.latlng.lat, e.latlng.lng);
-                })
+    // --- INITIALISATION ---
+    renderTimeline();
 
+    // Exemples de graphiques par défaut
+    addChart('courbe', 'Evolution des pertes Shankari', ['26/04/2026', '30/04/2026', '15/05/2026'], [9930754405, 11751112174, 14988659451]);
+    addChart('courbe', 'Evolution des pertes autres', ['26/04/2026', '30/04/2026', '15/05/2026'], [215535513251, 319735242554, 407073825399]);
+    addChart('histogramme', 'Pertes Totales ZRC', ['Fanatiques Shankari', 'Autres'], [14988659451, 407073825399], '#ff0055');
+    addChart('secteur', 'Engagements - répartition par faction', 
+    ['Empire Amaranth', 'Cercle Léanth', 'Fédération Thélios', 'Domaines Ducaux'], [87.62, 1.03, 0.51, 10.82]);
+    addChart('secteur', 'Engagements - Types', 
+    ['Secteur', 'Colonie', 'Interception', 'Fait Notable'], [123, 10, 1, 59]);
 
-            </script>
-
-
+</script>
 </body>
-
-
-
-
 </html>
