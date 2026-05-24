@@ -246,9 +246,11 @@
 </head>
 
 <body>
-<h1 style="text-align: center;">Fanatiques Shankari - SIMIL - Archives</h1>
-<p style="text-align: center;">Données brutes: <a href="https://docs.google.com/spreadsheets/d/17NP_RPjoC8Iffd2b-dGDGBTo0Dj-Z2lc73VvLfwS0nU/edit?usp=sharing">Archives Shankari</a><br>Dernière mise à jour: 20.590</p>
-<div id="dashboard">
+    <h1 style="text-align: center;">Fanatiques Shankari - SIMIL - Archives</h1>
+    <p style="text-align: center;">Données brutes: <a
+            href="https://docs.google.com/spreadsheets/d/17NP_RPjoC8Iffd2b-dGDGBTo0Dj-Z2lc73VvLfwS0nU/edit?usp=sharing">Archives
+            Shankari</a><br>Dernière mise à jour: 20.590</p>
+    <div id="dashboard">
         <!-- Graphs are dynamically inserted here -->
     </div>
 
@@ -331,7 +333,9 @@
             [18566, "Allégement des charges de l'Empire Sakura", "Le Culte de Kharinerin participe à l'allégement des charges de l'Empire Sakura en satomisant 1 500 000 canonnières"],
             [18561, "Destruction de l'Orakor", "L'Oranor Khor Anéanth fait sécession et lance l'Orakor sur la Legio Tenebris, qui sera détruit par la défense locale."],
             [20589, "Satomisation Prééminence", "Satomisation Orbitate de la colonie Prééminence en 34:271:7 (Aelron), appartenant au Despotat de Théopolis (Domaines Ducaux) par la Legio Kharinerin. Un peu plus d'un milliard de morts."]
-            ,[20566, "Démantellement Station Commerciale", "Démantellement de 67 stations commerciales appartenant au Gouverneur Altarien, en 12:467:15 (territoire Amaranth)"]
+            , [20566, "Démantellement Station Commerciale", "Démantellement de 67 stations commerciales appartenant au Gouverneur Altarien, en 12:467:15 (territoire Amaranth)"]
+            , [20590, "Crash sur T'au", "Les Fanatiques Shankari perdent 11 cuirassés et leur escorte en attaquant T'au, la planète mère du Gouverneur Shas'ar'Tol"]
+            , [20597, "Opération D-001", "Les Fanatiques Shankari envoient 1200 intercepteurs et 17 cuirassés pour détruire des positions de fortes valeurs dans le territoire des Domaines Ducaux. 2 stations de construction lourde (faboulos, Mahdi), 499 colonies minières et 476 raffineries mobiles sont détruites (faboulos), contre 8 bombardiers lourds et quelques dizaines de milliers de chasseurs pour les Fanatiques Shankari. \n Le reste de la flotte fait un crochet via deux colonies de la République Corporatiste Adréane avant de rentrer en territoire Melrehn."]
         ];
 
         rawHisto.forEach(item => {
@@ -527,7 +531,6 @@
                     }
                 }
             };
-            console.log(config)
             new Chart(ctx, config);
         }
         // --- GRAPHS UTILITY ---
@@ -569,46 +572,48 @@
         renderTimeline();
 
         // Exemples de graphiques par défaut
-        addChart('histogramme', 'Pertes Totales ZRC', ['Fanatiques Shankari', 'Autres'], [14988659451, 408180100411], '#ff0055');
+        addChart('histogramme', 'Pertes Totales ZRC', ['Fanatiques Shankari', 'Autres'], [17640612895, 420975334897], '#ff0055');
 
         addMultipleLinesChart("Evolution des pertes", ['Fanatiques Shankari', 'Autres'],
-            ['20.533','20.569', '20.573', '20.588', '20.590'],
-            [[0,9930754405, 11751112174, 14988659451, 14988659451], [0,215535513251, 319735242554, 407073825399, 408180100411]],
+            ['20.533', '20.569', '20.573', '20.588', '20.590', '20.597'],
+            [[0, 9930754405, 11751112174, 14988659451, 14988659451, 17640612895],
+            [0, 215535513251, 319735242554, 407073825399, 408180100411, 420975334897]],
             ['#000000', '#42b329']);
 
 
         addMultipleLinesChart("Evolution des pertes - Objets", ['Fanatiques Shankari', 'Autres'],
-            ['20.533', '20.590'],
-            [[0,0], [0,26812900000]],
+            ['20.533', '20.590', '20.597'],
+            [[0, 0, 0], [0, 26812900000, 26812900000]],
             ['#000000', '#42b329']);
 
         addMultipleLinesChart("Evolution des pertes - Cuirassés", ['Fanatiques Shankari', 'Autres'],
-            ['20.533', '20.590'],
-            [[0,10590538640], [0,12677404443]],
+            ['20.533', '20.590', '20.597'],
+            [[0, 10590538640,12877132210], [0, 12677404443,12677404443]],
             ['#000000', '#42b329']);
 
         addMultipleLinesChart("Evolution des pertes - Chasseurs", ['Fanatiques Shankari', 'Autres'],
-            ['20.533', '20.590'],
-            [[0,2052323456], [0,3948143676]],
+            ['20.533', '20.590', '20.597'],
+            [[0, 2052323456, 2413827855], [0, 3948143676, 4060355925]],
             ['#000000', '#42b329']);
 
         addMultipleLinesChart("Evolution des pertes - Croiseurs", ['Fanatiques Shankari', 'Autres'],
-            ['20.533', '20.590'],
-            [[0,2313063466], [0,6251960602]],
+            ['20.533', '20.590', '20.597'],
+            [[0, 2313063466, 2314355021], [0, 6251960602,6252434232]],
             ['#000000', '#42b329']);
 
         addMultipleLinesChart("Evolution des pertes - Modules", ['Fanatiques Shankari', 'Autres'],
-            ['20.533', '20.590'],
-            [[0,4564652], [0,103424088255]],
+            ['20.533', '20.590', '20.597'],
+            [[0, 4564652,4564652], [0, 103424088255, 115510050956]],
             ['#000000', '#42b329']);
 
         addMultipleLinesChart("Evolution des pertes - Divers", ['Fanatiques Shankari', 'Autres'],
-            ['20.533', '20.590'],
-            [[0,28169235], [0,255065603433]],
+            ['20.533', '20.590', '20.597'],
+            [[0, 28169235, 30733155], [0, 255065603433, 255662189339]],
             ['#000000', '#42b329']);
 
         addChart('secteur', 'Engagements - répartition par faction',
-            ['Empire Amaranth', 'Cercle Léanth', 'Fédération Thélios', 'Domaines Ducaux'], [170, 3, 1, 21]);
+            ['Empire Amaranth', 'Cercle Léanth', 'Fédération Thélios', 'Domaines Ducaux', "République Corporatiste Adréane"],
+            [175, 4, 1, 24, 2]);
     </script>
 </body>
 
